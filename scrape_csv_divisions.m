@@ -1,21 +1,30 @@
+clear all
+warning('off', 'MATLAB:MKDIR:DirectoryExists');
 
 WW_data_path = '/Volumes/WormWatcher/_Data';
 
-% exp_data_path = uigetdir(WW_data_path,'select folder containing the csv');
+exp_data_path = uigetdir(WW_data_path,'select folder containing the csv');
 
 exp_data_dir = dir(fullfile(exp_data_path,'*.csv'));
 
 csv_table = readtable(fullfile(exp_data_dir.folder,exp_data_dir.name),'VariableNamingRule','preserve');
 
 [~,exp_name,~]=fileparts(exp_data_dir.name);
+disp(exp_name)
 
 unique_plate_ID = unique(string(csv_table.("Plate ID")));
 plate_ID = string(csv_table.("Plate ID"));
 
 header = ["Well Location", "Dosage","Strain"];
 
-full_division = [convert_double_array_to_cell(csv_table.("Well Location"))...
-    ,csv_table.Dosage,csv_table.Strain];
+try
+    full_division = [convert_double_array_to_cell(csv_table.("Well Location"))...
+        ,csv_table.Dosage,csv_table.Strain];
+catch
+    full_division = [convert_double_array_to_cell(csv_table.("Well Location"))...
+        ,csv_table.("Group ID"),repmat({'NA'},size(csv_table.("Group ID"),1),1)];
+    disp('Dosage and Strain not found using GROUP ID instead with NA strain')
+end
 
 
 mkdir('output_csvs');
