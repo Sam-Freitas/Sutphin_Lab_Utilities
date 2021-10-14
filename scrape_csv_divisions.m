@@ -36,9 +36,11 @@ for i = 1:length(unique_plate_ID)
     
     this_division = full_division(this_idx,:);
     
-    this_plate_name = [char(unique_plate_ID(i)) '_divisions.csv'];
+    this_plate_name = [char(unique_plate_ID(i)) '-data'];
     
-    out_path = fullfile(pwd,fullfile('output_csvs',exp_name),this_plate_name);
+    mkdir(fullfile('output_csvs',exp_name,this_plate_name));
+    
+    out_path = fullfile(pwd,fullfile('output_csvs',exp_name,this_plate_name),'divisions.csv');
     
     T = cell2table(this_division,'VariableNames',header);
     
