@@ -30,7 +30,7 @@ variable_names = data.Properties.VariableNames;
 idx_healthspan = strcmp(variable_names,"Last day of health");
 idx_lifepsan = strcmp(variable_names,"Last day of observation");
 idx_death_detected = strcmp(variable_names,"Death Detected");
-idx_activity = contains(variable_names,'daily_activity');
+idx_activity = contains(variable_names,'daily_activity_combined');
 idx_combined_metric = contains(variable_names,'Combined metric');
 
 col_healthspan = nonzeros((1:size(data,2)).*idx_healthspan);
@@ -75,7 +75,7 @@ for i = 1:length(condition_unique)
     imshow(this_activity,[0 good_enough_max_activity]);
     colormap(g,'parula')
     pause(.1)
-    colorbar;
+    colorbar('FontSize',12);
     pause(.1)
     
     plot_this_healthspan_lifespan_on_activity(table2array(this_data(:,idx_lifepsan))...
@@ -117,6 +117,8 @@ function plot_this_healthspan_lifespan_on_activity(this_life,this_health,...
 
 hold on
 
+num_worms = length(this_life);
+
 y = linspace(0,size_of_graph,length(this_life));
 x = linspace(0,size_of_graph,num_days_experiment_ran);
 
@@ -126,10 +128,20 @@ for i = 1:length(this_life)
         plot(x(this_life(i)),y(i),'ro')
     end
     if this_health(i) > 0
-        plot(x(this_health(i)),y(i),'wo')
+        plot(x(this_health(i)),y(i),'go')
     end
     
 end
+
+axis on
+xticks([1, round(size_of_graph/2),size_of_graph]); 
+xticklabels({num2str(0),num2str(num_days_experiment_ran/2),num2str(num_days_experiment_ran)})
+yticks([1, round(size_of_graph/2),size_of_graph]); 
+yticklabels({num2str(1),num2str(round(num_worms/2)),num2str(num_worms)})
+
+xlabel('Days on the robotic system')
+ylabel('Individual animals')
+
 
 hold off
 

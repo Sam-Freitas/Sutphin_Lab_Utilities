@@ -7,7 +7,7 @@ dir_flags = [data_dir.isdir];
 
 data_dir = data_dir(dir_flags);
 
-data_dir(ismember( {data_dir.name},{'..','.','Old_data'})) = [];
+data_dir(ismember( {data_dir.name},{'..','.','Old_data','Sutphin_Lab_Utilities','Compiled_table'})) = [];
 
 for i = 1:length(data_dir)
     
@@ -97,6 +97,7 @@ for i = 1:length(data_dir)
 end
 
 writetable(massive_table,fullfile(data_path,'Compiled_table.csv'))
+writetable(massive_table,fullfile(pwd,'Compiled_table.csv'))
 
 disp('output compiled data to:')
 disp(fullfile(data_path,'Compiled_table.csv'));
