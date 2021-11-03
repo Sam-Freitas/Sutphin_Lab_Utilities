@@ -69,7 +69,6 @@ condition_comb = string(condition_cell);
 % reference for all the conditions
 all_cond = string(natsort(cellstr(unique(condition_comb))));
 
-
 % select the conditions that you want
 [choice_idx,tf] = listdlg('ListString',all_cond,...
     'PromptString','Select conditions to plot','ListSize',[500 500]);
@@ -78,45 +77,37 @@ if isempty(choice_idx)
     error('Please choose at least one condition')
 end
 
-% if you are not combining everything
-% then get the control for that experiment
-if ~combine_everything_into_one
-    [control_indx,tf] = listdlg('PromptString',{'Select the Control.',...
-        'Only one Control can be selected.',''},...
-        'SelectionMode','single','ListString',all_cond(choice_idx),...
-        'ListSize',[500 500]);
-    
-    temp_choice = choice_idx(control_indx);
-    
-    choice_idx(control_indx) = [];
-    
-    choice_idx = [temp_choice, choice_idx];
-end
+% % if you are not combining everything
+% % then get the control for that experiment
+% if ~combine_everything_into_one
+%     [control_indx,tf] = listdlg('PromptString',{'Select the Control.',...
+%         'Only one Control can be selected.',''},...
+%         'SelectionMode','single','ListString',all_cond(choice_idx),...
+%         'ListSize',[500 500]);
+%     
+%     temp_choice = choice_idx(control_indx);
+%     
+%     choice_idx(control_indx) = [];
+%     
+%     choice_idx = [temp_choice, choice_idx];
+% end
 
 % isolate the conditions from all the conditions
 conditions_to_isolate = all_cond(choice_idx);
-
-data = readtable('data2.csv','VariableNamingRule','preserve');
-data_duplicate = data;
 
 size_of_graph = 2000;
 
 % set up a couple new features
 % combined contions and total movement
 variable_names = data.Properties.VariableNames;
-idx_activity = contains(variable_names,'daily_activity');
+idx_activity = contains(variable_names,'daily_activity_combined');
 idx_healthspan = strcmp(variable_names,"Last day of health");
 idx_lifepsan = strcmp(variable_names,"Last day of observation");
 
-condition_cell = [data.Dosage, data.Strain];
-condition_comb = strings(1,length(condition_cell));
-for i = 1:length(condition_cell)
-    condition_comb(i) = string([condition_cell{i,1} ' -- ' condition_cell{i,2}]);
-end
 
 % input the new features
 data.("Total activity") = sum(table2array(data(:,idx_activity)),2);
-data.Condition = condition_comb';
+data.Condition = condition_comb;
 data.("Combined metric") = table2array(data(:,idx_healthspan)) + table2array(data(:,idx_lifepsan));
 
 condition_unique = unique(condition_comb);
@@ -215,16 +206,23 @@ hold on
 
 num_worms = length(this_life);
 
-y = linspace(0,size_of_graph,length(this_life));
-x = linspace(0,size_of_graph,num_days_experiment_ran);
+y = linspace(0,size_of_graph,length(this_life)+1);
+x = linspace(0,size_of_graph,num_days_experiment_ran+1);
+
+for i = 1:length(y)-1
+    y2(i) = mean([y(i),y(i+1)]);
+end
+for i = 1:length(x)-1
+    x2(i) = mean([x(i),x(i+1)]);
+end
 
 for i = 1:length(this_life)
     
     if this_life(i) > 0
-        plot(x(this_life(i)),y(i),'ro')
+        plot(x2(this_life(i)),y2(i),'ro')
     end
     if this_health(i) > 0
-        plot(x(this_health(i)),y(i),'go')
+        plot(x2(this_health(i)),y2(i),'go')
     end
     
 end
