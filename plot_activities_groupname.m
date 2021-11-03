@@ -171,6 +171,8 @@ for i = 1:length(condition_unique)
     
     title(condition_unique(i),'Interpreter','None')
     
+    g.WindowState = 'maximized';
+    
 end
 
 
@@ -219,10 +221,10 @@ end
 for i = 1:length(this_life)
     
     if this_life(i) > 0
-        plot(x2(this_life(i)),y2(i),'ro')
+        plot(x2(this_life(i)),y2(i),'rs','MarkerFaceColor','red')
     end
     if this_health(i) > 0
-        plot(x2(this_health(i)),y2(i),'go')
+        plot(x2(this_health(i)),y2(i),'gs')
     end
     
 end
