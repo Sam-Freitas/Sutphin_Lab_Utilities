@@ -742,5 +742,3 @@ ylabel('Individual animals')
 hold off
 
 end
-
-
