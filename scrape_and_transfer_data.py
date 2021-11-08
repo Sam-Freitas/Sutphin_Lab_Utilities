@@ -13,6 +13,7 @@ all_csv_files = [file
                  for file in glob.glob(os.path.join(path, EXT))]
 
 all_csv_files2 = [ x for x in all_csv_files if "division" not in x ]
+all_csv_files2 = [ x for x in all_csv_files2 if "Groupname" not in x ]
 
 for i,this_filepath in enumerate(all_csv_files2):
 
