@@ -362,12 +362,57 @@ for i = 1:length(condition_unique)
     
     g.WindowState = 'maximized';
     
+    this_condition_unique = replace(condition_unique(i),{'/','\'},'-per-');
+    
     if save_plots
-        saveas(g,fullfile(pwd,'output_figures',['activity_' char(condition_unique(i)) '.png']))
-        saveas(g,fullfile(csv_path,['activity_' char(condition_unique(i)) '.png']));
+        saveas(g,fullfile(pwd,'output_figures',['activity_' char(this_condition_unique) '.png']))
+        saveas(g,fullfile(csv_path,['activity_' char(this_condition_unique) '.png']));
     end
     
 end
+
+g2 = figure('units','normalized','outerposition',[0 0 1 1]);
+hold on
+for i = 1:length(conditions_to_isolate)
+    
+    this_condition_idx = (good_data.Condition == conditions_to_isolate(i));
+    
+    this_data = good_data(this_condition_idx,:);
+    
+    this_activity = table2array(this_data(:,idx_activity));
+    this_activity = clean_this_activity(this_activity,this_data);
+    
+    this_activity_norm = this_activity;
+%     this_activity_norm(this_activity_norm>1) = 1;
+    
+    this_activity_norm_mean = mean(this_activity_norm);
+    this_activity_norm_mean_filt = medfilt1(this_activity_norm_mean,3);
+    this_activity_norm_mean_filt = smoothdata(this_activity_norm_mean_filt,'gaussian');
+    
+    if isequal(i,1)
+        running_max = max(this_activity_norm_mean_filt,[],'all');
+    else
+        if running_max < max(this_activity_norm_mean_filt,[],'all')
+            running_max = max(this_activity_norm_mean_filt,[],'all');
+        end
+    end
+    
+    x = 1:length(this_activity_norm_mean_filt);
+    
+    plot(x,this_activity_norm_mean_filt,'Color',cmap(i,:),'LineWidth',5)
+    
+end
+pause(0.1)
+title('Mean activities over time per condition')
+axis square 
+ylabel('Normalized Activity')
+xlabel('Days on robot')
+ylim([0,running_max])
+yticks([1, round(running_max/2),running_max]); 
+yticklabels({num2str(0),num2str(0.5),num2str(1)})
+legend(conditions_to_isolate);
+
+saveas(g2,fullfile(csv_path,['activity_norm_' char(exp_nm) '.png']));
 
 close all
 
@@ -440,9 +485,11 @@ legend(legend_names, 'interpreter','none','FontSize',font_size);
 % save to a folder in output_figures
 mkdir(fullfile(pwd,'output_figures'))
 
+this_name_of_exp = replace(name_of_exp,{'/','\'},'-per-');
+
 if save_plots
-    saveas(g,fullfile(pwd,'output_figures',[name_of_exp '_lifespan.png']))
-    saveas(g,fullfile(csv_path,[name_of_exp '_lifespan.png']));
+    saveas(g,fullfile(pwd,'output_figures',[this_name_of_exp '_lifespan.png']))
+    saveas(g,fullfile(csv_path,[this_name_of_exp '_lifespan.png']));
 end
 
 hold off
@@ -491,9 +538,11 @@ xlim([0,max_days+2])
 xticks([0:5:max_days+2])
 legend(legend_names, 'interpreter','none','FontSize',font_size);
 
+this_name_of_exp = replace(name_of_exp,{'/','\'},'-per-');
+
 if save_plots
-    saveas(g,fullfile(pwd,'output_figures',[name_of_exp '_healthspan.png']))
-    saveas(g,fullfile(csv_path,[name_of_exp '_healthspan.png']));
+    saveas(g,fullfile(pwd,'output_figures',[this_name_of_exp '_healthspan.png']))
+    saveas(g,fullfile(csv_path,[this_name_of_exp '_healthspan.png']));
 end
 
 hold off
@@ -556,9 +605,11 @@ legend(legend_names, 'interpreter','none','FontSize',font_size);
 % save to a folder in output_figures
 mkdir(fullfile(pwd,'output_figures'))
 
+this_name_of_exp = replace(name_of_exp,{'/','\'},'-per-');
+
 if save_plots
-    saveas(g,char(fullfile(pwd,'output_figures',[name_of_exp '_lifespan.png'])));
-    saveas(g,fullfile(csv_path,[name_of_exp '_lifespan.png']));
+    saveas(g,char(fullfile(pwd,'output_figures',[this_name_of_exp '_lifespan.png'])));
+    saveas(g,fullfile(csv_path,[this_name_of_exp '_lifespan.png']));
 end
 
 hold off
@@ -607,9 +658,11 @@ xlim([0,max_days+2])
 xticks([0:5:max_days+2])
 legend(legend_names, 'interpreter','none','FontSize',font_size);
 
+this_name_of_exp = replace(name_of_exp,{'/','\'},'-per-');
+
 if save_plots
-    saveas(g,char(fullfile(pwd,'output_figures',[name_of_exp '_healthspan.png'])));
-    saveas(g,fullfile(csv_path,[name_of_exp '_healthspan.png']));
+    saveas(g,char(fullfile(pwd,'output_figures',[this_name_of_exp '_healthspan.png'])));
+    saveas(g,fullfile(csv_path,[this_name_of_exp '_healthspan.png']));
 end
 
 hold off
@@ -629,7 +682,7 @@ base_colors = ...
     1,0.65,0;... % orange
     0,1,1;... % cyan
     1,0,1; % purple
-    1,1,0;... % yellow
+    1,0.85,0;... % yellow orange 
     0.54,0.27,0.07; % brown 
     0,1,0;... % green
     ];
@@ -717,16 +770,28 @@ for i = 1:length(x)-1
     x2(i) = mean([x(i),x(i+1)]);
 end
 
-for i = 1:length(this_life)
-    
-    if this_life(i) > 0
-        plot(x2(this_life(i)),y2(i),'rs','MarkerFaceColor','red')
-    end
-    if this_health(i) > 0
-        plot(x2(this_health(i)),y2(i),'gs')
-    end
-    
-end
+this_life_x = x2(nonzeros(this_life.*(this_life>0)));
+this_life_y = y2(nonzeros((1:length(this_life))'.*(this_life>0)));
+
+this_life_x = [this_life_x(1),this_life_x,this_life_x(end)];
+this_life_y = [0,this_life_y,size_of_graph];
+
+this_health_x =  x2(nonzeros(this_health.*(this_health>0)));
+this_health_y =  y2(nonzeros((1:length(this_health))'.*(this_health>0)));
+
+stairs(this_life_x,this_life_y,'LineStyle','-','LineWidth',5,'Color','r')
+plot(this_health_x,this_health_y,'gs')
+
+% for i = 1:length(this_life)
+%     
+%     if this_life(i) > 0
+%         stairs(x2(this_life(i)),y2(i),'rs','MarkerFaceColor','red')
+%     end
+%     if this_health(i) > 0
+%         plot(x2(this_health(i)),y2(i),'gs')
+%     end
+%     
+% end
 
 axis on
 xticks([1,round(size_of_graph/4),round(size_of_graph/2),round(size_of_graph*(3/4)),size_of_graph]); 
