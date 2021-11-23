@@ -365,8 +365,8 @@ for i = 1:length(condition_unique)
     this_condition_unique = replace(condition_unique(i),{'/','\'},'-per-');
     
     if save_plots
-        saveas(g,fullfile(pwd,'output_figures',['activity_' char(this_condition_unique) '.png']))
-        saveas(g,fullfile(csv_path,'activity_groupings',['activity_' char(this_condition_unique) '.png']));
+        saveas(g,fullfile(pwd,'output_figures',[exp_nm 'activity_' char(this_condition_unique) '.png']))
+        saveas(g,fullfile(csv_path,'activity_groupings',[exp_nm 'activity_' char(this_condition_unique) '.png']));
     end
     
 end

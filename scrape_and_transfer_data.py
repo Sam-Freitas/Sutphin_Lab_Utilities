@@ -36,6 +36,17 @@ for i,this_filepath in enumerate(all_csv_files2):
 
     shutil.copy(this_filepath,new_path)
 
+    all_pngs = glob.glob(os.path.join(this_dir,'*.png'))
+    
+    try:
+        for this_png in all_pngs:
+            this_png_name = Path(this_png).stem + ".png"
+            this_png_new_path = os.path.join(new_dir_path,this_png_name)
+
+            shutil.copy(this_png,this_png_new_path)
+    except:
+        print(file_name, " .pngs not found")
+
 
     try: 
         copy_tree(activity_path, new_activity_path)
