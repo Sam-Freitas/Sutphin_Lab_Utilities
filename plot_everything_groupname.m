@@ -378,6 +378,8 @@ plot_mean_activites(good_data,conditions_to_isolate,exp_nm,csv_path,csv_file,1,c
 
 close all
 
+disp('Finished with no errors')
+
 function this_median = calculate_median_of_ecdf(sep_exps_days,censored_wells_any_separated)
 
 [this_survival_curve,x] = ecdf(sep_exps_days,...
