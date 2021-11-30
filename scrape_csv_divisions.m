@@ -15,17 +15,22 @@ disp(exp_name)
 unique_plate_ID = unique(string(csv_table.("Plate ID")));
 plate_ID = string(csv_table.("Plate ID"));
 
-header = ["Well Location", "Dosage","Strain"];
 
 try
+    header = ["Well Location", "Groupname"];
     full_division = [convert_double_array_to_cell(csv_table.("Well Location"))...
-        ,csv_table.Dosage,csv_table.Strain];
+        ,csv_table.Groupname];
 catch
-    full_division = [convert_double_array_to_cell(csv_table.("Well Location"))...
-        ,csv_table.("Group ID"),repmat({'NA'},size(csv_table.("Group ID"),1),1)];
-    disp('Dosage and Strain not found using GROUP ID instead with NA strain')
+    try
+        header = ["Well Location", "Dosage","Strain"];
+        full_division = [convert_double_array_to_cell(csv_table.("Well Location"))...
+            ,csv_table.Dosage,csv_table.Strain];
+    catch
+        full_division = [convert_double_array_to_cell(csv_table.("Well Location"))...
+            ,csv_table.("Group ID"),repmat({'NA'},size(csv_table.("Group ID"),1),1)];
+        disp('Dosage and Strain not found using GROUP ID instead with NA strain')
+    end
 end
-
 
 mkdir('output_csvs');
 mkdir(fullfile('output_csvs',exp_name));

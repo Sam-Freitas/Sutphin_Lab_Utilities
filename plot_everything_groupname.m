@@ -732,28 +732,35 @@ for i = 1:length(x)-1
     x2(i) = mean([x(i),x(i+1)]);
 end
 
-this_life_x = x2(nonzeros(this_life.*(this_life>0)));
-this_life_y = y2(nonzeros((1:length(this_life))'.*(this_life>0)));
+still_alive = this_life>length(x2);
 
-this_life_x = [this_life_x(1),this_life_x,this_life_x(end)];
-this_life_y = [0,this_life_y,size_of_graph];
+if sum(still_alive) == 0
+    this_life_x = x2(nonzeros(this_life.*(this_life>0)));
+    this_life_y = y2(nonzeros((1:length(this_life))'.*(this_life>0)));
+    
+    this_life_x = [this_life_x(1),this_life_x,this_life_x(end)];
+    this_life_y = [0,this_life_y,size_of_graph];
+else
+    this_life2 = this_life;
+    this_life2(this_life2>length(x2)) = 0;
+    
+    this_life_x = x2(nonzeros(this_life2.*(this_life2>0)));
+    this_life_y = y2(nonzeros((1:length(this_life2))'.*(this_life2>0)));
+    
+    endpoint_x = this_life_x(end);
+    endpoint_y = ((this_life_y(2)-this_life_y(1))/2)+this_life_y(end);
+    
+    this_life_x = [this_life_x(1),this_life_x,endpoint_x];
+    this_life_y = [0,this_life_y,endpoint_y];
+end
+
+
 
 this_health_x =  x2(nonzeros(this_health.*(this_health>0)));
 this_health_y =  y2(nonzeros((1:length(this_health))'.*(this_health>0)));
 
 stairs(this_life_x,this_life_y,'LineStyle','-','LineWidth',5,'Color','r')
 plot(this_health_x,this_health_y,'gs')
-
-% for i = 1:length(this_life)
-%     
-%     if this_life(i) > 0
-%         stairs(x2(this_life(i)),y2(i),'rs','MarkerFaceColor','red')
-%     end
-%     if this_health(i) > 0
-%         plot(x2(this_health(i)),y2(i),'gs')
-%     end
-%     
-% end
 
 axis on
 xticks([1,round(size_of_graph/4),round(size_of_graph/2),round(size_of_graph*(3/4)),size_of_graph]); 
