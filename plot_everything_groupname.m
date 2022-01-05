@@ -8,7 +8,7 @@ warning('off', 'MATLAB:MKDIR:DirectoryExists');
 % get csv data file
 [csv_file,csv_path] = uigetfile('*.csv','Please select the data file');
 
-if ~isempty(csv_file)
+if ~isempty(csv_file) && ~isequal(csv_path,0)
     data = readtable(fullfile(csv_path,csv_file),...
         'VariableNamingRule','preserve');
     [~,exp_nm,~] = fileparts(csv_file);
