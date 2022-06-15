@@ -756,7 +756,10 @@ else
     this_life_y = [0,this_life_y,endpoint_y];
 end
 
-
+% make sure that it doesnt overflow
+if sum(this_health>length(x2))
+    this_health(this_health>length(x2)) = length(x2);
+end
 
 this_health_x =  x2(nonzeros(this_health.*(this_health>0)));
 this_health_y =  y2(nonzeros((1:length(this_health))'.*(this_health>0)));
