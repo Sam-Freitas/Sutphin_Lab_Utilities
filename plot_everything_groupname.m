@@ -277,10 +277,14 @@ if save_plots
         cmd_command = ['explorer /select, ' out_folder];
         system(cmd_command);
     else
-        out_folder = replace(out_folder,' ', '\ ');
+        out_folder = fileparts(replace(out_folder,' ', '\ '));
         terminal_command = ['open -R ' out_folder];
         
-        system(terminal_command);
+        [status,cmdout] = system(terminal_command);
+        
+        if status ~= 0 
+            [status,cmdout] = system(['gio open ' out_folder]);
+        end
     end
 end
 
