@@ -5,21 +5,19 @@ import shutil
 from pathlib import Path
 from distutils.dir_util import copy_tree
 
-PATH_TO_WW = "Z:\_Data"
-PATH_TO_SUTPHIN = "Y:\Projects\Worm Paparazzi\Data"
+PATH_TO_WW = os.getcwd()
+PATH_TO_SUTPHIN = "/Volumes/Sutphin server/Projects/Worm Paparazzi/Data"
 EXT = "*.csv"
 all_csv_files = [file
                  for path, subdir, files in os.walk(PATH_TO_WW)
                  for file in glob.glob(os.path.join(path, EXT))]
 
 all_csv_files2 = [ x for x in all_csv_files if "division" not in x ]
-all_csv_files2 = [ x for x in all_csv_files2 if "Groupname" not in x ]
+all_csv_files2 = [ x for x in all_csv_files2 if "groupname" not in x ]
 
 for i,this_filepath in enumerate(all_csv_files2):
 
     file_name = Path(this_filepath).stem
-
-    print(file_name)
 
     this_dir = os.path.dirname(this_filepath)
 
@@ -36,17 +34,7 @@ for i,this_filepath in enumerate(all_csv_files2):
 
     shutil.copy(this_filepath,new_path)
 
-    all_pngs = glob.glob(os.path.join(this_dir,'*.png'))
-    
-    try:
-        for this_png in all_pngs:
-            this_png_name = Path(this_png).stem + ".png"
-            this_png_new_path = os.path.join(new_dir_path,this_png_name)
-
-            shutil.copy(this_png,this_png_new_path)
-    except:
-        print(file_name, " .pngs not found")
-
+    print(file_name)
 
     try: 
         copy_tree(activity_path, new_activity_path)
