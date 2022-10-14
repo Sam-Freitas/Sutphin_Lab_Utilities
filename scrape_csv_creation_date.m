@@ -1,3 +1,5 @@
+% this script scrapes the processed csv's from the _Data folder then
+% outputs the dates
 clear all
 close all force hidden
 
@@ -19,12 +21,16 @@ for i = 1:length(data_dir)
     if ~isempty(this_data_csv_dir) && isequal(length(this_data_csv_dir),1)
         output{count,1} = this_data_csv_dir.name;
         output{count,2} = this_data_csv_dir.date;
+        output{count,3} = this_data_csv_dir.datenum;
 
         count = count +1;
     end
 end
 
-header = ["name","date processed (m/d/y)"];
+[~,idx] = sort(cell2mat(output(:,3)));
+output = output(idx,:);
+
+header = ["name","date processed (m/d/y)","datenum"];
 T = cell2table(output,"VariableNames",header);
 
 writetable(T,'Data_dates.csv')
