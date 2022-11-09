@@ -1,185 +1,198 @@
-name,date processed (m/d/y),datenum
-Caffeine_v2.csv,21-Dec-2020 23:13:54,738146.967986111
-NaCl_CdCl_combined.csv,11-Jan-2021 20:00:24,738167.833611111
-CdCl.csv,11-Jan-2021 20:04:44,738167.83662037
-Golgicide.csv,19-Jan-2021 20:45:40,738175.865046296
-NaCl_v2.csv,22-Jan-2021 20:03:20,738178.835648148
-RNAi.csv,11-Feb-2021 21:52:38,738198.911550926
-RNAi_v2.csv,23-Feb-2021 23:30:58,738210.979837963
-NaCl_CdCl_combined_v2.csv,05-Mar-2021 22:31:42,738220.938680556
-Brefeldin_001.csv,27-Mar-2021 00:12:28,738242.008657407
-NAD_precursor_001.csv,09-Apr-2021 01:23:28,738255.057962963
-Cholesterol_NCR_001.csv,21-Apr-2021 01:19:48,738267.055416667
-MC16_Nai_002.csv,24-Apr-2021 00:58:14,738270.040439815
-Mito_biogen_v2.csv,27-Apr-2021 00:02:56,738273.002037037
-Neurodegenerative_models_003.csv,27-Apr-2021 23:41:42,738273.987291667
-Neurodegenerative_models_004.csv,28-Apr-2021 01:27:38,738274.060856481
-Glycoproteins_001.csv,29-Apr-2021 21:42:48,738275.904722222
-Glycoproteins_002.csv,29-Apr-2021 23:12:22,738275.966921296
-Glycoproteins_003.csv,30-Apr-2021 22:09:56,738276.923564815
-Glycoproteins_004.csv,03-May-2021 21:13:00,738279.884027778
-Glycoproteins_005.csv,04-May-2021 01:37:58,738280.068032407
-N2_001.csv,04-May-2021 19:43:12,738280.821666667
-Neurodegenerative_models_002.csv,04-May-2021 21:33:30,738280.898263889
-Neurodegenerative_models_001.csv,04-May-2021 22:12:52,738280.925601852
-Golgicide_003.csv,05-May-2021 01:37:08,738281.067453704
-Bacterial_testing_001.csv,06-May-2021 00:54:20,738282.037731481
-RNAi_003.csv,07-May-2021 23:37:38,738283.984467593
-Caffeine_001.csv,13-May-2021 20:28:22,738289.853032407
-Bacterial_Deprevation_001.csv,14-May-2021 02:57:22,738290.123171296
-Neurodegenerative_models_005.csv,17-May-2021 20:31:28,738293.855185185
-Neurodegenerative_models_006.csv,21-May-2021 22:37:06,738297.942430556
-3HAA_dose_response_OP50_001.csv,24-May-2021 20:53:48,738300.870694444
-Bacterial_testing_002.csv,26-May-2021 19:35:18,738302.816180555
-RNAi_004.csv,27-May-2021 00:24:24,738303.016944444
-Mitochondiral_biogenesis_004.csv,28-May-2021 21:11:22,738304.882893519
-RNAi_005.csv,28-May-2021 21:27:00,738304.89375
-Neurodegenerative_models_007.csv,04-Jun-2021 18:31:12,738311.771666667
-Combined_stress_003.csv,04-Jun-2021 19:56:18,738311.830763889
-Cholesterol_NCR_002.csv,05-Jun-2021 01:42:00,738312.070833333
-EDTA_001.csv,07-Jun-2021 18:53:48,738314.787361111
-Caffeine_003.csv,23-Jun-2021 21:46:40,738330.907407407
-ER_stress_001.csv,23-Jun-2021 23:37:06,738330.984097222
-RNAi_006_pt2.csv,30-Jun-2021 19:22:02,738337.806967593
-RNAi_006_pt1.csv,01-Jul-2021 20:02:50,738338.835300926
-Mitichondrial_biogenesis_005.csv,21-Jul-2021 20:49:58,738358.868032407
-mitochondrial_biogenesis_006.csv,26-Jul-2021 21:18:12,738363.887638889
-Glycoproteins_006.csv,05-Aug-2021 23:33:36,738373.981666667
-Glycoproteins_007.csv,06-Aug-2021 22:16:38,738374.928217593
-Neurodegenerative_models_009.csv,23-Aug-2021 19:30:52,738391.813101852
-Leister_001.csv,24-Aug-2021 23:04:08,738392.961203704
-Leiser_002.csv,27-Aug-2021 02:16:06,738395.094513889
-Leiser_003.csv,30-Aug-2021 22:30:52,738398.938101852
-NCR_MCS_001.csv,09-Sep-2021 19:21:06,738408.806319444
-Mitochondrial_biogenesis_007.csv,13-Sep-2021 22:34:58,738412.940949074
-Golgicide_004.csv,14-Sep-2021 19:15:02,738413.802106482
-RNAi_008.csv,14-Sep-2021 23:43:22,738413.988449074
-RNAi_009.csv,20-Sep-2021 18:47:02,738419.782662037
-PA14_001.csv,20-Sep-2021 22:24:08,738419.933425926
-MCS_NCR_002.csv,24-Sep-2021 00:06:34,738423.004560185
-MCS_NCR_003.csv,28-Sep-2021 00:36:26,738427.025300926
-Mitochondrial_Biogenesis_008.csv,29-Sep-2021 23:31:20,738428.980092593
-Golgicide.csv,01-Oct-2021 16:42:20,738430.696064815
-Golgicide_2-1.csv,01-Oct-2021 16:42:20,738430.696064815
-Golgicide_2-2.csv,01-Oct-2021 16:42:21,738430.696076389
-PA14_001_2.csv,06-Oct-2021 17:14:38,738435.71849537
-3HAA_dose_response_OP50_001_2.csv,06-Oct-2021 19:32:10,738435.81400463
-RNAi_003_2.csv,07-Oct-2021 21:15:12,738436.885555556
-Mitochondrial_biogenesis_002.csv,14-Oct-2021 00:57:54,738443.040208333
-Mitochondrial_biogenesis_003_reprocessed.csv,14-Oct-2021 20:10:06,738443.840347222
-Glycoproteins_001_reprocessed.csv,15-Oct-2021 20:50:22,738444.868310185
-Glycoproteins_002_reprocessed.csv,15-Oct-2021 22:52:06,738444.952847222
-Glycoproteins_003_reprocessed.csv,19-Oct-2021 19:29:20,738448.812037037
-Glycoproteins_004_reprocessed.csv,19-Oct-2021 21:07:10,738448.879976852
-Glycoproteins_005_reprocessed.csv,20-Oct-2021 21:16:42,738449.886597222
-3HAA_dose_response_002.csv,26-Oct-2021 22:54:14,738455.954328704
-3HAA_dose_response_003.csv,28-Oct-2021 13:54:27,738457.579479167
-Bacteria_Testing_003.csv,03-Nov-2021 10:14:44,738463.426898148
-3HAA_dose_response_002_groupname.csv,03-Nov-2021 10:15:27,738463.427395833
-3HAA_dose_response_003_groupname.csv,03-Nov-2021 10:15:27,738463.427395833
-Caffeine_005.csv,04-Nov-2021 12:18:11,738464.512627315
-THT_002.csv,08-Nov-2021 09:20:15,738468.3890625
-THT_001.csv,08-Nov-2021 09:20:29,738468.389224537
-Glycoproteins_006.csv,09-Nov-2021 10:11:00,738469.424305556
-Golgicide_004_groupname.csv,10-Nov-2021 09:06:56,738470.379814815
-Golgicide_005_groupname.csv,10-Nov-2021 16:31:11,738470.688321759
-NAD_Precursors_003_NR.csv,18-Nov-2021 16:50:07,738478.701469907
-NAD_Precursors_003_NAM.csv,18-Nov-2021 16:50:32,738478.701759259
-NAD_Precursors_003.csv,18-Nov-2021 16:50:36,738478.701805556
-RNAi_010.csv,24-Nov-2021 09:44:20,738484.405787037
-Mitochondrial_biogenesis_009.csv,29-Nov-2021 09:15:41,738489.385891204
-Mitochondrial_biogenesis_010.csv,02-Dec-2021 15:48:56,738492.658981481
-RNAi_012_GLS130.csv,06-Dec-2021 11:50:33,738496.4934375
-RNAi_012_N2.csv,06-Dec-2021 11:50:37,738496.493483796
-RNAi_012_GLS129.csv,06-Dec-2021 11:50:54,738496.493680556
-MCS_NCR_004.csv,07-Dec-2021 09:50:32,738497.410092593
-3HAA_dose_response_004.csv,08-Dec-2021 09:31:14,738498.396689815
-MLT_001.csv,08-Dec-2021 16:13:19,738498.675914352
-RNAi_013_GLS129.csv,14-Dec-2021 10:59:10,738504.45775463
-RNAi_013_N2.csv,14-Dec-2021 10:59:18,738504.457847222
-RNAi_013_GLS130.csv,14-Dec-2021 10:59:22,738504.457893518
-Longevity_drug_dose_response_001pt3.csv,06-Jan-2022 15:33:08,738527.648009259
-Longevity_drug_dose_response_001pt1.csv,06-Jan-2022 15:33:11,738527.648043982
-Longevity_drug_dose_response_001pt2.csv,06-Jan-2022 15:33:24,738527.648194444
-Mitochondrial_Biogenesis_011.csv,11-Jan-2022 22:20:52,738532.931157407
-Leiser_001_2.csv,21-Jan-2022 15:14:05,738542.634780093
-Leiser_002_2.csv,24-Jan-2022 13:59:24,738545.582916667
-Leiser_003_2.csv,25-Jan-2022 09:22:35,738546.39068287
-Longevity_drug_dose_response_001pt1_2.csv,25-Jan-2022 19:26:27,738546.810034722
-Longevity_drug_dose_response_001pt2_2.csv,25-Jan-2022 19:37:36,738546.817777778
-Cholesterol_002.csv,04-Apr-2022 09:51:15,738615.410590278
-Longevity_drug_dose_response_002pt1.csv,05-Apr-2022 09:05:43,738616.378969907
-Longevity_drug_dose_response_002pt2.csv,06-Apr-2022 09:03:53,738617.377696759
-Longevity_drug_dose_response_003pt1.csv,19-May-2022 14:09:25,738660.589872685
-Longevity_drug_dose_response_003pt2.csv,19-May-2022 14:09:35,738660.589988426
-Longevity_drug_dose_response_004pt2.csv,19-May-2022 14:12:23,738660.59193287
-Longevity_drug_dose_response_004pt1.csv,19-May-2022 14:13:00,738660.592361111
-Longevity_drug_dose_response_005pt1.csv,19-May-2022 14:13:53,738660.592974537
-Longevity_drug_dose_response_005pt2.csv,19-May-2022 14:14:02,738660.593078704
-Longevity_drug_dose_response_005pt3.csv,19-May-2022 14:14:02,738660.593078704
-Longevity_drug_dose_response_006pt1.csv,19-May-2022 14:14:56,738660.593703704
-Longevity_drug_dose_response_006pt2.csv,19-May-2022 14:15:08,738660.593842593
-RNAi_016T.csv,19-May-2022 14:15:23,738660.594016204
-Longevity_drug_dose_response_007pt2.csv,23-May-2022 13:53:34,738664.578865741
-Longevity_drug_dose_response_007pt1.csv,23-May-2022 13:53:49,738664.579039352
-Longevity_drug_dose_response_008pt2.csv,24-May-2022 13:27:37,738665.560844907
-Longevity_drug_dose_response_008pt1.csv,24-May-2022 13:27:44,738665.560925926
-Longevity_drug_dose_response_009pt2.csv,26-May-2022 13:26:19,738667.55994213
-Longevity_drug_dose_response_009pt1.csv,26-May-2022 13:26:38,738667.560162037
-Cholesterol_003.csv,31-May-2022 12:00:18,738672.500208333
-RNAi_015.csv,01-Jun-2022 14:17:50,738673.595717593
-RNAi_016.csv,02-Jun-2022 11:18:49,738674.471400463
-RNAi_020.csv,08-Jun-2022 16:16:45,738680.678298611
-RNAi_018.csv,15-Jun-2022 09:20:45,738687.389409722
-Longevity_drug_dose_response_010pt2.csv,16-Jun-2022 13:18:31,738688.554525463
-Longevity_drug_dose_response_010pt1.csv,16-Jun-2022 13:19:05,738688.554918982
-Longevity_drug_dose_response_011pt2.csv,20-Jun-2022 09:24:01,738692.391678241
-Longevity_drug_dose_response_11pt1.csv,20-Jun-2022 09:24:08,738692.391759259
-RNAi_018T2.csv,28-Jun-2022 12:34:33,738700.523993056
-RNAi_018T.csv,28-Jun-2022 12:34:36,738700.524027778
-Longevity_drug_dose_response_012pt2.csv,28-Jun-2022 12:34:57,738700.524270833
-Longevity_drug_dose_response_012pt1.csv,28-Jun-2022 12:35:14,738700.524467593
-COPDTT_003.csv,29-Jun-2022 12:54:48,738701.538055556
-Longevity_drug_dose_response_013pt1.csv,30-Jun-2022 15:06:26,738702.629467593
-Longevity_drug_dose_response_013pt2.csv,01-Jul-2022 09:06:23,738703.37943287
-Longevity_drug_dose_response_015pt1.csv,06-Jul-2022 09:26:10,738708.393171296
-Longevity_drug_dose_response_015pt2.csv,08-Jul-2022 10:05:05,738710.420196759
-Mitochondrial_Biogenesis_012.csv,14-Jul-2022 12:11:45,738716.508159722
-Mitochondrial_Biogenesis_013.csv,14-Jul-2022 16:07:48,738716.672083333
-Longevity_drug_dose_response_014pt1.csv,18-Jul-2022 13:22:56,738720.557592593
-Longevity_drug_dose_response_014pt2.csv,18-Jul-2022 13:27:59,738720.561099537
-Longevity_drug_dose_response_018pt1.csv,22-Jul-2022 14:43:31,738724.613553241
-Longevity_drug_dose_response_018pt2.csv,22-Jul-2022 15:04:35,738724.62818287
-Longevity_drug_dose_response_017pt2.csv,22-Jul-2022 21:45:20,738724.906481482
-Longevity_drug_dose_response_019pt2.csv,26-Jul-2022 12:29:29,738728.520474537
-Longevity_drug_dose_response_019pt1.csv,26-Jul-2022 12:33:23,738728.52318287
-Longevity_drug_dose_response_016pt1.csv,29-Jul-2022 15:53:49,738731.662372685
-Longevity_drug_dose_response_016pt2.csv,01-Aug-2022 10:13:56,738734.426342593
-Cholesterol_004.csv,08-Aug-2022 09:49:30,738741.409375
-Longevity_drug_dose_response_020pt1.csv,08-Aug-2022 09:51:00,738741.410416667
-Cholesterol_NCR_004.csv,09-Aug-2022 15:59:13,738742.666122685
-Cholesterol_001.csv,10-Aug-2022 09:45:43,738743.406747685
-MCS_NCR_005pt2.csv,11-Aug-2022 10:24:07,738744.433414352
-MCS_NCR_005pt1.csv,11-Aug-2022 10:25:29,738744.434363426
-Cholesterol_004T.csv,15-Aug-2022 11:14:14,738748.468217593
-Cholesterol_NCR_003.csv,17-Aug-2022 09:17:08,738750.386898148
-Cholesterol_NCR_001.csv,22-Aug-2022 15:20:23,738755.639155093
-Cholesterol_005pt1.csv,15-Sep-2022 13:23:38,738779.558078704
-Cholesterol_006.csv,20-Sep-2022 17:40:50,738784.736689815
-Cholesterol_005pt2.csv,20-Sep-2022 18:13:54,738784.759652778
-RNAi_023pt1.csv,21-Sep-2022 22:52:28,738785.953101852
-RNAi_023pt2.csv,21-Sep-2022 23:05:12,738785.961944444
-RNAi_022pt1.csv,28-Sep-2022 22:14:22,738792.926643518
-RNAi_022pt2.csv,29-Sep-2022 00:31:16,738793.021712963
-Bacterial_testing_006.csv,03-Oct-2022 00:48:52,738797.033935185
-Bacteria_testing_008.csv,03-Oct-2022 01:08:50,738797.047800926
-Bacterial_testing_009.csv,03-Oct-2022 17:01:40,738797.709490741
-Bacterial_testing_007.csv,03-Oct-2022 23:42:26,738797.987800926
-Longevity_drug_dose_response_021pt1.csv,05-Oct-2022 02:47:22,738799.116226852
-Longevity_drug_dose_response_021pt2.csv,05-Oct-2022 16:21:58,738799.681921296
-Longevity_drug_dose_response_022pt1.csv,06-Oct-2022 17:56:28,738800.747546296
-Longevity_drug_dose_response_022pt2.csv,07-Oct-2022 17:32:30,738801.730902778
-RNAi_022pt3.csv,12-Oct-2022 17:37:58,738806.734699074
-Cholesterol_004Tv2.csv,12-Oct-2022 20:31:52,738806.855462963
-RNAi_014.csv,14-Oct-2022 16:40:46,738808.694976852
-Bacterial_testing_005.csv,14-Oct-2022 16:47:06,738808.699375
+name,date processed (yyyy/MM/dd),Date of experiment (yyyy/MM/dd),missing groupname
+Caffeine_v2.csv,2020-Dec-21,,Yes
+NaCl_CdCl_combined.csv,2021-Jan-11,,Yes
+CdCl.csv,2021-Jan-11,,Yes
+Golgicide.csv,2021-Jan-19,,Yes
+NaCl_v2.csv,2021-Jan-22,,Yes
+RNAi.csv,2021-Feb-11,,Yes
+RNAi_v2.csv,2021-Feb-23,,Yes
+NaCl_CdCl_combined_v2.csv,2021-Mar-05,,Yes
+Brefeldin_001.csv,2021-Mar-27,,Yes
+NAD_precursor_001.csv,2021-Apr-09,,Yes
+Cholesterol_NCR_001.csv,2021-Apr-21,,Yes
+MC16_Nai_002.csv,2021-Apr-24,,Yes
+Mito_biogen_v2.csv,2021-Apr-27,,Yes
+Neurodegenerative_models_003.csv,2021-Apr-27,,Yes
+Neurodegenerative_models_004.csv,2021-Apr-28,,Yes
+Glycoproteins_001.csv,2021-Apr-29,,Yes
+Glycoproteins_002.csv,2021-Apr-29,,Yes
+Glycoproteins_003.csv,2021-Apr-30,,Yes
+Glycoproteins_004.csv,2021-May-03,,Yes
+Glycoproteins_005.csv,2021-May-04,,Yes
+N2_001.csv,2021-May-04,,Yes
+Neurodegenerative_models_001.csv,2021-May-04,,Yes
+Neurodegenerative_models_002.csv,2021-May-04,,Yes
+Golgicide_003.csv,2021-May-05,,Yes
+Bacterial_testing_001.csv,2021-May-06,,Yes
+RNAi_003.csv,2021-May-07,,Yes
+Caffeine_001.csv,2021-May-13,,Yes
+Bacterial_Deprevation_001.csv,2021-May-14,,Yes
+Neurodegenerative_models_005.csv,2021-May-17,,Yes
+Neurodegenerative_models_006.csv,2021-May-21,,Yes
+3HAA_dose_response_OP50_001.csv,2021-May-24,,Yes
+Bacterial_testing_002.csv,2021-May-26,,Yes
+RNAi_004.csv,2021-May-27,,Yes
+Mitochondiral_biogenesis_004.csv,2021-May-28,,Yes
+RNAi_005.csv,2021-May-28,,Yes
+Combined_stress_003.csv,2021-Jun-04,,Yes
+Neurodegenerative_models_007.csv,2021-Jun-04,,Yes
+Cholesterol_NCR_002.csv,2021-Jun-05,,Yes
+EDTA_001.csv,2021-Jun-07,,Yes
+Caffeine_003.csv,2021-Jun-23,,Yes
+ER_stress_001.csv,2021-Jun-23,,Yes
+RNAi_006_pt2.csv,2021-Jun-30,,Yes
+RNAi_006_pt1.csv,2021-Jul-01,,Yes
+Mitichondrial_biogenesis_005.csv,2021-Jul-21,,Yes
+mitochondrial_biogenesis_006.csv,2021-Jul-26,,Yes
+Glycoproteins_006.csv,2021-Aug-05,,Yes
+Glycoproteins_007.csv,2021-Aug-06,,Yes
+Neurodegenerative_models_009.csv,2021-Aug-23,,Yes
+Leister_001.csv,2021-Aug-24,,Yes
+Leiser_002.csv,2021-Aug-27,,Yes
+Leiser_003.csv,2021-Aug-30,,Yes
+NCR_MCS_001.csv,2021-Sep-09,,Yes
+Mitochondrial_biogenesis_007.csv,2021-Sep-13,,Yes
+Golgicide_004.csv,2021-Sep-14,,Yes
+RNAi_008.csv,2021-Sep-14,,Yes
+PA14_001.csv,2021-Sep-20,,Yes
+RNAi_009.csv,2021-Sep-20,,Yes
+MCS_NCR_002.csv,2021-Sep-24,,Yes
+MCS_NCR_003.csv,2021-Sep-28,,Yes
+Mitochondrial_Biogenesis_008.csv,2021-Sep-29,,Yes
+Golgicide.csv,2021-Oct-01,,Yes
+Golgicide_2-1.csv,2021-Oct-01,,Yes
+Golgicide_2-2.csv,2021-Oct-01,,Yes
+3HAA_dose_response_OP50_001_2.csv,2021-Oct-06,,Yes
+PA14_001_2.csv,2021-Oct-06,,Yes
+RNAi_003_2.csv,2021-Oct-07,,Yes
+Mitochondrial_biogenesis_002.csv,2021-Oct-14,,Yes
+Mitochondrial_biogenesis_003_reprocessed.csv,2021-Oct-14,,Yes
+Glycoproteins_001_reprocessed.csv,2021-Oct-15,,Yes
+Glycoproteins_002_reprocessed.csv,2021-Oct-15,,Yes
+Glycoproteins_003_reprocessed.csv,2021-Oct-19,,Yes
+Glycoproteins_004_reprocessed.csv,2021-Oct-19,,Yes
+Glycoproteins_005_reprocessed.csv,2021-Oct-20,,Yes
+3HAA_dose_response_002.csv,2021-Oct-26,,Yes
+3HAA_dose_response_003.csv,2021-Oct-28,,Yes
+3HAA_dose_response_002_groupname.csv,2021-Nov-03,2021-Aug-14,
+3HAA_dose_response_003_groupname.csv,2021-Nov-03,2021-Sep-02,
+Bacteria_Testing_003.csv,2021-Nov-03,2021-Aug-19,
+Caffeine_005.csv,2021-Nov-04,2021-Sep-09,
+THT_001.csv,2021-Nov-08,2021-Aug-28,
+THT_002.csv,2021-Nov-08,2021-Sep-09,
+Glycoproteins_006.csv,2021-Nov-09,2021-Jun-17,
+Golgicide_004_groupname.csv,2021-Nov-10,2021-Jul-23,
+Golgicide_005_groupname.csv,2021-Nov-10,2021-Sep-10,
+NAD_Precursors_003.csv,2021-Nov-18,2021-Aug-05,
+NAD_Precursors_003_NAM.csv,2021-Nov-18,2021-Aug-05,
+NAD_Precursors_003_NR.csv,2021-Nov-18,2021-Aug-05,
+RNAi_010.csv,2021-Nov-24,2021-Sep-03,
+Mitochondrial_biogenesis_009.csv,2021-Nov-29,2021-Sep-16,
+Mitochondrial_biogenesis_010.csv,2021-Dec-02,2021-Sep-16,
+RNAi_012_GLS129.csv,2021-Dec-06,2021-Oct-07,
+RNAi_012_GLS130.csv,2021-Dec-06,2021-Oct-07,
+RNAi_012_N2.csv,2021-Dec-06,2021-Oct-07,
+MCS_NCR_004.csv,2021-Dec-07,2021-Aug-06,
+3HAA_dose_response_004.csv,2021-Dec-08,2021-Oct-15,
+MLT_001.csv,2021-Dec-08,2021-May-28,
+RNAi_013_GLS129.csv,2021-Dec-14,2021-Oct-21,
+RNAi_013_GLS130.csv,2021-Dec-14,2021-Oct-21,
+RNAi_013_N2.csv,2021-Dec-14,2021-Oct-21,
+Longevity_drug_dose_response_001pt1.csv,2022-Jan-06,2021-Nov-18,
+Longevity_drug_dose_response_001pt2.csv,2022-Jan-06,2021-Nov-18,
+Longevity_drug_dose_response_001pt3.csv,2022-Jan-06,2021-Nov-19,
+Mitochondrial_Biogenesis_011.csv,2022-Jan-11,2021-Nov-19,
+Leiser_001_2.csv,2022-Jan-21,2021-Jun-24,
+Leiser_002_2.csv,2022-Jan-24,2021-Jun-25,
+Leiser_003_2.csv,2022-Jan-25,2021-Jul-01,
+Longevity_drug_dose_response_001pt1_2.csv,2022-Jan-25,2021-Nov-18,
+Longevity_drug_dose_response_001pt2_2.csv,2022-Jan-25,2021-Nov-18,
+Cholesterol_002.csv,2022-Apr-04,2022-Jan-21,
+Longevity_drug_dose_response_002pt1.csv,2022-Apr-05,2021-Nov-24,
+Longevity_drug_dose_response_002pt2.csv,2022-Apr-06,2021-Nov-24,
+Longevity_drug_dose_response_003pt1.csv,2022-May-19,2021-Dec-03,
+Longevity_drug_dose_response_003pt2.csv,2022-May-19,2021-Dec-03,
+Longevity_drug_dose_response_004pt1.csv,2022-May-19,2021-Dec-10,
+Longevity_drug_dose_response_004pt2.csv,2022-May-19,2021-Dec-10,
+Longevity_drug_dose_response_005pt1.csv,2022-May-19,2021-Dec-22,
+Longevity_drug_dose_response_005pt2.csv,2022-May-19,2021-Dec-22,
+Longevity_drug_dose_response_005pt3.csv,2022-May-19,2021-Dec-22,
+Longevity_drug_dose_response_006pt1.csv,2022-May-19,2022-Jan-13,
+Longevity_drug_dose_response_006pt2.csv,2022-May-19,2022-Jan-14,
+RNAi_016T.csv,2022-May-19,2022-Feb-24,
+Longevity_drug_dose_response_007pt1.csv,2022-May-23,2022-Jan-20,
+Longevity_drug_dose_response_007pt2.csv,2022-May-23,2022-Jan-20,
+Longevity_drug_dose_response_008pt1.csv,2022-May-24,2022-Jan-28,
+Longevity_drug_dose_response_008pt2.csv,2022-May-24,2022-Jan-28,
+Longevity_drug_dose_response_009pt1.csv,2022-May-26,2022-Feb-18,
+Longevity_drug_dose_response_009pt2.csv,2022-May-26,2022-Feb-18,
+Cholesterol_003.csv,2022-May-31,2022-Apr-01,
+RNAi_015.csv,2022-Jun-01,2022-Feb-04,
+RNAi_016.csv,2022-Jun-02,2022-Feb-24,
+RNAi_020.csv,2022-Jun-08,2022-Apr-01,
+RNAi_018.csv,2022-Jun-15,2022-Mar-17,
+Longevity_drug_dose_response_010pt1.csv,2022-Jun-16,2022-Mar-04,
+Longevity_drug_dose_response_010pt2.csv,2022-Jun-16,2022-Mar-04,
+Longevity_drug_dose_response_11pt1.csv,2022-Jun-20,2022-Mar-18,
+Longevity_drug_dose_response_011pt2.csv,2022-Jun-20,2022-Mar-18,
+Longevity_drug_dose_response_012pt1.csv,2022-Jun-28,2022-Apr-08,
+Longevity_drug_dose_response_012pt2.csv,2022-Jun-28,2022-Apr-08,
+RNAi_018T.csv,2022-Jun-28,2022-Mar-17,
+RNAi_018T2.csv,2022-Jun-28,,Yes
+COPDTT_003.csv,2022-Jun-29,2021-Dec-15,
+Longevity_drug_dose_response_013pt1.csv,2022-Jun-30,2022-Apr-15,
+Longevity_drug_dose_response_013pt2.csv,2022-Jul-01,2022-Apr-15,
+Longevity_drug_dose_response_015pt1.csv,2022-Jul-06,2022-Apr-29,
+Longevity_drug_dose_response_015pt2.csv,2022-Jul-08,2022-Apr-29,
+Mitochondrial_Biogenesis_012.csv,2022-Jul-14,2021-Dec-10,
+Mitochondrial_Biogenesis_013.csv,2022-Jul-14,2022-Jan-28,
+Longevity_drug_dose_response_014pt1.csv,2022-Jul-18,2022-Apr-22,
+Longevity_drug_dose_response_014pt2.csv,2022-Jul-18,2022-Apr-22,
+Longevity_drug_dose_response_017pt2.csv,2022-Jul-22,2022-May-13,
+Longevity_drug_dose_response_018pt1.csv,2022-Jul-22,2022-May-20,
+Longevity_drug_dose_response_018pt2.csv,2022-Jul-22,2022-May-20,
+Longevity_drug_dose_response_019pt1.csv,2022-Jul-26,2022-May-27,
+Longevity_drug_dose_response_019pt2.csv,2022-Jul-26,2022-May-27,
+Longevity_drug_dose_response_016pt1.csv,2022-Jul-29,2022-May-07,
+Longevity_drug_dose_response_016pt2.csv,2022-Aug-01,2022-May-07,
+Cholesterol_004.csv,2022-Aug-08,2022-Jun-17,
+Longevity_drug_dose_response_020pt1.csv,2022-Aug-08,2022-Jun-03,
+Cholesterol_NCR_004.csv,2022-Aug-09,2022-Feb-11,
+Cholesterol_001.csv,2022-Aug-10,2021-Oct-22,
+MCS_NCR_005pt1.csv,2022-Aug-11,2021-Dec-16,
+MCS_NCR_005pt2.csv,2022-Aug-11,2021-Dec-16,
+Cholesterol_004T.csv,2022-Aug-15,2022-Jun-17,
+Cholesterol_NCR_003.csv,2022-Aug-17,2021-Sep-17,
+Cholesterol_NCR_001.csv,2022-Aug-22,2021-Feb-20,
+Cholesterol_005pt1.csv,2022-Sep-15,2022-Jun-27,
+Cholesterol_005pt2.csv,2022-Sep-20,2022-Jun-27,
+Cholesterol_006.csv,2022-Sep-20,2022-Jul-01,
+RNAi_023pt1.csv,2022-Sep-21,2022-Jul-07,
+RNAi_023pt2.csv,2022-Sep-21,2022-Jul-07,
+RNAi_022pt1.csv,2022-Sep-28,2022-Jun-10,
+RNAi_022pt2.csv,2022-Sep-29,2022-Jun-10,
+Bacterial_testing_006.csv,2022-Oct-03,2022-Feb-10,
+Bacterial_testing_007.csv,2022-Oct-03,2022-Mar-03,
+Bacteria_testing_008.csv,2022-Oct-03,2022-Mar-24,
+Bacterial_testing_009.csv,2022-Oct-03,2022-Apr-14,
+Longevity_drug_dose_response_021pt1.csv,2022-Oct-05,2022-Jul-15,
+Longevity_drug_dose_response_021pt2.csv,2022-Oct-05,2022-Jul-15,
+Longevity_drug_dose_response_022pt1.csv,2022-Oct-06,2022-Jul-22,
+Longevity_drug_dose_response_022pt2.csv,2022-Oct-07,2022-Jul-22,
+Cholesterol_004Tv2.csv,2022-Oct-12,2022-Jun-17,
+RNAi_022pt3.csv,2022-Oct-12,2022-Jun-10,
+Bacterial_testing_005.csv,2022-Oct-14,2021-Nov-11,
+RNAi_014.csv,2022-Oct-14,2021-Oct-29,
+COPGCA_003T.csv,2022-Oct-17,2022-Jul-05,
+Crowding_001.csv,2022-Oct-17,2022-Aug-12,
+CrowdingTIM_001.csv,2022-Oct-18,2022-Aug-12,
+Robot_test_001pt1.csv,2022-Oct-19,2022-Jan-05,
+Robot_test_001pt2.csv,2022-Oct-19,2022-Jan-05,
+Robot_test_003fixed.csv,2022-Oct-20,2022-Feb-17,
+Robot_test_002.csv,2022-Oct-21,2022-Jan-28,
+Longevity_drug_dose_response_023pt1.csv,2022-Oct-27,2022-Jul-29,
+Longevity_drug_dose_response_024pt1.csv,2022-Oct-31,2022-Aug-05,
+Longevity_drug_dose_response_024pt2.csv,2022-Nov-01,2022-Aug-05,
+Longevity_drug_combinations_001.csv,2022-Nov-03,2022-Aug-12,
+Longevity_drug_combinations_002.csv,2022-Nov-04,2022-Aug-12,
+Longevity_drug_combinations_003.csv,2022-Nov-08,2022-Aug-19,
