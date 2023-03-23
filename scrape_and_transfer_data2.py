@@ -15,10 +15,15 @@ update_files = True
 max_file_size = 50000000
 
 PATH_TO_WW = os.getcwd()
-PATH_TO_SUTPHIN = "/Volumes/Sutphin server/Projects/Worm Paparazzi/Data"
+# PATH_TO_SUTPHIN = "/Volumes/Sutphin server/Projects/Worm Paparazzi/Data"
+
+PATH_TO_SUTPHIN = r"Z:\Projects\Worm Paparazzi\Data"
 
 if os.path.isdir(PATH_TO_SUTPHIN) is not True:
-    PATH_TO_SUTPHIN = r"Z:\Projects\Worm Paparazzi\Data"
+    PATH_TO_SUTPHIN = r"Y:\Projects\Worm Paparazzi\Data"
+    
+assert os.path.isdir(PATH_TO_SUTPHIN)
+assert os.path.isdir(PATH_TO_WW)
 
 EXT = "*.csv"
 all_csv_files = [file
@@ -54,4 +59,3 @@ for i in tqdm(range(len(all_csv_files2))):
             else:
                 mkpath(new_dir_path)
                 copy_file(this_file_path, new_file_path, update=update_files)
-

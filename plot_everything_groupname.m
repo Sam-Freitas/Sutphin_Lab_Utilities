@@ -448,7 +448,7 @@ ylabel('Fraction remaining','FontSize',20,'FontWeight','bold')
 xlabel('Days on robot','FontSize',20,'FontWeight','bold');
 xlim([0,max_days+2])
 xticks([0:5:max_days+2])
-legend(legend_names, 'interpreter','none','FontSize',font_size);
+legend(legend_names, 'interpreter','none','FontSize',font_size,'Location','southoutside');
 
 % save to a folder in output_figures
 mkdir(fullfile(pwd,'output_figures'))
@@ -504,7 +504,7 @@ ylabel('Fraction healthy','FontSize',20,'FontWeight','bold');
 xlabel('Days healthy on robot','FontSize',20,'FontWeight','bold');
 xlim([0,max_days+2])
 xticks([0:5:max_days+2])
-legend(legend_names, 'interpreter','none','FontSize',font_size);
+legend(legend_names, 'interpreter','none','FontSize',font_size,'Location','southoutside');
 
 this_name_of_exp = replace(name_of_exp,{'/','\'},'-per-');
 
@@ -568,7 +568,7 @@ ylabel('Fraction remaining','FontSize',20,'FontWeight','bold')
 xlabel('Days on robot','FontSize',20,'FontWeight','bold');
 xlim([0,max_days+2])
 xticks([0:5:max_days+2])
-legend(legend_names, 'interpreter','none','FontSize',font_size);
+legend(legend_names, 'interpreter','none','FontSize',font_size,'Location','southoutside');
 
 % save to a folder in output_figures
 mkdir(fullfile(pwd,'output_figures'))
@@ -624,7 +624,7 @@ ylabel('Fraction healthy','FontSize',20,'FontWeight','bold');
 xlabel('Days healthy on robot','FontSize',20,'FontWeight','bold');
 xlim([0,max_days+2])
 xticks([0:5:max_days+2])
-legend(legend_names, 'interpreter','none','FontSize',font_size);
+legend(legend_names, 'interpreter','none','FontSize',font_size,'Location','southoutside');
 
 this_name_of_exp = replace(name_of_exp,{'/','\'},'-per-');
 
@@ -826,7 +826,7 @@ xlabel('Days on robot')
 ylim([0,running_max])
 yticks([1, round(running_max/2),running_max]); 
 yticklabels({num2str(0),num2str(0.5),num2str(1)})
-legend(conditions_to_isolate);
+legend(conditions_to_isolate,'Location','southoutside');
 
 if smooth_bool
     saveas(g2,fullfile(csv_path,['activity_norm_smooth_' char(exp_nm) '.png']));
