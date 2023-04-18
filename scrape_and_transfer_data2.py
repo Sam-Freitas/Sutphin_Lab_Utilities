@@ -1,8 +1,8 @@
-import os
-import glob
+import os, glob, natsort
 import numpy as np
 import pandas as pd
-import shutil
+# import shutil
+from datetime import datetime
 from pathlib import Path
 from tqdm import tqdm
 from distutils.file_util import copy_file
@@ -13,6 +13,7 @@ from distutils.dir_util import copy_tree, mkpath
 
 # this additionally makes a lookup table for easy checking of experiments that have already
 # been created and easy to lookup
+# the lookup table has the N/NC, mean/median life/healthspan 
 
 # Update settings
 # if Set to True then the program will check if there is a newer version and update, or if file doesnt exist then will transfer it
@@ -34,7 +35,11 @@ assert os.path.isdir(PATH_TO_SUTPHIN)
 assert os.path.isdir(PATH_TO_WW)
 assert os.path.isfile(PATH_TO_DIVISION_BASE)
 
+print('All paths have been verified')
+print('Recursively looking up all .CSV files in', str(PATH_TO_WW))
+
 #recursively get all the csv files from the _Data folder
+# the csvs are used to locate the folder that contains all the processed data
 EXT = "*.csv"
 all_csv_files = [file
                  for path, subdir, files in os.walk(PATH_TO_WW)
@@ -42,6 +47,7 @@ all_csv_files = [file
 
 # get all the division paths for the data lookup table
 division_csv_files = [ x for x in all_csv_files if "division" in x ]
+division_csv_files = natsort.natsorted(division_csv_files)
 # read in the base and columns for checking
 base_division = pd.read_csv(PATH_TO_DIVISION_BASE)
 base_columns = base_division.columns
@@ -49,37 +55,92 @@ base_columns = base_division.columns
 print('Creating lookup table')
 skip_counter = 0
 for i in tqdm(range(len(division_csv_files))):
-    try:
+    # try:
         this_division_df = pd.read_csv(division_csv_files[i])
 
-        column_check_flag = sum((this_division_df.columns == base_columns)) == len(base_columns)
+        this_path = os.path.normpath(division_csv_files[i])
+        this_path_split = this_path.split(os.sep)
+        this_path_experiment = os.path.join(*this_path_split[0:-2])
+        this_path_processed_data = glob.glob(os.path.join(this_path_experiment, "*.csv"))
 
-        if column_check_flag:
-            this_path = os.path.normpath(division_csv_files[i])
-            this_path = this_path.split(os.sep)
+        if len(this_division_df.columns) == len(base_columns):
+            column_check_flag = sum((this_division_df.columns == base_columns)) == len(base_columns)
+        else:
+            column_check_flag = False
 
-            this_experiment_overarching_name = this_path[-3]
-            this_experiment_plate_name = this_path[-1][:-14]
+        if len(this_path_processed_data) == 1:
+            processed_data_check_flag = True
+        else:
+            processed_data_check_flag = False
+
+        if column_check_flag and processed_data_check_flag:
+
+            this_experiment_overarching_name = this_path_split[-3]
+            this_experiment_plate_name = this_path_split[-1][:-14]
+
+            this_experiment_data_df = pd.read_csv(this_path_processed_data[0])
+            this_experiment_plate_name_idx = this_experiment_data_df['Plate ID']==this_experiment_plate_name
+            this_division_data_df = this_experiment_data_df[this_experiment_plate_name_idx]
 
             this_division_df = this_division_df.drop(columns='Well Location')
             this_division_df = this_division_df.drop_duplicates(keep='first') 
 
+            N = []
+            NC = []
+            mean_lifepsan = []
+            median_lifespan = []
+            mean_healthspan = []
+            median_healthspan = []
+            time_between_egg_and_robot = []
+            for j,each_division in enumerate(this_division_df['Groupname']):
+                this_groupname_data = this_division_data_df[this_division_data_df['Groupname'] == each_division]
+                this_groupname_data_noncensored = this_groupname_data[this_groupname_data['Death Detected']==1]
+
+                time_between_egg_and_robot.append(
+                    (datetime.strptime(this_division_df['robot date [yyyy-mm-dd]'][0],'%Y-%m-%d') 
+                     - datetime.strptime(this_division_df['egg date'][0],'%Y-%m-%d')).days
+                    )
+
+                N.append(np.shape(this_groupname_data)[0])
+                NC.append(np.shape(this_groupname_data)[0]-np.shape(this_groupname_data_noncensored)[0])
+                if N[j] == NC[j]:
+                    median_lifespan.append(None)
+                    median_healthspan.append(None)
+                    mean_lifepsan.append(None)
+                    mean_healthspan.append(None)
+                    continue
+                median_lifespan.append(np.median(this_groupname_data_noncensored['Last day of observation']))
+                median_healthspan.append(np.median(this_groupname_data_noncensored['Last day of health']))
+                mean_lifepsan.append(np.mean(this_groupname_data_noncensored['Last day of observation']))
+                mean_healthspan.append(np.mean(this_groupname_data_noncensored['Last day of health']))
+
             this_division_df['Experiment name'] = this_experiment_overarching_name
             this_division_df['Plate name'] = this_experiment_plate_name
+            this_division_df['N'] = N
+            this_division_df['NC'] = NC
+            this_division_df['Median Lifespan'] = median_lifespan
+            this_division_df['Median Healthspan'] = median_healthspan
+            this_division_df['Mean Lifespan'] = mean_lifepsan
+            this_division_df['Mean Healthspan'] = mean_healthspan
+            this_division_df['Egg to Robot time [d]'] = time_between_egg_and_robot
 
             if i == 0:
                 large_division_dataframe = this_division_df
             else:
                 large_division_dataframe = pd.concat([large_division_dataframe,this_division_df])
+        else:
+            skip_counter = skip_counter + 1
+            print('skipping',division_csv_files[i])
 
-    except:
-        skip_counter = skip_counter + 1
-        print('skipping',division_csv_files[i])
+    # except:
+    #     skip_counter = skip_counter + 1
+    #     print('skipping',division_csv_files[i])
 print('Skipped', skip_counter, 'of', len(division_csv_files), 'possible plates')
 
 large_division_dataframe.to_csv(os.path.join(os.path.split(PATH_TO_WW)[0],'_Processed_data_lookup.csv'), index = False )
 large_division_dataframe.to_csv(os.path.join(os.path.split(PATH_TO_SUTPHIN)[0],'_Processed_data_lookup.csv'), index = False )
 
+# get rid of unnecessary csvs
 cleaned_csv_files = [ x for x in all_csv_files if "division" not in x ]
 cleaned_csv_files = [ x for x in cleaned_csv_files if "Groupname.csv" not in x ]
 
