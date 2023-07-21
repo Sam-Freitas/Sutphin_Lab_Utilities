@@ -35,6 +35,10 @@ assert os.path.isdir(PATH_TO_SUTPHIN)
 assert os.path.isdir(PATH_TO_WW)
 assert os.path.isfile(PATH_TO_DIVISION_BASE)
 
+print("Path to Sutphin", PATH_TO_SUTPHIN)
+print("Path to WW", PATH_TO_WW)
+print("Path to division template", PATH_TO_DIVISION_BASE)
+
 print('All paths have been verified')
 print('Recursively looking up all .CSV files in', str(PATH_TO_WW))
 
@@ -58,7 +62,7 @@ for i in tqdm(range(len(division_csv_files))):
     # try:
         this_division_df = pd.read_csv(division_csv_files[i])
 
-        this_path = os.path.normpath(division_csv_files[i])
+        this_path = os .path.normpath(division_csv_files[i])
         this_path_split = this_path.split(os.sep)
         this_path_experiment = os.path.join(*this_path_split[0:-2])
         this_path_processed_data = glob.glob(os.path.join(this_path_experiment, "*.csv"))
@@ -143,7 +147,7 @@ large_division_dataframe.to_csv(os.path.join(os.path.split(PATH_TO_SUTPHIN)[0],'
 # get rid of unnecessary csvs
 cleaned_csv_files = [ x for x in all_csv_files if "division" not in x ]
 cleaned_csv_files = [ x for x in cleaned_csv_files if "Groupname.csv" not in x ]
-
+ 
 for i in tqdm(range(len(cleaned_csv_files))):
 
     this_filepath = cleaned_csv_files[i]
@@ -159,7 +163,7 @@ for i in tqdm(range(len(cleaned_csv_files))):
     new_dir_path = os.path.join(PATH_TO_SUTPHIN,this_dir_name)
 
     file_list = os.listdir(this_dir)
-
+  
     for this_file in os.listdir(this_dir):
         this_file_path = os.path.join(this_dir,this_file)
         this_file_size = os.path.getsize(this_file_path)
