@@ -49,3 +49,137 @@ print("Path to division template", PATH_TO_DIVISION_BASE)
 
 print('All paths have been verified')
 print('Recursively looking up all .CSV files in', str(PATH_TO_WW))
+
+#recursively get all the csv files from the _Data folder
+# the csvs are used to locate the folder that contains all the processed data
+EXT = "*.csv"
+all_csv_files = [file
+                 for path, subdir, files in os.walk(PATH_TO_WW)
+                 for file in glob.glob(os.path.join(path, EXT))]
+
+# get all the division paths for the data lookup table
+division_csv_files = [ x for x in all_csv_files if "division" in x ]
+division_csv_files = natsort.natsorted(division_csv_files)
+# read in the base and columns for checking
+base_division = pd.read_csv(PATH_TO_DIVISION_BASE)
+base_columns = base_division.columns
+
+print('Creating lookup table')
+skip_counter = 0
+for i in tqdm(range(len(division_csv_files))):
+    # try:
+        this_division_df = pd.read_csv(division_csv_files[i])
+
+        this_path = os .path.normpath(division_csv_files[i])
+        this_path_split = this_path.split(os.sep)
+        this_path_experiment = os.path.join(*this_path_split[0:-2])
+        this_path_processed_data = glob.glob(os.path.join(this_path_experiment, "*.csv"))
+
+        if len(this_division_df.columns) == len(base_columns):
+            column_check_flag = sum((this_division_df.columns == base_columns)) == len(base_columns)
+        else:
+            column_check_flag = False
+
+        if len(this_path_processed_data) == 1:
+            processed_data_check_flag = True
+        else:
+            processed_data_check_flag = False
+
+        if column_check_flag and processed_data_check_flag:
+
+            this_experiment_overarching_name = this_path_split[-3]
+            this_experiment_plate_name = this_path_split[-1][:-14]
+
+            this_experiment_data_df = pd.read_csv(this_path_processed_data[0])
+            this_experiment_plate_name_idx = this_experiment_data_df['Plate ID']==this_experiment_plate_name
+            this_division_data_df = this_experiment_data_df[this_experiment_plate_name_idx]
+
+            this_division_df = this_division_df.drop(columns='Well Location')
+            this_division_df = this_division_df.drop_duplicates(keep='first') 
+
+            N = []
+            NC = []
+            mean_lifepsan = []
+            median_lifespan = []
+            mean_healthspan = []
+            median_healthspan = []
+            time_between_egg_and_robot = []
+            for j,each_division in enumerate(this_division_df['Groupname']):
+                this_groupname_data = this_division_data_df[this_division_data_df['Groupname'] == each_division]
+                this_groupname_data_noncensored = this_groupname_data[this_groupname_data['Death Detected']==1]
+
+                time_between_egg_and_robot.append(
+                    (datetime.strptime(this_division_df['robot date [yyyy-mm-dd]'][0],'%Y-%m-%d') 
+                     - datetime.strptime(this_division_df['egg date'][0],'%Y-%m-%d')).days
+                    )
+
+                N.append(np.shape(this_groupname_data)[0])
+                NC.append(np.shape(this_groupname_data)[0]-np.shape(this_groupname_data_noncensored)[0])
+                if N[j] == NC[j]:
+                    median_lifespan.append(None)
+                    median_healthspan.append(None)
+                    mean_lifepsan.append(None)
+                    mean_healthspan.append(None)
+                    continue
+                median_lifespan.append(np.median(this_groupname_data_noncensored['Last day of observation']))
+                median_healthspan.append(np.median(this_groupname_data_noncensored['Last day of health']))
+                mean_lifepsan.append(np.mean(this_groupname_data_noncensored['Last day of observation']))
+                mean_healthspan.append(np.mean(this_groupname_data_noncensored['Last day of health']))
+
+            this_division_df['Experiment name'] = this_experiment_overarching_name
+            this_division_df['Plate name'] = this_experiment_plate_name
+            this_division_df['N'] = N
+            this_division_df['NC'] = NC
+            this_division_df['Median Lifespan'] = median_lifespan
+            this_division_df['Median Healthspan'] = median_healthspan
+            this_division_df['Mean Lifespan'] = mean_lifepsan
+            this_division_df['Mean Healthspan'] = mean_healthspan
+            this_division_df['Egg to Robot time [d]'] = time_between_egg_and_robot
+
+            if i == 0:
+                large_division_dataframe = this_division_df
+            else:
+                large_division_dataframe = pd.concat([large_division_dataframe,this_division_df])
+        else:
+            skip_counter = skip_counter + 1
+            print('skipping',division_csv_files[i])
+
+    # except:
+    #     skip_counter = skip_counter + 1
+    #     print('skipping',division_csv_files[i])
+print('Skipped', skip_counter, 'of', len(division_csv_files), 'possible plates')
+
+large_division_dataframe.to_csv(os.path.join(os.path.split(PATH_TO_WW)[0],'_Processed_data_lookup.csv'), index = False )
+large_division_dataframe.to_csv(os.path.join(os.path.split(PATH_TO_SUTPHIN)[0],'_Processed_data_lookup.csv'), index = False )
+
+# # get rid of unnecessary csvs
+# cleaned_csv_files = [ x for x in all_csv_files if "division" not in x ]
+# cleaned_csv_files = [ x for x in cleaned_csv_files if "Groupname.csv" not in x ]
+ 
+# for i in tqdm(range(len(cleaned_csv_files))):
+
+#     this_filepath = cleaned_csv_files[i]
+
+#     # get filename of csv
+#     file_name = Path(this_filepath).stem
+#     # get name of experiment 
+#     this_dir = os.path.dirname(this_filepath)
+#     this_dir_name = Path(this_dir).stem
+#     print('')
+#     print(this_dir_name)
+#     # make a new path 
+#     new_dir_path = os.path.join(PATH_TO_SUTPHIN,this_dir_name)
+
+#     file_list = os.listdir(this_dir)
+  
+#     for this_file in os.listdir(this_dir):
+#         this_file_path = os.path.join(this_dir,this_file)
+#         this_file_size = os.path.getsize(this_file_path)
+#         if this_file_size < max_file_size:
+#             new_file_path = os.path.join(new_dir_path,this_file)
+#             if os.path.isdir(this_file_path):
+#                 copy_tree(this_file_path, new_file_path, update=update_files)
+#             else:
+#                 mkpath(new_dir_path)
+#                 copy_file(this_file_path, new_file_path, update=update_files)
+
