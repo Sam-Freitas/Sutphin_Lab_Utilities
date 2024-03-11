@@ -86,6 +86,7 @@ for i in tqdm(range(len(division_csv_files))):
             processed_data_check_flag = False
 
         if column_check_flag and processed_data_check_flag:
+            print('USING',division_csv_files[i])
 
             this_experiment_overarching_name = this_path_split[-3]
             this_experiment_plate_name = this_path_split[-1][:-14]
