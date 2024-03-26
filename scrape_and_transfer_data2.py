@@ -83,7 +83,7 @@ for i in tqdm(range(len(division_csv_files))):
             this_experiment_plate_name = this_path_split[-1][:-14]
 
             this_experiment_data_df = pd.read_csv(this_path_processed_data[0])
-            this_experiment_plate_name_idx = this_experiment_data_df['Plate ID']==this_experiment_plate_name
+            this_experiment_plate_name_idx = this_experiment_data_df['Plate ID']==this_experiment_plate_name # this islates the division from the rest of the data
             this_division_data_df = this_experiment_data_df[this_experiment_plate_name_idx]
 
             this_division_df = this_division_df.drop(columns='Well Location')

@@ -1,4 +1,4 @@
-import os, glob, natsort
+import os, glob, natsort, time
 import numpy as np
 import pandas as pd
 # import shutil
@@ -7,6 +7,10 @@ from pathlib import Path
 from tqdm import tqdm
 from distutils.file_util import copy_file
 from distutils.dir_util import copy_tree, mkpath
+from sys import platform
+
+print('Operating system:')
+print(platform)
 
 # this script scrapes all the data from the _Data folder from worm paparazzi 
 # then transfers it into the regular holding in the Sutphin server
@@ -47,15 +51,28 @@ print("Path to Sutphin", PATH_TO_SUTPHIN)
 print("Path to WW", PATH_TO_WW)
 print("Path to division template", PATH_TO_DIVISION_BASE)
 
+base_division = pd.read_csv(PATH_TO_DIVISION_BASE)
+base_columns = base_division.columns
+
+# print(base_division)
+
 print('All paths have been verified')
 print('Recursively looking up all .CSV files in', str(PATH_TO_WW))
 
 #recursively get all the csv files from the _Data folder
 # the csvs are used to locate the folder that contains all the processed data
 EXT = "*.csv"
-all_csv_files = [file
-                 for path, subdir, files in os.walk(PATH_TO_WW)
-                 for file in glob.glob(os.path.join(path, EXT))]
+# t_old = time.time()
+# all_csv_files = [file
+#                  for path, subdir, files in os.walk(PATH_TO_WW)
+#                  for file in glob.glob(os.path.join(path, EXT))]
+# t_old = time.time() - t_old
+
+t_new = time.time()
+all_csv_files = []
+for i, this_path in enumerate(tqdm(Path(PATH_TO_WW).rglob(EXT))):
+    all_csv_files.append(str(this_path))
+t_new = time.time() - t_new
 
 # get all the division paths for the data lookup table
 division_csv_files = [ x for x in all_csv_files if "division" in x ]
@@ -70,10 +87,25 @@ for i in tqdm(range(len(division_csv_files))):
     # try:
         this_division_df = pd.read_csv(division_csv_files[i])
 
-        this_path = os .path.normpath(division_csv_files[i])
+        this_path = os.path.normpath(division_csv_files[i])
+        # print(this_path)
         this_path_split = this_path.split(os.sep)
+        # print(this_path_split)
         this_path_experiment = os.path.join(*this_path_split[0:-2])
-        this_path_processed_data = glob.glob(os.path.join(this_path_experiment, "*.csv"))
+        # print(this_path_experiment)
+
+        if platform == "linux" or platform == "linux2":
+            this_path_experiment = '/' + this_path_experiment
+            this_path_processed_data = glob.glob(os.path.join(this_path_experiment, "*.csv"))
+        elif platform == "darwin":
+            this_path_experiment = '/' + this_path_experiment
+            this_path_processed_data = glob.glob(os.path.join(this_path_experiment, "*.csv"))
+        elif platform == "win32":
+            this_path_split[0] = this_path_split[0] + '\\'
+            this_path_experiment = os.path.join(*this_path_split[0:-2])
+            this_path_processed_data = glob.glob(os.path.join(this_path_experiment, "*.csv"))
+
+        # print(this_path_processed_data)
 
         if len(this_division_df.columns) == len(base_columns):
             column_check_flag = sum((this_division_df.columns == base_columns)) == len(base_columns)
@@ -85,14 +117,16 @@ for i in tqdm(range(len(division_csv_files))):
         else:
             processed_data_check_flag = False
 
+        # print(column_check_flag and processed_data_check_flag)
+
         if column_check_flag and processed_data_check_flag:
-            print('USING',division_csv_files[i])
+            # print('USING',division_csv_files[i])
 
             this_experiment_overarching_name = this_path_split[-3]
             this_experiment_plate_name = this_path_split[-1][:-14]
 
             this_experiment_data_df = pd.read_csv(this_path_processed_data[0])
-            this_experiment_plate_name_idx = this_experiment_data_df['Plate ID']==this_experiment_plate_name
+            this_experiment_plate_name_idx = (this_experiment_data_df['Plate ID'].str.upper()==this_experiment_plate_name.upper()) # this islates the division from the rest of the data
             this_division_data_df = this_experiment_data_df[this_experiment_plate_name_idx]
 
             this_division_df = this_division_df.drop(columns='Well Location')
@@ -141,46 +175,54 @@ for i in tqdm(range(len(division_csv_files))):
                 large_division_dataframe = this_division_df
             else:
                 large_division_dataframe = pd.concat([large_division_dataframe,this_division_df])
+
+            if this_division_df.empty:# or this_division_df.isnull().all():
+                print(this_path_processed_data[0], '-----------', this_experiment_plate_name.upper())
         else:
             skip_counter = skip_counter + 1
-            print('skipping',division_csv_files[i])
+            # print('skipping',division_csv_files[i])
 
-    # except:
-    #     skip_counter = skip_counter + 1
-    #     print('skipping',division_csv_files[i])
 print('Skipped', skip_counter, 'of', len(division_csv_files), 'possible plates')
+
+a = large_division_dataframe.copy() # sort the dataframe with a temporary 
+a['d'] = pd.to_datetime(a['egg date'])
+a = a.sort_values(by=['d','Plate name','Groupname'],ascending=[False,True,True])
+a = a.drop(columns = 'd')
+
+large_division_dataframe = a
 
 large_division_dataframe.to_csv(os.path.join(os.path.split(PATH_TO_WW)[0],'_Processed_data_lookup.csv'), index = False )
 large_division_dataframe.to_csv(os.path.join(os.path.split(PATH_TO_SUTPHIN)[0],'_Processed_data_lookup.csv'), index = False )
 
-# # get rid of unnecessary csvs
-# cleaned_csv_files = [ x for x in all_csv_files if "division" not in x ]
-# cleaned_csv_files = [ x for x in cleaned_csv_files if "Groupname.csv" not in x ]
+# get rid of unnecessary csvs
+cleaned_csv_files = [ x for x in all_csv_files if "division" not in x ]
+cleaned_csv_files = [ x for x in cleaned_csv_files if "Groupname.csv" not in x ]
  
-# for i in tqdm(range(len(cleaned_csv_files))):
+for i in tqdm(range(len(cleaned_csv_files))):
 
-#     this_filepath = cleaned_csv_files[i]
+    this_filepath = cleaned_csv_files[i]
 
-#     # get filename of csv
-#     file_name = Path(this_filepath).stem
-#     # get name of experiment 
-#     this_dir = os.path.dirname(this_filepath)
-#     this_dir_name = Path(this_dir).stem
-#     print('')
-#     print(this_dir_name)
-#     # make a new path 
-#     new_dir_path = os.path.join(PATH_TO_SUTPHIN,this_dir_name)
+    # get filename of csv
+    file_name = Path(this_filepath).stem
+    # get name of experiment 
+    this_dir = os.path.dirname(this_filepath)
+    this_dir_name = Path(this_dir).stem
+    # print('')
+    print(this_dir_name)
+    # make a new path 
+    new_dir_path = os.path.join(PATH_TO_SUTPHIN,this_dir_name)
+    # print(new_dir_path)
 
-#     file_list = os.listdir(this_dir)
+    file_list = os.listdir(this_dir)
   
-#     for this_file in os.listdir(this_dir):
-#         this_file_path = os.path.join(this_dir,this_file)
-#         this_file_size = os.path.getsize(this_file_path)
-#         if this_file_size < max_file_size:
-#             new_file_path = os.path.join(new_dir_path,this_file)
-#             if os.path.isdir(this_file_path):
-#                 copy_tree(this_file_path, new_file_path, update=update_files)
-#             else:
-#                 mkpath(new_dir_path)
-#                 copy_file(this_file_path, new_file_path, update=update_files)
+    for this_file in os.listdir(this_dir):
+        this_file_path = os.path.join(this_dir,this_file)
+        this_file_size = os.path.getsize(this_file_path)
+        if this_file_size < max_file_size:
+            new_file_path = os.path.join(new_dir_path,this_file)
+            if os.path.isdir(this_file_path):
+                copy_tree(this_file_path, new_file_path, update=update_files)
+            else:
+                mkpath(new_dir_path)
+                copy_file(this_file_path, new_file_path, update=update_files)
 
