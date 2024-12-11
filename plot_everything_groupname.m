@@ -7,7 +7,7 @@ warning('off', 'MATLAB:MKDIR:DirectoryExists');
 
 % get csv data file
 [csv_file,csv_path] = uigetfile('*.csv','Please select the data file');
- 
+
 if ~isempty(csv_file) && ~isequal(csv_path,0)
     data = readtable(fullfile(csv_path,csv_file),...
         'VariableNamingRule','preserve');
@@ -131,13 +131,18 @@ if ~combine_everything_into_one
             data.("Runoff Censor inital")(keep_idx{i})];
                 
         % get the median life and healthspans
-        median_lifespans(i) = ...
-            calculate_median_of_ecdf(sep_exps_days{i},...
-            censored_wells_any_separated{i});
-        median_healthspans(i) = ...
-            calculate_median_of_ecdf(sep_exps_days_health{i},...
-            censored_wells_any_separated{i});
-
+        try
+            median_lifespans(i) = ...
+                calculate_median_of_ecdf(sep_exps_days{i},...
+                censored_wells_any_separated{i});
+            median_healthspans(i) = ...
+                calculate_median_of_ecdf(sep_exps_days_health{i},...
+                censored_wells_any_separated{i});
+        catch
+            disp(["ERROR on" + conditions_to_isolate(i)])
+            median_lifespans(i) = 0;
+            median_healthspans(i) = 0;
+        end
         % get the total N values
         N(i) = sum(keep_idx{i}); % - sum(censored_wells_any_separated{i});
         
