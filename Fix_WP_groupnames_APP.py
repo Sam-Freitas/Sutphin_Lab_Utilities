@@ -1,5 +1,5 @@
 import sys
-import os, glob
+import os, glob, shutil
 import pandas as pd
 from PySide6.QtWidgets import (
     QApplication, QMainWindow, QTableView, QPushButton, QVBoxLayout, QWidget, QHBoxLayout,
@@ -40,7 +40,6 @@ def find_files(folder_path, file_extension='.png', filter='fluorescent_data', fi
     else:
         return found_files
 
-# this deletes all the dir contents, recursive or not 
 def del_dir_contents(path_to_dir, recursive = False, dont_delete_registrations = True): 
     if recursive:
         files = glob.glob(os.path.join(path_to_dir,'**/*'), recursive=recursive)
@@ -58,7 +57,6 @@ def del_dir_contents(path_to_dir, recursive = False, dont_delete_registrations =
                 os.remove(f)
             else:
                 os.remove(f)
-
 
 def create_progress_window():
     # Create dialog window
@@ -140,7 +138,6 @@ class DataFrameModel(QAbstractTableModel):
                 return section + 1
         return None
 
-
 class CSVEditor(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -189,11 +186,25 @@ class CSVEditor(QMainWindow):
 
         assert os.path.isfile(file_path)
 
+        # progress bar time(!)
         root_progressbar, progress_bar, progress_bar_label = create_progress_window()
-        update_progress_bar(progress_bar,progress_bar_label,current_iteration=1,total=5,text="Loading Data")
+        update_progress_bar(progress_bar,progress_bar_label,current_iteration=1,total=2,text="Loading Data")
 
-        overarching_Data_path = os.path.split(file_path)[0]
-        temp = find_files(overarching_Data_path, file_extension='.csv', filter='', filter2 = None)
+        # find the _Data paths or the associated overarching folder
+        overarching_Data_path = os.path.split(os.path.split(file_path)[0])[0]
+        associated_csvs = find_files(overarching_Data_path, file_extension='.csv', filter='', filter2 = None)
+
+        # create and delete temp files
+        os.makedirs('temp_data', exist_ok=True)
+        del_dir_contents('temp_data',recursive=True,dont_delete_registrations=False)
+        os.makedirs('temp_data', exist_ok=True)
+
+        # transfer data over to the temp folders
+        update_progress_bar(progress_bar,progress_bar_label,current_iteration=2,total=2,text="Transfering data")
+        with open(os.path.join('temp_data',"path_output.txt"), "w") as f:
+            f.write(overarching_Data_path)
+        for this_csv in associated_csvs:
+            shutil.copy2(this_csv,os.path.join('temp_data',os.path.split(this_csv)[-1]))
 
         root_progressbar.destroy()
 
@@ -210,7 +221,7 @@ class CSVEditor(QMainWindow):
             return
 
         # file_path, _ = QFileDialog.getSaveFileName(self, "Save CSV File As", "", "CSV Files (*.csv)")
-        file_path = 'temp.csv'
+        file_path = os.path.join('temp_data','temp.csv')
 
         if file_path:
             self.df.to_csv(file_path, index=False, na_rep='')
