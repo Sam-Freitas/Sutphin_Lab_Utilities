@@ -1,5 +1,6 @@
 import sys
-import os, glob, shutil
+import os, glob, shutil, copy
+from natsort import natsorted
 import numpy as np
 import pandas as pd
 from PySide6.QtWidgets import (
@@ -222,7 +223,7 @@ class CSVEditor(QMainWindow):
             return
 
         # file_path, _ = QFileDialog.getSaveFileName(self, "Save CSV File As", "", "CSV Files (*.csv)")
-        file_path = os.path.join('temp_data','temp.csv')
+        file_path = os.path.join('temp_data','Updated_temp_Groupname.csv')
 
         if file_path:
             self.df.to_csv(file_path, index=False, na_rep='')
@@ -270,7 +271,7 @@ def repopulate_NA_dataframe(input_df):
 def update_groupnames():
     # load in the groupnames
     previous_groupname_df = pd.read_csv(os.path.join('temp_data','Groupname.csv'), keep_default_na=False, na_values=[])
-    updated_groupname_df = pd.read_csv(os.path.join('temp_data','temp.csv'), keep_default_na=False, na_values=[])
+    updated_groupname_df = pd.read_csv(os.path.join('temp_data','Updated_temp_Groupname.csv'), keep_default_na=False, na_values=[])
 
     # populating the array with the non-changed variables
     # if the first two items are the descriptor (eg egg date) and a value (eg 2025-1-1)
@@ -290,7 +291,7 @@ def update_groupnames():
         if 'group' in this_column:
             if False in changed_array[this_column].values:
                 print(this_column, '--- changed')
-                print(changed_array[this_column].values)
+                # print(changed_array[this_column].values)
                 groups_that_changed.append(this_column)
             else:
                 print(this_column, '--- NOT changed')
@@ -298,10 +299,56 @@ def update_groupnames():
 
     return groups_that_changed, updated_groupname_df, previous_groupname_df
 
-def update_divisions():
-    print('test')
+def update_divisions(groups_that_changed,updated_groupname_df,previous_groupname_df):
+
+    divisions_paths = natsorted(find_files('temp_data',file_extension='.csv',filter='_divisions.csv'))
+
+    condition_parts = updated_groupname_df['VariableName'].values
+
+    old_groupnames_need_updating = previous_groupname_df[groups_that_changed]
+    new_groupnames_for_updating = updated_groupname_df[groups_that_changed]
+
+    divisions_df_list = []
+    for i,each_division_path in enumerate(divisions_paths):
+        temp_df = pd.read_csv(each_division_path, keep_default_na=False, na_values=[])
+        divisions_df_list.append(temp_df)
+    del each_division_path
+
+    previous_divisions = copy.deepcopy(divisions_df_list)
+
+    # find the unique divisions for the old ones
+    # match it up to the new updated divisions 
+    # update the divisions that are associated 
+
+    for i,each_division in enumerate(divisions_df_list):
+        # find the unique divisions for the old not updated divisions 
+        each_division = each_division.astype(object)
+        each_divison_values = np.asarray(each_division[condition_parts])
+        # each_unique_divisions = np.unique(each_divison_values,axis = 0)
+
+        # for each group iterate through all the divisions that need to be changed and then 
+        # overwrite them(?)
+        for j, this_group in enumerate(groups_that_changed):
+            this_condition_to_change = np.asarray(old_groupnames_need_updating[this_group])
+
+            for k,this_worms_condition in enumerate(each_divison_values):
+                if (this_condition_to_change.astype(str) == this_worms_condition.astype(str)).all():
+                    # changing everything to object works
+                    # check final output
+                    each_division.loc[k,condition_parts] = np.asarray(new_groupnames_for_updating[this_group]).astype(object)
+        divisions_df_list[i] = each_division
+
+    return divisions_df_list, previous_divisions
+
+def fix_groupnames(updated_divisions):
+
+    # this is to fix the groupname column in the updated divisions so it can then 
+    # be ported over to the final csv export
+
+    return 1
 
 def update_export():
+    # export everything 
     print('test')
 
 if __name__ == "__main__":
@@ -317,11 +364,18 @@ if __name__ == "__main__":
     print('loading groupnames')
     groups_that_changed, updated_groupname_df, previous_groupname_df = update_groupnames()
 
+    # print out the changes from the old one
+
     print('loading divisions')
-    update_divisions()
+    updated_divisions, previous_divisions = update_divisions(groups_that_changed,updated_groupname_df,previous_groupname_df)
+
+    print('fixing groupnames')
+    updated_divisions = fix_groupnames(updated_divisions)
 
     print('loading exports')
     update_export()
+
+    print('Exporting everything ')
     
 
     
