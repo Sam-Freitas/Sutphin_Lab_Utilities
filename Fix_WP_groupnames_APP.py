@@ -1,5 +1,6 @@
 import sys
 import os, glob, shutil
+import numpy as np
 import pandas as pd
 from PySide6.QtWidgets import (
     QApplication, QMainWindow, QTableView, QPushButton, QVBoxLayout, QWidget, QHBoxLayout,
@@ -236,15 +237,91 @@ class CSVEditor(QMainWindow):
         self.view.setModel(self.model)
         self.status.showMessage("Table reset to original values.", 4000)
 
+def get_export_path():
+    with open(os.path.join('temp_data','path_output.txt'),'r') as f:
+        out = f.read()
+    return out
+
+def repopulate_NA_dataframe(input_df):
+    # for each row make sure that something is populated across the NA
+    # if anything has been entered
+
+    temp_df = input_df.copy()
+    temp_values = input_df.values
+    num_rows,num_cols = temp_values.shape
+
+    # this finds all the NOT NA values and finds the column with the most (minus the row header)
+    num_conditions = int(np.max(np.sum(temp_values != 'NA',axis = 1))) - 1
+
+    pattern1 = ['NA']*(num_cols-2)
+
+    for row_idx in range(num_rows):
+        #first check if has correct amount of NAs
+        if all(temp_values[row_idx,-1*len(pattern1):] == pattern1):
+            # then make sure that something was entered 
+            if temp_values[row_idx,1] != 'NA':
+                temp_values[row_idx,2:num_conditions+1] = temp_values[row_idx,1]
+
+    for col_idx,col in enumerate(temp_df.columns):
+        temp_df[col].values[:] = temp_values[:,col_idx]
+
+    return temp_df
+
+def update_groupnames():
+    # load in the groupnames
+    previous_groupname_df = pd.read_csv(os.path.join('temp_data','Groupname.csv'), keep_default_na=False, na_values=[])
+    updated_groupname_df = pd.read_csv(os.path.join('temp_data','temp.csv'), keep_default_na=False, na_values=[])
+
+    # populating the array with the non-changed variables
+    # if the first two items are the descriptor (eg egg date) and a value (eg 2025-1-1)
+    # and the rest are NA
+    # then populate across the rest of the data that value
+    previous_groupname_df = repopulate_NA_dataframe(previous_groupname_df)
+    updated_groupname_df = repopulate_NA_dataframe(updated_groupname_df)
+
+    # finding which groups have been changed
+    # the False values are the changed arrays
+    changed_array = (previous_groupname_df == updated_groupname_df)
+    changed_array_values = changed_array.values
+    # list(changed_array.columns)[1:]
+
+    groups_that_changed = []
+    for this_column in list(changed_array.columns):
+        if 'group' in this_column:
+            if False in changed_array[this_column].values:
+                print(this_column, '--- changed')
+                print(changed_array[this_column].values)
+                groups_that_changed.append(this_column)
+            else:
+                print(this_column, '--- NOT changed')
+            # print(changed_array[this_column])
+
+    return groups_that_changed, updated_groupname_df, previous_groupname_df
+
+def update_divisions():
+    print('test')
+
+def update_export():
+    print('test')
+
 if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    editor = CSVEditor()
-    editor.resize(1000, 600)
-    editor.show()
-    app.exec()
+    # app = QApplication(sys.argv)
+    # editor = CSVEditor()
+    # editor.resize(1000, 600)
+    # editor.show()
+    # app.exec()
 
     print('finishing export')
+    export_path = get_export_path()
 
-    print('exporting groupname to divisions')
+    print('loading groupnames')
+    groups_that_changed, updated_groupname_df, previous_groupname_df = update_groupnames()
 
-    print('exporting divisions to exported csv')
+    print('loading divisions')
+    update_divisions()
+
+    print('loading exports')
+    update_export()
+    
+
+    
