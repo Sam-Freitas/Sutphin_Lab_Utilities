@@ -412,7 +412,12 @@ def update_export(updated_divisions,all_prev_csvs_paths):
 
     exported_data['Groupname'] = np.asarray(combined_updated_divisions['Groupname'])
 
-    return exported_data
+    return exported_data, exported_data_path
+
+def export_everything(updated_export,updated_divisions,updated_groupname_df,
+        previous_groupname_path,updated_groupname_path,previous_divisions_paths,exported_data_path):
+
+    return 1
 
 if __name__ == "__main__":
     # app = QApplication(sys.argv)
@@ -436,9 +441,12 @@ if __name__ == "__main__":
 
     print('loading exports')
     all_prev_csvs_paths = [previous_groupname_path]+[updated_groupname_path]+previous_divisions_paths
-    updated_export = update_export(updated_divisions,all_prev_csvs_paths)
+    updated_export,exported_data_path = update_export(updated_divisions,all_prev_csvs_paths)
 
-    print('Exporting everything ')
+    print('Exporting everything')
+    export_everything(updated_export,updated_divisions,updated_groupname_df,
+        previous_groupname_path,updated_groupname_path,previous_divisions_paths,exported_data_path)
+
     print('placeholder ')
 
     print('EOF')
