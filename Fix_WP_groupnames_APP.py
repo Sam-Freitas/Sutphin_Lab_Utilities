@@ -270,8 +270,12 @@ def repopulate_NA_dataframe(input_df):
 
 def update_groupnames():
     # load in the groupnames
-    previous_groupname_df = pd.read_csv(os.path.join('temp_data','Groupname.csv'), keep_default_na=False, na_values=[])
-    updated_groupname_df = pd.read_csv(os.path.join('temp_data','Updated_temp_Groupname.csv'), keep_default_na=False, na_values=[])
+
+    previous_groupname_path = os.path.join('temp_data','Groupname.csv')
+    updated_groupname_path = os.path.join('temp_data','Updated_temp_Groupname.csv')
+
+    previous_groupname_df = pd.read_csv(previous_groupname_path, keep_default_na=False, na_values=[])
+    updated_groupname_df = pd.read_csv(updated_groupname_path, keep_default_na=False, na_values=[])
 
     # populating the array with the non-changed variables
     # if the first two items are the descriptor (eg egg date) and a value (eg 2025-1-1)
@@ -297,7 +301,7 @@ def update_groupnames():
                 print(this_column, '--- NOT changed')
             # print(changed_array[this_column])
 
-    return groups_that_changed, updated_groupname_df, previous_groupname_df
+    return groups_that_changed, updated_groupname_df, previous_groupname_df,previous_groupname_path ,updated_groupname_path
 
 def update_divisions(groups_that_changed,updated_groupname_df,previous_groupname_df):
 
@@ -338,18 +342,77 @@ def update_divisions(groups_that_changed,updated_groupname_df,previous_groupname
                     each_division.loc[k,condition_parts] = np.asarray(new_groupnames_for_updating[this_group]).astype(object)
         divisions_df_list[i] = each_division
 
-    return divisions_df_list, previous_divisions
+    return divisions_df_list, previous_divisions, divisions_paths
 
 def fix_groupnames(updated_divisions):
+    # this finds and updates the groupnames from the divisions
+    combined_updated_divisions = pd.concat(updated_divisions)
+    # get the unique groupnames that are not worm number or date (first 3 conditions)
+    temp_array = np.asarray(combined_updated_divisions)[:,3:-1]
+    unique_groups_full = np.unique(temp_array.astype(str),axis = 0)
 
-    # this is to fix the groupname column in the updated divisions so it can then 
-    # be ported over to the final csv export
+    # this checks to see which conditions are actually changed
+    short_groupname_bool_vector = []
+    for i,temp_var in enumerate(unique_groups_full[0]):
+        temp_vector = unique_groups_full[:,i]
+        all_conditions_same_bool = all(temp_vector == temp_var)
+        short_groupname_bool_vector.append(all_conditions_same_bool)
+    short_groupname_bool_vector_inv = [not elem for elem in short_groupname_bool_vector]
 
-    return 1
+    # find which groups of conditions are actually unique
+    changed_groups = np.unique(unique_groups_full[:,short_groupname_bool_vector_inv])
 
-def update_export():
-    # export everything 
-    print('test')
+    # get the vector that represents which conditions got changed for a groupname
+    full_groupname_bool_vector_inv = [False,False,False]+short_groupname_bool_vector_inv+[False]
+
+    running_groupnames = []
+
+    # this has been tested with only a single groupame change
+    for div_idx,this_division in enumerate(updated_divisions):
+
+        # this finds the column that is changed with the groupname
+        change_lookup = np.asarray(this_division[this_division.columns[full_groupname_bool_vector_inv]])
+
+        # for all of the possible groupnames find the matching one
+        new_groupname_for_this_divison = []
+        for temp in change_lookup:
+            this_groupname_bool_vector = [a in temp for a in changed_groups]
+            new_groupname_for_this_divison.append(changed_groups[this_groupname_bool_vector])
+
+        new_groupname_for_this_divison = np.asarray(new_groupname_for_this_divison).astype(object).squeeze()
+
+        # check to make sure that the groups are combined into a single column
+        if len(new_groupname_for_this_divison.shape) > 1:
+            temp = new_groupname_for_this_divison.copy()
+            temp[:,0:-1] = temp[:,0:-1] +','
+            temp = np.sum(temp,axis = 1).squeeze()
+            new_groupname_for_this_divison = temp
+
+        running_groupnames.append(new_groupname_for_this_divison)
+
+        this_division['Groupname'] = new_groupname_for_this_divison
+        updated_divisions[div_idx] = this_division
+
+    print('New Groupnames:')
+    for each_new_groupname in np.unique(running_groupnames):
+        print('---',each_new_groupname)
+
+    return updated_divisions
+
+def update_export(updated_divisions,all_prev_csvs_paths):
+    all_csvs = natsorted(find_files('temp_data',file_extension='.csv',filter=''))
+
+    combined_updated_divisions = pd.concat(updated_divisions)
+
+    for this_csv in all_csvs:
+        if this_csv not in all_prev_csvs_paths:
+            exported_data_path = this_csv 
+
+    exported_data = pd.read_csv(exported_data_path, keep_default_na=False, na_values=[])
+
+    exported_data['Groupname'] = np.asarray(combined_updated_divisions['Groupname'])
+
+    return exported_data
 
 if __name__ == "__main__":
     # app = QApplication(sys.argv)
@@ -362,20 +425,20 @@ if __name__ == "__main__":
     export_path = get_export_path()
 
     print('loading groupnames')
-    groups_that_changed, updated_groupname_df, previous_groupname_df = update_groupnames()
-
-    # print out the changes from the old one
+    groups_that_changed, updated_groupname_df, previous_groupname_df, previous_groupname_path, updated_groupname_path = update_groupnames()
 
     print('loading divisions')
-    updated_divisions, previous_divisions = update_divisions(groups_that_changed,updated_groupname_df,previous_groupname_df)
+    updated_divisions, previous_divisions, previous_divisions_paths = update_divisions(
+        groups_that_changed,updated_groupname_df,previous_groupname_df)
 
     print('fixing groupnames')
     updated_divisions = fix_groupnames(updated_divisions)
 
     print('loading exports')
-    update_export()
+    all_prev_csvs_paths = [previous_groupname_path]+[updated_groupname_path]+previous_divisions_paths
+    updated_export = update_export(updated_divisions,all_prev_csvs_paths)
 
     print('Exporting everything ')
-    
+    print('placeholder ')
 
-    
+    print('EOF')
