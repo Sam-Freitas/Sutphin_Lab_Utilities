@@ -12,6 +12,12 @@ from PyQt6.QtGui import QFont
 from PySide6.QtCore import QAbstractTableModel, Qt, QModelIndex
 from PySide6.QtGui import QColor, QBrush
 
+def setup_func():
+
+    os.makedirs('temp_data',exist_ok=True)
+    os.makedirs(os.path.join('temp_data','exported_data'), exist_ok=True)
+    shutil.rmtree(os.path.join('temp_data','exported_data'))
+
 def find_files(folder_path, file_extension='.png', filter='fluorescent_data', filter2 = None):
     """
     Recursively finds and returns all files with the specified extension in the given folder,
@@ -157,16 +163,19 @@ class CSVEditor(QMainWindow):
         self.open_button = QPushButton("Open and transfer groupname CSVs")
         self.save_button = QPushButton("Save Changes")
         self.reset_button = QPushButton("Reset Changes")
+        self.close_button = QPushButton("Finished (Export changes)")
 
         self.open_button.clicked.connect(self.open_and_transfer_csvs)
         self.save_button.clicked.connect(self.save_csv)
         self.reset_button.clicked.connect(self.reset_changes)
+        self.close_button.clicked.connect(self.close_app)
 
         # Layout
         button_layout = QHBoxLayout()
         button_layout.addWidget(self.open_button)
         button_layout.addWidget(self.save_button)
         button_layout.addWidget(self.reset_button)
+        button_layout.addWidget(self.close_button)
 
         main_layout = QVBoxLayout()
         main_layout.addWidget(self.view)
@@ -179,6 +188,9 @@ class CSVEditor(QMainWindow):
         # Status bar
         self.status = QStatusBar()
         self.setStatusBar(self.status)
+
+    def close_app(self):
+        QApplication.instance().quit()
 
     def open_and_transfer_csvs(self):
         # this function finds and transfers csvs into the temp file location for 
@@ -297,8 +309,8 @@ def update_groupnames():
                 print(this_column, '--- changed')
                 # print(changed_array[this_column].values)
                 groups_that_changed.append(this_column)
-            else:
-                print(this_column, '--- NOT changed')
+            # else:
+            #     print(this_column, '--- NOT changed')
             # print(changed_array[this_column])
 
     return groups_that_changed, updated_groupname_df, previous_groupname_df,previous_groupname_path ,updated_groupname_path
@@ -360,7 +372,8 @@ def fix_groupnames(updated_divisions):
     short_groupname_bool_vector_inv = [not elem for elem in short_groupname_bool_vector]
 
     # find which groups of conditions are actually unique
-    changed_groups = np.unique(unique_groups_full[:,short_groupname_bool_vector_inv])
+    vectored_unique_groups = unique_groups_full[:,short_groupname_bool_vector_inv]
+    changed_groups = np.unique(vectored_unique_groups)
 
     # get the vector that represents which conditions got changed for a groupname
     full_groupname_bool_vector_inv = [False,False,False]+short_groupname_bool_vector_inv+[False]
@@ -376,9 +389,12 @@ def fix_groupnames(updated_divisions):
         # for all of the possible groupnames find the matching one
         new_groupname_for_this_divison = []
         for temp in change_lookup:
-            this_groupname_bool_vector = [a in temp for a in changed_groups]
-            new_groupname_for_this_divison.append(changed_groups[this_groupname_bool_vector])
+            # find which groupname is this one using matching of the vector
+            vector_idx_groupname = (np.sum(vectored_unique_groups == temp,axis = 1) == len(temp))
+            temp_groupname = vectored_unique_groups[vector_idx_groupname]
+            new_groupname_for_this_divison.append(temp_groupname)
 
+        # convert to an array
         new_groupname_for_this_divison = np.asarray(new_groupname_for_this_divison).astype(object).squeeze()
 
         # check to make sure that the groups are combined into a single column
@@ -415,38 +431,92 @@ def update_export(updated_divisions,all_prev_csvs_paths):
     return exported_data, exported_data_path
 
 def export_everything(updated_export,updated_divisions,updated_groupname_df,
-        previous_groupname_path,updated_groupname_path,previous_divisions_paths,exported_data_path):
+        previous_groupname_path,previous_divisions_paths,exported_data_path,
+        export_path,
+        testing = True):
+
+    temp_export_path = os.path.join('temp_data','exported_data')
+    os.makedirs(temp_export_path,exist_ok=True)
+    del_dir_contents(temp_export_path,recursive=True,dont_delete_registrations=False)
+    os.makedirs(temp_export_path,exist_ok=True)
+
+    print('')
+    print('Temporary export:')
+
+    # groupname temp export
+    temp_groupname_export_path = os.path.join(temp_export_path,os.path.split(previous_groupname_path)[-1])
+    print('---', temp_groupname_export_path)
+    updated_groupname_df.to_csv(temp_groupname_export_path,index = False)
+
+    # divisions temp export
+    for div_idx, (this_division,this_previous_division_path) in enumerate(zip(updated_divisions,previous_divisions_paths)):
+        this_temp_division_export_path = os.path.join(temp_export_path,os.path.split(this_previous_division_path)[-1])
+        print('---',div_idx+1,this_temp_division_export_path)
+        this_division.to_csv(this_temp_division_export_path,index = False)
+
+    # data export
+    temp_exported_data_export_path = os.path.join(temp_export_path,os.path.split(exported_data_path)[-1])
+    print('---', temp_exported_data_export_path)
+    updated_export.to_csv(temp_exported_data_export_path,index = False)
+    
+    print('')
+    print('Re-Exporing back into the data path')
+    data_output_path = get_export_path()
+
+    # groupname final export
+    final_groupname_export_path = os.path.join(data_output_path,'Groupnames',os.path.split(previous_groupname_path)[-1])
+    print('---', final_groupname_export_path)
+    if not testing:
+        updated_groupname_df.to_csv(final_groupname_export_path,index = False)
+
+    # divisions final export
+    for div_idx, (this_division,this_previous_division_path) in enumerate(zip(updated_divisions,previous_divisions_paths)):
+        this_final_division_export_path = os.path.join(data_output_path,'divisions',os.path.split(this_previous_division_path)[-1])
+        print('---',div_idx+1,this_final_division_export_path)
+        if not testing:
+            this_division.to_csv(this_final_division_export_path,index = False)
+
+    # data export
+    final_exported_data_export_path = os.path.join(data_output_path,os.path.split(exported_data_path)[-1])
+    print('---', final_exported_data_export_path)
+    if not testing:
+        updated_export.to_csv(final_exported_data_export_path,index = False)
+        
+
 
     return 1
 
 if __name__ == "__main__":
-    # app = QApplication(sys.argv)
-    # editor = CSVEditor()
-    # editor.resize(1000, 600)
-    # editor.show()
-    # app.exec()
 
-    print('finishing export')
+    setup_func()
+
+    app = QApplication(sys.argv)
+    editor = CSVEditor()
+    editor.resize(1000, 600)
+    editor.show()
+    app.exec()
+
+    print('finishing and exporting changes---------------')   
     export_path = get_export_path()
 
-    print('loading groupnames')
+    print('loading groupnames\n')
     groups_that_changed, updated_groupname_df, previous_groupname_df, previous_groupname_path, updated_groupname_path = update_groupnames()
 
-    print('loading divisions')
+    print('\nloading divisions\n')
     updated_divisions, previous_divisions, previous_divisions_paths = update_divisions(
         groups_that_changed,updated_groupname_df,previous_groupname_df)
 
-    print('fixing groupnames')
+    print('fixing groupnames\n')
     updated_divisions = fix_groupnames(updated_divisions)
 
-    print('loading exports')
+    print('\nloading exports\n')
     all_prev_csvs_paths = [previous_groupname_path]+[updated_groupname_path]+previous_divisions_paths
     updated_export,exported_data_path = update_export(updated_divisions,all_prev_csvs_paths)
 
     print('Exporting everything')
     export_everything(updated_export,updated_divisions,updated_groupname_df,
-        previous_groupname_path,updated_groupname_path,previous_divisions_paths,exported_data_path)
-
-    print('placeholder ')
+        previous_groupname_path,previous_divisions_paths,exported_data_path,
+        export_path,
+        testing = False)
 
     print('EOF')
