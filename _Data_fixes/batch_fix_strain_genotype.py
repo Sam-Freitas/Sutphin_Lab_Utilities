@@ -12,15 +12,9 @@ from PyQt6.QtGui import QFont
 from PySide6.QtCore import QAbstractTableModel, Qt, QModelIndex
 from PySide6.QtGui import QColor, QBrush
 
-def setup_func():
-
-    os.makedirs('_Data_copy',exist_ok=True)
-    shutil.rmtree('_Data_copy')
-    os.makedirs('_Data_copy',exist_ok=True)
-
 def write_log(txt_input):
     print(txt_input)
-    with open(os.path.join('_Data_copy',"log.txt"), "a") as f:
+    with open(os.path.join("log.txt"), "a") as f:
         f.write(txt_input + '\n')
 
 def get_experiment_name(this_path):
@@ -123,9 +117,32 @@ def update_progress_bar(progress_bar, label, current_iteration, total, text=""):
 
     QApplication.processEvents()  # Update the progress bar
 
-if __name__ == "__main__":
+def repopulate_NA_dataframe(input_df):
+    # for each row make sure that something is populated across the NA
+    # if anything has been entered
 
-    setup_func()
+    temp_df = input_df.copy()
+    temp_values = input_df.values
+    num_rows,num_cols = temp_values.shape
+
+    # this finds all the NOT NA values and finds the column with the most (minus the row header)
+    num_conditions = int(np.max(np.sum(temp_values != 'NA',axis = 1))) - 1
+
+    pattern1 = ['NA']*(num_cols-2)
+
+    for row_idx in range(num_rows):
+        #first check if has correct amount of NAs
+        if all(temp_values[row_idx,-1*len(pattern1):] == pattern1):
+            # then make sure that something was entered 
+            if temp_values[row_idx,1] != 'NA':
+                temp_values[row_idx,2:num_conditions+1] = temp_values[row_idx,1]
+
+    for col_idx,col in enumerate(temp_df.columns):
+        temp_df[col].values[:] = temp_values[:,col_idx]
+
+    return temp_df
+
+if __name__ == "__main__":
 
     app = QApplication(sys.argv)
 
@@ -134,7 +151,10 @@ if __name__ == "__main__":
     write_log("found _Data path:",)
     write_log(overarching_Data_path)
 
-    output_path = '_Data_copy'
+    output_path = overarching_Data_path
+
+    frozen_stock_KEY = pd.read_csv(r'_Data_fixes\Sutphin Worm Frozen Stock AZ.csv', keep_default_na=False, na_values=[])
+    strain_genotype_lookup = frozen_stock_KEY[['GLS Strain','Strain','Genotype']]
 
     # progress bar time(!)
     root_progressbar, progress_bar, progress_bar_label = create_progress_window()
@@ -152,27 +172,24 @@ if __name__ == "__main__":
             update_progress_bar(progress_bar,progress_bar_label,current_iteration=i+1,total=len(found_groupname_csvs),
                 text=progress_bar_text)
             
-            # Groupname find, get new path, and the copy
+            # Groupname find
             this_groupname = find_files(os.path.join(overarching_Data_path,this_exp_name), file_extension='.csv',filter='Groupname.csv')[0]
-            this_groupname_export = os.path.join(output_path,*get_path_parts(this_groupname)[-3:])
-            os.makedirs(os.path.split(this_groupname_export)[0],exist_ok=True)
-            shutil.copy2(this_groupname,this_groupname_export)
 
-            # divisions find, get new path, and then copy
+            # divisions find
             this_divisions = find_files(os.path.join(overarching_Data_path,this_exp_name), file_extension='.csv',filter='_divisions.csv')
-            for each_division in this_divisions:
-                this_div_export = os.path.join(output_path,*get_path_parts(each_division)[-3:])
-                os.makedirs(os.path.split(this_div_export)[0],exist_ok=True)
-                shutil.copy2(each_division,this_div_export)
 
-            # exported dat afind get new path and copy over
+            # exported dats find
             this_exported_data = find_files(os.path.join(overarching_Data_path,this_exp_name), file_extension='.csv',filter='')
             for temp in [this_groupname] + this_divisions:
                 this_exported_data.remove(temp)
             this_exported_data = this_exported_data[0]
-            this_exp_data_export = os.path.join(output_path,*get_path_parts(this_exported_data)[-2:])
-            os.makedirs(os.path.split(this_exp_data_export)[0],exist_ok=True)
-            shutil.copy2(this_exported_data,this_exp_data_export)
+
+            this_groupname_df = pd.read_csv(this_groupname, keep_default_na=False, na_values=[])
+            this_groupname_df = repopulate_NA_dataframe(this_groupname_df)
+
+            print('FIX THE groupname strain->genotype')
+            print('Fix the associated divisions')
+            print('fix the exports ')
 
         except:
             write_log('--------- FAILED')
