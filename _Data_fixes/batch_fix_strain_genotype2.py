@@ -177,7 +177,9 @@ if __name__ == "__main__":
 
     for i,this_found_groupname_csv in enumerate(found_groupname_csvs):
 
+        continue_flag = False
         try:
+
             # get the name and update the 
             this_exp_name = get_experiment_name(this_found_groupname_csv)
             write_log(this_exp_name)
@@ -196,7 +198,12 @@ if __name__ == "__main__":
             for temp in [this_groupname] + this_divisions:
                 this_exported_data.remove(temp)
             this_exported_data = this_exported_data[0]
+            continue_flag = True
+        except:
+            write_log(this_exp_name + ' ----- FAILED TO LOAD ALL DATA')
+            continue_flag = False
 
+        if continue_flag:
             # isolate each groups strain and genotype data
             this_groupname_df = pd.read_csv(this_groupname, keep_default_na=False, na_values=[])
             this_groupname_df = repopulate_NA_dataframe(this_groupname_df)
@@ -213,30 +220,40 @@ if __name__ == "__main__":
                     temp_this_groups_strain = this_groups_strain.lower()
                     temp_this_groups_genotype = this_groups_genotype.lower()
 
+                    # remove any space from the strain name 
+                    temp_this_groups_strain = temp_this_groups_strain.replace(' ','')
+
                     # find all the possible matches for the strain (assumed correct)
                     # only use the lower() array for matching 
                     possible_matches = strain_genotype_lookup.iloc[np.where(strain_genotype_lookup_lower['Strain']==temp_this_groups_strain)[0],:]
 
-                    # matched pair [GLS strain, Strain, Genotype]
-                    if possible_matches.shape[0] > 1:
-                        matched_pair = possible_matches.iloc[0,:]
+                    if not possible_matches.empty:
+                        # matched pair [GLS strain, Strain, Genotype]
+                        if possible_matches.shape[0] > 1:
+                            matched_pair = possible_matches.iloc[0,:]
+                        else:
+                            matched_pair = possible_matches
+                        matched_pair = np.asarray(matched_pair).squeeze()
+
+                        # write_log(this_groups_strain + '---' + this_groups_genotype)
+                        # write_log(matched_pair[1] + '+++' + matched_pair[2])
+
+                        if this_groups_genotype.lower() != matched_pair[2].lower():
+                            write_log('============> ' + this_groups_strain + '(' + this_groups_genotype + ')' + ' #### TO #### ' + matched_pair[1] + '(' + matched_pair[2] + ')' )
+
+                        # NOW UPDATE THE GROUPNAME AND DIVISIONS AND EXPORTED DATA
+                        # yay
                     else:
-                        matched_pair = possible_matches
-                    matched_pair = np.asarray(matched_pair)
+                        write_log('!!!!SKIPPED -  ' + this_groups_strain + '(' + this_groups_genotype + ')')
 
-                    # write_log(this_groups_strain + '---' + this_groups_genotype)
-                    # write_log(matched_pair[1] + '+++' + matched_pair[2])
 
-                    if this_groups_genotype.lower() != matched_pair[2].lower():
-                        write_log('============>' + this_groups_strain + '(' + this_groups_genotype + ')' + '####TO####' + this_groups_strain + '(' + matched_pair[2] + ')' )
+        # print('FIX THE groupname strain->genotype')
+        # print('Fix the associated divisions')
+        # print('fix the exports ')
+        write_log('')
 
-            # print('FIX THE groupname strain->genotype')
-            # print('Fix the associated divisions')
-            # print('fix the exports ')
-            write_log('')
-
-        except:
-            write_log('--------- FAILED')
+        # except:
+        #     write_log('--------- FAILED')
 
 
 

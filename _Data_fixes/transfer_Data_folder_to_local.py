@@ -14,13 +14,13 @@ from PySide6.QtGui import QColor, QBrush
 
 def setup_func():
 
-    os.makedirs('_Data_copy',exist_ok=True)
-    shutil.rmtree('_Data_copy')
-    os.makedirs('_Data_copy',exist_ok=True)
+    os.makedirs('_Data_fixes/_Data_copy',exist_ok=True)
+    shutil.rmtree('_Data_fixes/_Data_copy')
+    os.makedirs('_Data_fixes/_Data_copy',exist_ok=True)
 
 def write_log(txt_input):
     print(txt_input)
-    with open(os.path.join('_Data_copy',"log.txt"), "a") as f:
+    with open(os.path.join('_Data_fixes/_Data_copy',"log.txt"), "a") as f:
         f.write(txt_input + '\n')
 
 def get_experiment_name(this_path):
@@ -177,6 +177,5 @@ if __name__ == "__main__":
         except:
             write_log('--------- FAILED')
 
-
-
+    shutil.make_archive(output_path,'zip',output_path)
     write_log('asdfasdf')
