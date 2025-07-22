@@ -9,3 +9,6 @@ _Data_fixes/_Data_copy\ -\ Copy/
 _Data_fixes/_Data_copy.zip
 /_Data_fixes/__pycache__
 log.txt
+log_transfer_data_to_local.txt
+log_find_strain_duplicates.txt
+log_batch_fix_genotype.txt

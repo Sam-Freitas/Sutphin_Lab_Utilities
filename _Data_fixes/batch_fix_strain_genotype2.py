@@ -18,6 +18,9 @@ if __name__ == "__main__":
     
     log_path = 'log_batch_fix_genotype.txt'
 
+    duplicates_name = []
+    duplicates_df = []
+
     try:
         os.remove(log_path)
         write_log("restarted LOGGING",log_name=log_path)
@@ -37,10 +40,10 @@ if __name__ == "__main__":
 
     # load in the frozen stock keys that we use 
     frozen_stock_KEY = pd.read_csv(r'_Data_fixes\Sutphin Worm Frozen Stock AZ.csv', keep_default_na=False, na_values=[])
-    strain_genotype_lookup = frozen_stock_KEY[['GLS Strain','Strain','Genotype']]
+    strain_genotype_lookup = frozen_stock_KEY.copy()
 
     # make a copy of the strains as a lower() for ease of matching
-    strain_genotype_lookup_lower = strain_genotype_lookup.copy().map(str.lower)
+    strain_genotype_lookup_lower = frozen_stock_KEY.copy().map(str.lower)
 
     # progress bar time(!)
     root_progressbar, progress_bar, progress_bar_label = create_progress_window()
@@ -102,18 +105,29 @@ if __name__ == "__main__":
                     possible_matches = strain_genotype_lookup.iloc[np.where(strain_genotype_lookup_lower['Strain']==temp_this_groups_strain)[0],:]
 
                     if not possible_matches.empty:
+
+                        # for output only
+                        # check if already done
+                        if temp_this_groups_strain not in duplicates_name:
+                            if possible_matches.shape[0] > 1:
+                                duplicates_name.append(temp_this_groups_strain)
+                                duplicates_df.append(possible_matches)
+                                temp = pd.DataFrame(columns = possible_matches.columns)
+                                temp.loc[0] = ''
+                                duplicates_df.append(temp)
+
                         # matched pair [GLS strain, Strain, Genotype]
                         if possible_matches.shape[0] > 1:
                             matched_pair = possible_matches.iloc[0,:]
                         else:
-                            matched_pair = possible_matches
-                        matched_pair = np.asarray(matched_pair).squeeze()
+                            matched_pair = possible_matches.iloc[0,:]
+                        # matched_pair = np.asarray(matched_pair).squeeze()
 
                         # write_log(this_groups_strain + '---' + this_groups_genotype)
                         # write_log(matched_pair[1] + '+++' + matched_pair[2])
 
-                        if this_groups_genotype.lower() != matched_pair[2].lower():
-                            write_log('============> ' + this_groups_strain + '(' + this_groups_genotype + ')' + ' #### TO #### ' + matched_pair[1] + '(' + matched_pair[2] + ')' ,
+                        if this_groups_genotype.lower() != matched_pair['Genotype'].lower():
+                            write_log('============> ' + this_groups_strain + '(' + this_groups_genotype + ')' + ' #### TO #### ' + matched_pair['Strain'] + '(' + matched_pair['Genotype'] + ')' ,
                             log_name=log_path)
 
                         # NOW UPDATE THE GROUPNAME AND DIVISIONS AND EXPORTED DATA
@@ -131,5 +145,6 @@ if __name__ == "__main__":
         #     write_log('--------- FAILED')
 
 
-
+    combined_duplicated_df = pd.concat(duplicates_df)
+    combined_duplicated_df.to_csv('_Data_fixes/dupliucated_strains.csv',index = False)
     write_log('asdfasdf',log_name=log_path)
