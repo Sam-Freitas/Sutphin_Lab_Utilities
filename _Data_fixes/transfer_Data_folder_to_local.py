@@ -22,14 +22,21 @@ def setup_func():
 
 if __name__ == "__main__":
 
+    log_path = 'log_transfer_data_to_local.txt'
+    try:
+        os.remove(log_path)
+        write_log("restarted LOGGING",log_name=log_path)
+    except:
+        write_log("New LOGGING",log_name=log_path)
+
     setup_func()
 
     app = QApplication(sys.argv)
 
     overarching_Data_path = r"Z:\_Data"
     assert(os.path.isdir(overarching_Data_path))
-    write_log("found _Data path:",log_name=os.path.join('_Data_fixes/_Data_copy',"log.txt"))
-    write_log(overarching_Data_path,log_name=os.path.join('_Data_fixes/_Data_copy',"log.txt"))
+    write_log("found _Data path:",log_name=log_path)
+    write_log(overarching_Data_path,log_name=log_path)
 
     output_path = r"C:\Users\LabPC2\Documents\GitHub\Sutphin_Lab_Utilities\_Data_fixes\_Data_copy"
 
@@ -44,7 +51,7 @@ if __name__ == "__main__":
         try:
             # get the name and update the 
             this_exp_name = get_experiment_name(this_found_groupname_csv)
-            write_log(this_exp_name,log_name=os.path.join('_Data_fixes/_Data_copy',"log.txt"))
+            write_log(this_exp_name,log_name=log_path)
             progress_bar_text = this_exp_name+'-'*(50-len(this_exp_name))+str(i+1)+'/'+str(len(found_groupname_csvs))
             update_progress_bar(progress_bar,progress_bar_label,current_iteration=i+1,total=len(found_groupname_csvs),
                 text=progress_bar_text)
@@ -72,7 +79,7 @@ if __name__ == "__main__":
             shutil.copy2(this_exported_data,this_exp_data_export)
 
         except:
-            write_log('--------- FAILED',log_name=os.path.join('_Data_fixes/_Data_copy',"log.txt"))
+            write_log('--------- FAILED',log_name=log_path)
 
     shutil.make_archive(output_path,'zip',output_path)
-    write_log('asdfasdf',log_name=os.path.join('_Data_fixes/_Data_copy',"log.txt"))
+    write_log('asdfasdf',log_name=log_path)

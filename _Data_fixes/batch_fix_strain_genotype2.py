@@ -14,22 +14,23 @@ from PySide6.QtGui import QColor, QBrush
 
 from _data_utils import *
 
-
 if __name__ == "__main__":
+    
+    log_path = 'log_batch_fix_genotype.txt'
 
     try:
-        os.remove('log.txt')
-        write_log("restarted LOGGING")
+        os.remove(log_path)
+        write_log("restarted LOGGING",log_name=log_path)
     except:
-        write_log("New LOGGING")
+        write_log("New LOGGING",log_name=log_path)
 
     app = QApplication(sys.argv)
 
     # load in the data copy from the local drive
     overarching_Data_path = r"C:\Users\LabPC2\Documents\GitHub\Sutphin_Lab_Utilities\_Data_fixes\_Data_copy"
     assert(os.path.isdir(overarching_Data_path))
-    write_log("found _Data path:",)
-    write_log(overarching_Data_path)
+    write_log("found _Data path:",log_name=log_path)
+    write_log(overarching_Data_path,log_name=log_path)
 
     # output path
     output_path = overarching_Data_path
@@ -46,7 +47,7 @@ if __name__ == "__main__":
     update_progress_bar(progress_bar,progress_bar_label,current_iteration=1,total=2,text="Finding data")
 
     found_groupname_csvs = natsorted(find_files(overarching_Data_path, file_extension='.csv', filter='Groupname.csv', filter2 = None))
-    write_log('')
+    write_log('',log_name=log_path)
 
     for i,this_found_groupname_csv in enumerate(found_groupname_csvs):
 
@@ -55,7 +56,7 @@ if __name__ == "__main__":
 
             # get the name and update the 
             this_exp_name = get_experiment_name(this_found_groupname_csv)
-            write_log(this_exp_name)
+            write_log(this_exp_name,log_name=log_path)
             progress_bar_text = this_exp_name+'-'*(50-len(this_exp_name))+str(i+1)+'/'+str(len(found_groupname_csvs))
             update_progress_bar(progress_bar,progress_bar_label,current_iteration=i+1,total=len(found_groupname_csvs),
                 text=progress_bar_text)
@@ -73,7 +74,7 @@ if __name__ == "__main__":
             this_exported_data = this_exported_data[0]
             continue_flag = True
         except:
-            write_log(this_exp_name + ' ----- FAILED TO LOAD ALL DATA')
+            write_log(this_exp_name + ' ----- FAILED TO LOAD ALL DATA',log_name=log_path)
             continue_flag = False
 
         if continue_flag:
@@ -112,22 +113,23 @@ if __name__ == "__main__":
                         # write_log(matched_pair[1] + '+++' + matched_pair[2])
 
                         if this_groups_genotype.lower() != matched_pair[2].lower():
-                            write_log('============> ' + this_groups_strain + '(' + this_groups_genotype + ')' + ' #### TO #### ' + matched_pair[1] + '(' + matched_pair[2] + ')' )
+                            write_log('============> ' + this_groups_strain + '(' + this_groups_genotype + ')' + ' #### TO #### ' + matched_pair[1] + '(' + matched_pair[2] + ')' ,
+                            log_name=log_path)
 
                         # NOW UPDATE THE GROUPNAME AND DIVISIONS AND EXPORTED DATA
                         # yay
                     else:
-                        write_log('!!!!SKIPPED -  ' + this_groups_strain + '(' + this_groups_genotype + ')')
+                        write_log('!!!!SKIPPED -  ' + this_groups_strain + '(' + this_groups_genotype + ')',log_name=log_path)
 
 
         # print('FIX THE groupname strain->genotype')
         # print('Fix the associated divisions')
         # print('fix the exports ')
-        write_log('')
+        write_log('',log_name=log_path)
 
         # except:
         #     write_log('--------- FAILED')
 
 
 
-    write_log('asdfasdf')
+    write_log('asdfasdf',log_name=log_path)
