@@ -27,7 +27,7 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
 
     # load in the frozen stock keys that we use 
-    frozen_stock_KEY = pd.read_csv(r'_Data_fixes\Sutphin Worm Frozen Stock AZ.csv', keep_default_na=False, na_values=[])
+    frozen_stock_KEY = pd.read_excel(r'_Data_fixes\Sutphin Worm Frozen Stock AZ.xlsx',sheet_name=1,keep_default_na=False,na_values=[])
     strain_genotype_lookup = frozen_stock_KEY[['GLS Strain','Strain','Genotype']]
 
     # make a copy of the strains as a lower() for ease of matching
@@ -37,6 +37,6 @@ if __name__ == "__main__":
     not_blanks = [not elem for elem in blanks]
 
     df_lower = frozen_stock_KEY.loc[not_blanks]
-    df_lower.to_csv('_Data_fixes/cleaned_frozen_stock.csv',index=False)
+    df_lower.to_excel('_Data_fixes/cleaned_frozen_stock.xlsx',index=False)
 
     print('asdf')

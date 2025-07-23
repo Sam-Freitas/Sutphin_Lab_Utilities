@@ -39,11 +39,11 @@ if __name__ == "__main__":
     output_path = overarching_Data_path
 
     # load in the frozen stock keys that we use 
-    frozen_stock_KEY = pd.read_csv(r'_Data_fixes\Sutphin Worm Frozen Stock AZ.csv', keep_default_na=False, na_values=[])
+    frozen_stock_KEY = pd.read_excel(r'_Data_fixes\Sutphin Worm Frozen Stock AZ.xlsx',sheet_name=1,keep_default_na=False,na_values=[])
     strain_genotype_lookup = frozen_stock_KEY.copy()
 
     # make a copy of the strains as a lower() for ease of matching
-    strain_genotype_lookup_lower = frozen_stock_KEY.copy().map(str.lower)
+    strain_genotype_lookup_lower = frozen_stock_KEY.copy().map(str).map(str.lower)
 
     # progress bar time(!)
     root_progressbar, progress_bar, progress_bar_label = create_progress_window()
@@ -109,12 +109,12 @@ if __name__ == "__main__":
                         # for output only
                         # check if already done
                         if temp_this_groups_strain not in duplicates_name:
-                            if possible_matches.shape[0] > 1:
-                                duplicates_name.append(temp_this_groups_strain)
-                                duplicates_df.append(possible_matches)
-                                temp = pd.DataFrame(columns = possible_matches.columns)
-                                temp.loc[0] = ''
-                                duplicates_df.append(temp)
+                            # if possible_matches.shape[0] > 1:
+                            duplicates_name.append(temp_this_groups_strain)
+                            duplicates_df.append(possible_matches)
+                            temp = pd.DataFrame(columns = possible_matches.columns)
+                            temp.loc[0] = ''
+                            duplicates_df.append(temp)
 
                         # matched pair [GLS strain, Strain, Genotype]
                         if possible_matches.shape[0] > 1:

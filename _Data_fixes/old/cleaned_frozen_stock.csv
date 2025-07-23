@@ -1,0 +1,462 @@
+Box,Backup Box,Tube,# of tubes in box,GLS Strain,Strain,Genotype,Sequence,Long Genotype,Outcrossed,Species,Freeze Date,Test Thaw Date,Added by,Source,Notes
+1,1,1.0,5.0,GLS1,"N2 (old, CGC)",wild type,,wild type,,C. elegans,,,George Sutphin,CGC,wild type
+1,1,2.0,1.0,GLS2,NL2099,rrf-3,F10B5.7,rrf-3(pk1426)II,2,C. elegans,,,George Sutphin,CGC,Increased sensitivity to RNAi.
+1,1,3.0,2.0,GLS3,JT699,aex-6,Y87G2A.4,aex-6(sa699)I,2,C. elegans,,,George Sutphin,CGC,Hid. Con. Egl. Lethargic. Moderately Ric.
+1,1,4.0,4.0,GLS4,JT24,aex-6,Y87G2A.4,aex-6(sa24)I,2,C. elegans,,,George Sutphin,CGC,aBoc and Exp defective. Constipated.
+1,1,5.0,4.0,GLS5,RB830,epac-1,T20G5.5,epac-1(ok655)III,0,C. elegans,,,George Sutphin,CGC,Acknowledge C. elegans Gene Knockout Project at OMRF (http://www.celeganskoconsortium.omrf.org).
+1,1,6.0,2.0,GLS6,RB2314,Y42H9AR.1,Y42H9AR.1,Y42H9AR.1(ok3146)IV,0,C. elegans,,,George Sutphin,CGC,Acknowledge C. elegans Gene Knockout Project at OMRF (http://www.mutantfactory.ouhsc.edu).
+1,1,7.0,4.0,GLS7,AGD418,crtc-1(oe),Y20F4.2,uthIs205[crtc-1p::crtc-1::RFP::unc-54 3'UTR + rol-6],4,C. elegans,,,George Sutphin,CGC,
+1,1,8.0,4.0,GLS8,BC10514,enpl-1(oe),T05E11.3,dpy-5(e907)I sEx10514[rCes enpl-1::GFP + pCeh361[dpy-5(+)]],0,C. elegans,,,George Sutphin,CGC,"Maintain by picking WT. WT animals are GFP+. Acknowledge McKay et al, Cold Spring Harbor Symposia on Quantitative Biology 68: 159-169 2004 (WBPaper00006525)."
+1,1,9.0,4.0,GLS9,BC11438,srp-1(oe),C05E4.3,dpy-5(e907)I sEx11438[rCes srp-1::GFP + pCeh361[dpy-5(+)]],0,C. elegans,,,George Sutphin,CGC,"Maintain by picking WT. WT animals are GFP+. Acknowledge McKay et al, Cold Spring Harbor Symposia on Quantitative Biology 68: 159-169 2004 (WBPaper00006525)."
+1,1,10.0,4.0,GLS10,BC11473,snt-4(oe),T23H2.2,dpy-5(e907)I sEx11473[rCes snt-4::GFP + pCeh361[dpy-5(+)]],0,C. elegans,,,George Sutphin,CGC,"Maintain by picking WT. WT animals are GFP+. Acknowledge McKay et al, Cold Spring Harbor Symposia on Quantitative Biology 68: 159-169 2004 (WBPaper00006525)."
+1,1,11.0,4.0,GLS11,BC11494,sur-6(oe),F26E4.1,dpy-5(e907)I sEx11494[rCes sur-6::GFP + pCeh361[dpy-5(+)]],0,C. elegans,,,George Sutphin,CGC,"Maintain by picking WT. WT animals are GFP+. Acknowledge McKay et al, Cold Spring Harbor Symposia on Quantitative Biology 68: 159-169 2004 (WBPaper00006525)."
+1,1,12.0,4.0,GLS12,BC12735,C31C9.2(oe),C31C9.2,dpy-5(e907)I sIs12735[rCes C31C9.2::GFP + pCeh361[dpy-5(+)]],0,C. elegans,,,George Sutphin,CGC,"Maintain by picking WT. WT animals are GFP+. Acknowledge McKay et al, Cold Spring Harbor Symposia on Quantitative Biology 68: 159-169 2004 (WBPaper00006525)."
+1,1,13.0,4.0,GLS13,BC13083,C31C9.2(oe),C31C9.2,dpy-5(e907)I sIs12735[rCes C31C9.2::GFP + pCeh361[dpy-5(+)]],,C. elegans,,,George Sutphin,CGC,"Maintain by picking WT. WT animals are GFP+. Acknowledge McKay et al, Cold Spring Harbor Symposia on Quantitative Biology 68: 159-169 2004 (WBPaper00006525)."
+1,1,14.0,4.0,GLS14,BC13657,fln-1(oe),Y66H1B.2,dpy-5(e907)I sEx13657[rCes fln-1::GFP + pCeh361[dpy-5(+)]],0,C. elegans,,,George Sutphin,CGC,"Maintain by picking WT. WT animals are GFP+. Acknowledge McKay et al, Cold Spring Harbor Symposia on Quantitative Biology 68: 159-169 2004 (WBPaper00006525)."
+1,1,15.0,4.0,GLS15,BC13826,ldh-1(oe),F13D12.2,dpy-5(e907)I sEx13826[rCes ldh-1::GFP + pCeh361[dpy-5(+)]],0,C. elegans,,,George Sutphin,CGC,"Maintain by picking WT. WT animals are GFP+. Acknowledge McKay et al, Cold Spring Harbor Symposia on Quantitative Biology 68: 159-169 2004 (WBPaper00006525)."
+1,1,16.0,4.0,GLS16,BC14959,nipi-3(oe),K09A9.1,dpy-5(e907)I sEx14959[rCes nipi-3::GFP + pCeh361[dpy-5(+)]],0,C. elegans,,,George Sutphin,CGC,"Maintain by picking WT. WT animals are GFP+. Acknowledge McKay et al, Cold Spring Harbor Symposia on Quantitative Biology 68: 159-169 2004 (WBPaper00006525)."
+1,1,17.0,4.0,GLS17,BC15183,srp-2(oe),C05E4.1,dpy-5(e907)I sEx15183[rCes srp-2::GFP + pCeh361[dpy-5(+)]],0,C. elegans,,,George Sutphin,CGC,"Maintain by picking WT. WT animals are GFP+. Acknowledge McKay et al, Cold Spring Harbor Symposia on Quantitative Biology 68: 159-169 2004 (WBPaper00006525)."
+1,1,18.0,4.0,GLS18,BC15752,Y54G11A.7(oe),Y54G11A.7,dpy-5(e907)I sEx15752[rCes Y54G11A.7::GFP + pCeh361[dpy-5(+)]],0,C. elegans,,,George Sutphin,CGC,"Maintain by picking WT. WT animals are GFP+. Acknowledge McKay et al, Cold Spring Harbor Symposia on Quantitative Biology 68: 159-169 2004 (WBPaper00006525)."
+1,1,19.0,4.0,GLS19,BC15831,unc-115(oe),F09B9.2,dpy-5(e907)I sEx15831[rCes unc-115::GFP + pCeh361[dpy-5(+)]],0,C. elegans,,,George Sutphin,CGC,"Maintain by picking WT. WT animals are GFP+. Acknowledge McKay et al, Cold Spring Harbor Symposia on Quantitative Biology 68: 159-169 2004 (WBPaper00006525)."
+1,1,20.0,4.0,GLS20,BC15890,Y54G11A.7(oe),Y54G11A.7,dpy-5(e907)I sEx15890[rCes Y54G11A.7::GFP + pCeh361[dpy-5(+)]],0,C. elegans,,,George Sutphin,CGC,"Maintain by picking WT. WT animals are GFP+. Acknowledge McKay et al, Cold Spring Harbor Symposia on Quantitative Biology 68: 159-169 2004 (WBPaper00006525)."
+2,1,21.0,4.0,GLS21,BC16236,nmt-1(oe),T17E9.2,dpy-5(e907)I sEx16236[rCes nmt-1::GFP + pCeh361[dpy-5(+)]],0,C. elegans,,,George Sutphin,CGC,"Maintain by picking WT. WT animals are GFP+. Acknowledge McKay et al, Cold Spring Harbor Symposia on Quantitative Biology 68: 159-169 2004 (WBPaper00006525)."
+2,1,22.0,4.0,GLS22,CB1017,vab-8,K12F2.2,vab-8(e1017)V,,C. elegans,,,George Sutphin,CGC,"Degenerate tail->posterior half thin, pale, uncoordinated."
+2,1,23.0,4.0,GLS23,CX2610,glr-1(oe),C06E1.4,lin-15b(n765)X kyIs30[glr-1::GFP + lin-15(+)],,C. elegans,,,George Sutphin,CGC,
+2,1,24.0,4.0,GLS24,CX3662,unc-115(oe),F09B9.2,lin-15B(n765)X kyIs121[unc-115::GFP lin-15(+)],,C. elegans,,,George Sutphin,CGC,"Reference: Lundquist E, et al. (1998) Neuron 21(2):385-92."
+2,1,25.0,4.0,GLS25,DA1256,egl-19(oe),C48A7.1,lin-15b(n765)X akEx1256[egl-19::GFP lin-15(+)],,C. elegans,,,George Sutphin,CGC,Animals with the array are WT. Animals which have lost the array are Muv. n765 is temperature sensitive. n765 may also contain a mutation in lin-15A.
+2,1,26.0,4.0,GLS26,DN20,nhr-6,C48D5.1,nhr-6(lg6001)III,5,C. elegans,,,George Sutphin,CGC,"Homozygotes have defective spermatheca development causing low brood size, abnormally shaped eggs, and occasional Egl."
+2,1,27.0,4.0,GLS27,GR1310,akt-1,C12D8.10,akt-1(mg144)V,3,C. elegans,,,George Sutphin,CGC,No visible phenotype. Dominant suppressor of daf-c phenotype of age-1.
+2,1,28.0,4.0,GLS28,HS184,swsn-4,F01G4.1,swsn-4(os13)IV,4,C. elegans,,,George Sutphin,CGC,"Egl, Pvul, Psa (Phasmid Socket Absent) and some embryonic lethality. The T cell division can be symmetric as in lin-17 mutants. Less severe at 15C. psa-4 encodes a homolog of yeast SW12, a component of the SWI/SNF complex."
+2,1,29.0,4.0,GLS29,HZ1685,atg-4.1,Y87G2A.3,atg-4.1(bp501)I,2,C. elegans,,,George Sutphin,CGC,
+2,1,30.0,4.0,GLS30,JA1403,eea-1(oe),T10G3.5,unc-119(e2498)III weIs15[pie-1p::GFP::eea-1(FYVEx2) unc-119(+)],0,C. elegans,,,George Sutphin,CGC,"Phenotypically wild type. Grows at any temp, but has bright GFP at 25C."
+2,1,31.0,4.0,GLS31,JCM1,hyl-2,K02G10.6,hyl-2(gnv1)X,4,C. elegans,,,George Sutphin,CGC,Anoxia sensitive. Heat-shock (36 deg Celcius) sensitive.
+2,1,32.0,4.0,GLS32,JD21,cca-1,C54D2.5,cca-1(ad1650)X,7,C. elegans,,,George Sutphin,CGC,Slow pharyngeal pumping. Abnormal pharyngeal muscle depolarization.
+2,1,33.0,4.0,GLS33,KP987,glr-1(oe),C06E1.4,lin-15b(n765)X nuIs1[pV6::glr-1::GFP lin-15(+)],5,C. elegans,,,George Sutphin,CGC,
+2,1,34.0,4.0,GLS34,KU404,exc-5,C33D9.1,exc-5(km508)IV,10,C. elegans,,,George Sutphin,CGC,Exc.
+2,1,35.0,4.0,GLS35,LA275,nhr-67,C08F8.8,nhr-67(pf2)IV,4,C. elegans,,,George Sutphin,CGC,Pvl. Egl. Weaker allele than pf88 and pf159.
+2,1,36.0,4.0,GLS36,LG331,SKN-1::GFP(OE),T19E7.2,lin-35(n745)I geIs7[skn-1b::GFP lin-35(+)],,C. elegans,,,George Sutphin,CGC,Reference: Nature (2007) 447(7144):545-9.
+2,1,37.0,4.0,GLS37,MH1317,egl-13(oe),T22B7.1,kuIs29[unc-119(+) egl-13::GFP(pWH17)]V,2,C. elegans,,,George Sutphin,CGC,"Nuclear localized. Bright expression in body wall muscles, expressed in uterine pi lineage, extensive neuronal expression"
+2,1,38.0,4.0,GLS38,MH1955,nhr-25,F11C1.6,nhr-25(ku217)X,,C. elegans,,,George Sutphin,CGC,Temperature sensitive Egl.
+2,1,39.0,4.0,GLS39,MT1443,egl-10,F28C1.2,egl-10(n692)V,,C. elegans,,,George Sutphin,CGC,Egg laying defective. Retains late stage eggs. Temperature sensitive-non or weak Egl at 15C. Semidominant. Males mate. Sluggish and weak kinker.
+2,1,40.0,4.0,GLS40,MT1522,ced-3,C48D1.2,ced-3(n717)IV,,C. elegans,,,George Sutphin,CGC,Abnormal cell death. Cells that normally die survive.
+3,1,41.0,4.0,GLS41,MT1524,lin-28,F02E9.2,lin-28(n719)I,,C. elegans,,,George Sutphin,CGC,Egl.
+3,1,42.0,4.0,GLS42,MT2015,lin-28,F02E9.2,lin-28(n947)I,,C. elegans,,,George Sutphin,CGC,L3 alae. L4 blip.
+3,1,43.0,4.0,GLS43,MT5267,soc-1,F41F3.2,soc-1(n1789)V,4,C. elegans,,,George Sutphin,CGC,WT. Suppresses clr-1.
+3,1,44.0,0.0,GLS44,MT8190,"egl-10(oe) **Not currently in frozen stock; if needed, buy from CGC**",F28C1.2,lin-15b(n765) nIs51[egl-10(+) lin-15(+)]X,4,C. elegans,,,George Sutphin,CGC,Integrated EGL-10 overexpressor verified by Western blot.
+3,1,45.0,4.0,GLS45,MT8347,ced-3,C48D1.2,ced-3(n2452)IV,,C. elegans,,,George Sutphin,CGC,
+3,1,46.0,4.0,GLS46,MT8504,egl-10,F28C1.2,egl-10(md176)V,6,C. elegans,,,George Sutphin,CGC,"Animals are Egl and show sluggish locomotion and foraging behavior. Null allele: egl-10 is deleted or severely rearranged, and EGL-10 protein is undetected by Western blotting and in situ staining of animals."
+3,1,47.0,4.0,GLS47,MU1268,nhr-67(oe),C08F8.8,bwIs6[nhr-67::GFP rol-6],2,C. elegans,,,George Sutphin,CGC,Rollers.
+3,1,48.0,4.0,GLS48,MU1289,nhr-67,C08F8.8,nhr-67(pf88)IV,4,C. elegans,,,George Sutphin,CGC,Pvl. Egl. Poor mating.
+3,1,49.0,4.0,GLS49,NJ731,exc-5,C33D9.1,exc-5(rh232)IV,,C. elegans,,,George Sutphin,CGC,Formation of large round cysts in the excretory canal. 
+3,1,50.0,4.0,GLS50,NK776,exc-5(oe),C33D9.1,unc-119(ed4) III qyEx118[exc-5::GFP unc-119(+)],,C. elegans,,,George Sutphin,CGC,Maintain by picking non-Unc.
+3,1,51.0,4.0,GLS51,NW427,vab-8,K12F2.2,vab-8(ev411)V,,C. elegans,,,George Sutphin,CGC,Slightly Unc. ev411 was previously called unc-107.
+3,1,52.0,4.0,GLS52,OP33,NHR-25::GFP(OE),F11C1.6,unc-119(ed3)III wgIs33[nhr-25::TY1::EGFP::3xFLAG(92C12) unc-119(+)],,C. elegans,,,George Sutphin,CGC,"References: Sarov, M, et al. Nat Methods (2006) 10:839-44. Gerstein MB, et al. Science. 2010 Dec 24;330(6012):1775-87."
+3,1,53.0,4.0,GLS53,OP178,SKN-1::GFP(OE),T19E7.2,unc-119(ed3)III wgIs178[skn-1::TY1::EGFP::3xFLAG + unc-119(+)],0,C. elegans,,,George Sutphin,CGC,"References: Sarov, M, et al. Nat Methods (2006) 10:839-44. Zhong, M, et al. PLoS Genet (2010) 6(2):e1000848. Strain was constructed as part of the Regulatory Element Project, part of modENCODE (http://www.modencode.org)"
+3,1,54.0,4.0,GLS54,OP375,CEY-1::GFP(OE),F33A8.3,unc-119(tm4063)III wgIs375[cey-1::TY1::EGFP::3xFLAG + unc-119(+)],0,C. elegans,,,George Sutphin,CGC,"References: Sarov, M, et al. Nat Methods (2006) 10:839-44. Zhong, M, et al. PLoS Genet (2010) 6(2):e1000848. Strain was constructed as part of the Regulatory Element Project, part of modENCODE (http://www.modencode.org)"
+3,1,55.0,4.0,GLS55,PE97,hmp-1,R13H4.4,hmp-1(fe4)V,5,C. elegans,,,George Sutphin,CGC,Semi-viable Vab. Homozygotes produce approximately 40% arrested embryos/L1 larvae. Severe morphogenesis defects show maternal rescue: homozygous progeny of heterozygotes display only minor morphological defects.
+3,1,56.0,4.0,GLS56,RB759,akt-1,C12D8.10,akt-1(ok525)V,0,C. elegans,,,George Sutphin,CGC,Acknowledge C. elegans Gene Knockout Project at OMRF (http://www.celeganskoconsortium.omrf.org).
+3,1,57.0,4.0,GLS57,RB1036,hyl-1,C09G4.1,hyl-1(ok976)IV,0,C. elegans,,,George Sutphin,CGC,Acknowledge C. elegans Gene Knockout Project at OMRF (http://www.celeganskoconsortium.omrf.org).
+3,1,58.0,4.0,GLS58,RB1155,scl-1,F49E11.9,scl-1(ok1185)IV,0,C. elegans,,,George Sutphin,CGC,Acknowledge C. elegans Gene Knockout Project at OMRF (http://www.mutantfactory.ouhsc.edu).
+3,1,59.0,4.0,GLS59,RB1485,csp-2,Y73B6BL.7,csp-2(ok1742)IV,0,C. elegans,,,George Sutphin,CGC,Acknowledge C. elegans Gene Knockout Project at OMRF (http://www.celeganskoconsortium.omrf.org).
+3,1,60.0,4.0,GLS60,RB1498,hyl-2,K02G10.6,hyl-2(ok1766)X,0,C. elegans,,,George Sutphin,CGC,Acknowledge C. elegans Gene Knockout Project at OMRF (http://www.mutantfactory.ouhsc.edu).
+4,1,61.0,4.0,GLS61,RB1658,mca-3,Y67D8C.10,mca-3(ok2048)IV,0,C. elegans,,,George Sutphin,CGC,Acknowledge C. elegans Gene Knockout Project at OMRF (http://www.mutantfactory.ouhsc.edu).
+4,1,62.0,4.0,GLS62,RB1954,csp-1,Y48E1B.13,csp-1(ok2570)II,0,C. elegans,,,George Sutphin,CGC,Acknowledge C. elegans Gene Knockout Project at OMRF (http://www.mutantfactory.ouhsc.edu).
+4,1,63.0,4.0,GLS63,RB1975,klc-1,M7.2,klc-1(ok2609)IV,0,C. elegans,,,George Sutphin,CGC,Acknowledge C. elegans Gene Knockout Project at OMRF (http://www.mutantfactory.ouhsc.edu).
+4,1,64.0,4.0,GLS64,RW11476,NHR-67(oe),C08F8.8,unc-119(tm4063)III stIs11476[nhr-67::H1-Wcherry unc-119(+)],0,C. elegans,,,George Sutphin,CGC,
+4,1,65.0,4.0,GLS65,RW11514,NHR-64(oe),C45E1.1,unc-119(tm4063)III stIs11514[nhr-64::H1-Wcherry unc-119(+)],0,C. elegans,,,George Sutphin,CGC,
+4,1,66.0,4.0,GLS66,RW11593,NHR-35(oe),C07A12.3,unc-119(tm4063) III stIs11593[nhr-35a::H1-Wcherry unc-119(+)],0,C. elegans,,,George Sutphin,CGC,
+4,1,67.0,4.0,GLS67,SU265,HMP-1::GFP(oe),R13H4.4,unc-119(e2498)III zuEx24[unc-119(+) hmp-1::GFP],6,C. elegans,,,George Sutphin,CGC,"Rollers. References: Zaidel-Bar R, et al. J Cell Biol. 2010 Nov 15;191(4):761-9. Raich WB, et al. Curr Biol. 1999 Oct 21;9(20):1139-46."
+4,1,68.0,4.0,GLS68,TJ356,DAF-16::GFP(oe),R13H8.1,zIs356[daf-16::GFP rol-6]IV,5,C. elegans,,,George Sutphin,CGC,"Daf-c, Rol, Fluorescent DAF-16::GFP, Age, increased resistance to heat and UV. Grows and reproduces slowly. Maintain at 20C.  Integrated by gamma irradiation of extrachromosomal (Ex daf-16::GFP) line. Reference: Curr Biol 11, 1950-1957.Lin, K., Hsin, H., Libina, N., and Kenyon, C. (2001). Nat Genet 28, 139-145."
+4,1,69.0,4.0,GLS69,VC39,cca-1,C54D2.5,cca-1(gk30)X,0,C. elegans,,,George Sutphin,CGC,Acknowledge C. elegans Reverse Genetics Core Facility at UBC (http://www.celeganskoconsortium.omrf.org).
+4,1,70.0,4.0,GLS70,VC204,akt-2,F28H6.1,akt-2(ok393)X,0,C. elegans,,,George Sutphin,CGC,Acknowledge C. elegans Reverse Genetics Core Facility at UBC (http://www.celeganskoconsortium.omrf.org).
+4,1,71.0,4.0,GLS71,VC230,vap-1,F11C7.3,vap-1(ok392)X,0,C. elegans,,,George Sutphin,CGC,Superficially wild type. Acknowledge C. elegans Reverse Genetics Core Facility at UBC (http://www.celeganskoconsortium.omrf.org).
+4,1,72.0,4.0,GLS72,VC334,hyl-1,C09G4.1,hyl-1(gk203)IV,0,C. elegans,,,George Sutphin,CGC,Acknowledge C. elegans Reverse Genetics Core Facility at UBC (http://www.celeganskoconsortium.omrf.org).
+4,1,73.0,4.0,GLS73,VC381,atm-1,Y48G1BL.2,atm-1(gk186)I,0,C. elegans,,,George Sutphin,CGC,Superficially wild type. Acknowledge C. elegans Reverse Genetics Core Facility at UBC (http://www.celeganskoconsortium.omrf.org).
+4,1,74.0,4.0,GLS74,VC461,egl-3,C51E3.7,egl-3(gk238)V,0,C. elegans,,,George Sutphin,CGC,Acknowledge C. elegans Reverse Genetics Core Facility at UBC (http://www.celeganskoconsortium.omrf.org).
+4,1,75.0,4.0,GLS75,VC671,egl-3,C51E3.7,egl-3(ok979)V,1,C. elegans,,,George Sutphin,CGC,"Variably Egl, mildly Dpy. Acknowledge C. elegans Reverse Genetics Core Facility at UBC (http://www.celeganskoconsortium.omrf.org)."
+4,1,76.0,4.0,GLS76,VC759,scl-9,F49E11.4,scl-9(ok1138)IV,1,C. elegans,,,George Sutphin,CGC,Superficially wild type. Acknowledge C. elegans Reverse Genetics Core Facility at UBC (http://www.celeganskoconsortium.omrf.org).
+4,1,77.0,4.0,GLS77,VM57,GLR-3::GFP(oe),K10D3.1,lin-15b(n765)X akEx16[glr-3::GFP lin-15(+)],,C. elegans,,,George Sutphin,CGC,Worms with the array are non-Muv at 20C.
+4,1,78.0,4.0,GLS78,VM133,GLR-5::GFP(oe),ZC196.7,lin-15b(n765)X akEx31[glr-5::GFP lin-15(+)],,C. elegans,,,George Sutphin,CGC,Worms with the array are non-Muv at 20C.
+4,1,79.0,4.0,GLS79,VM141,GLR-4::GFP(oe),C06A8.9,lin-15b(n765)X akEx32[GLR-4::GFP lin-15(+)],,C. elegans,,,George Sutphin,CGC,Worms with the array are non-Muv at 20C.
+4,1,80.0,4.0,GLS80,VM149,GLR-7::GFP(oe),C43H6.9,lin-15b(n765)X akEx38[GLR-7::GFP lin-15(+)],,C. elegans,,,George Sutphin,CGC,Worms with the array are non-Muv at 20C.
+5,1,81.0,4.0,GLS81,VM763,GLR-1::GFP(oe),C06E1.4,lin-15b(n765)X akEx130[GLR-1::GFP lin-15(+)],,C. elegans,,,George Sutphin,CGC,Worms with the array are non-Muv at 20C.
+5,2,82.0,3.0,GLS82,N2,wild type,,wild type,,C. elegans,,,George Sutphin,Kaeberlein Lab,Obtained from a fresh thaw from the Kaeberlein lab in January 2014. Use this strain (or refreezes of this strain).
+5,2,83.0,2.0,GLS83,"N2 (old, CGC)",wild type,,wild type,,C. elegans,,,George Sutphin,CGC,Obtained a fresh thaw from the CGC in February 2014.
+5,2,84.0,4.0,GLS84,MT1078,egl-13,T22B7.1,egl-13(n483)X,1,C. elegans,,,George Sutphin,CGC,Egg laying defective. Makes bags of worms. Males mate.
+5,2,85.0,4.0,GLS85,RB860,nck-1,ZK470.5,nck-1(ok694)X,0,C. elegans,,,George Sutphin,CGC,Acknowledge C. elegans Gene Knockout Project at OMRF (http://www.mutantfactory.ouhsc.edu).
+5,2,86.0,4.0,GLS86,RB1977,fln-1,Y66H1B.2,fln-1(ok2611)IV,0,C. elegans,,,George Sutphin,CGC,Acknowledge C. elegans Gene Knockout Project at OMRF (http://www.mutantfactory.ouhsc.edu).
+5,2,87.0,4.0,GLS87,VC214,nck-1,ZK470.5,nck-1(ok383)X,0,C. elegans,,,George Sutphin,CGC,Acknowledge C. elegans Reverse Genetics Core Facility at UBC (http://www.celeganskoconsortium.omrf.org).
+5,2,88.0,4.0,GLS88,DA465,eat-2,Y48B6A.4,eat-2(ad465)II,,C. elegans,,,George Sutphin,CGC,
+5,2,89.0,4.0,GLS89,CB5602,vhl-1,F08G12.4,vhl-1(ok161)X,5,C. elegans,,,George Sutphin,CGC,"Constitutive HIF-1 in normoxia, slow growth and reduced brood size. See also WBPaper00005962."
+5,2,90.0,4.0,GLS90,PY1589,cmk-1,K07A9.2,cmk-1(oy21)IV,,C. elegans,,,George Sutphin,CGC,Thermotaxis defective
+5,2,91.0,1.0,GLS91,RB1206,rsks-1,Y47D3A.16,rsks-1(ok1255)III,0,C. elegans,,,George Sutphin,CGC,Acknowledge C. elegans Gene Knockout Project at OMRF (http://www.mutantfactory.ouhsc.edu).
+5,2,92.0,4.0,GLS92,CL2006,Abeta,,dvIs2[pCL12(unc-54/human Abeta peptide 1-42 minigene) + pRF4],,C. elegans,,,George Sutphin,CGC,Adult onset paralysis and egg-laying deficiency when raised at 20C. Received new stock from CL 8/2005.
+5,2,93.0,4.0,GLS93,CF1038,daf-16,R13H8.1,daf-16(mu86)I,11,C. elegans,,,George Sutphin,CGC,Dauer defective. Short lived.
+5,2,94.0,4.0,GLS94,VC199,sir-2.1,R11A8.4,sir-2.1(ok434)IV,0,C. elegans,,,George Sutphin,CGC,Superficially wild type. Acknowledge C. elegans Reverse Genetics Core Facility at UBC.
+5,2,95.0,3.0,GLS95,ZG31,hif-1,F38A6.3,hif-1(ia4)V,9,C. elegans,,,George Sutphin,CGC,"Healthy and fertile in standard lab conditions, but unable to adapt to 1% oxygen."
+5,2,96.0,4.0,GLS96,DA2123,LGG-1::GFP,,adIs2122[lgg-1p::GFP::lgg-1 rol-6(su1006)],7,C. elegans,,,George Sutphin,CGC,Rollers. Autophagy reporter.
+5,2,97.0,3.0,GLS97,MQ887,isp-1,F42G8.12,isp-1(qm150)IV,3,C. elegans,,,George Sutphin,CGC,Slow development and behavior.
+5,2,98.0,4.0,GLS98,NL4266,nucb-1,F44A6.1,nucb-1(pk1654)X,2,C. elegans,,,George Sutphin,CGC,
+5,2,99.0,3.0,GLS99,PS3551,hsf-1,Y53C10A.12,hsf-1(sy441)I,,C. elegans,,,George Sutphin,CGC,Defects in egg laying. Do not grow at 25C. Do not distribute this strain; other labs should request it from the CGC.
+5,2,100.0,4.0,GLS100,RB925,ire-1,C41C4.4,ire-1(ok799)II,0,C. elegans,,,George Sutphin,CGC,Acknowledge C. elegans Gene Knockout Project at OMRF (http://www.mutantfactory.ouhsc.edu).
+6,2,101.0,4.0,GLS101,CB1370,daf-2,Y55D5A.5,daf-2(e1370)III,,C. elegans,,,George Sutphin,CGC,Temperature sensitive dauer constitutive. Maintain at 15C. 100% dauers at 25C. 15% dauer formation at 20C. Long-lived. Refrozen on 6/1/21 by Hope Dang.
+6,2,102.0,4.0,GLS102,MQ130,clk-1,ZC395.2,clk-1(qm30)III,10,C. elegans,,,George Sutphin,CGC,Maternally rescued slow growing strain.
+6,2,103.0,0.0,GLS103,AM140,Q35,,rmIs132[unc-54p::Q35::YFP]I,5,C. elegans,,,George Sutphin,CGC,Q35::YFP progressive transition from soluble to aggregated as they age.
+6,2,104.0,4.0,GLS104,LG398,rol-6,T01B7.7,geIs101[rol-6(su1006)],8,C. elegans,,,George Sutphin,CGC,Roller control strain.
+6,2,105.0,4.0,GLS105,VC893,atg-18,F41E6.13,atg-18(gk378)V,1,C. elegans,,,George Sutphin,CGC,Superficially wild type. Acknowledge C. elegans Reverse Genetics Core Facility at UBC.
+6,2,106.0,4.0,GLS106,VC2421,npr-24,R106.2,npr-24(ok3192)X,0,C. elegans,,,George Sutphin,CGC,Acknowledge C. elegans Reverse Genetics Core Facility at UBC.
+6,2,107.0,4.0,GLS107,EU1,skn-1,T19E7.2,skn-1(zu67)IV/nT1[unc-?(n754) let-?](IV;V),8,C. elegans,,,George Sutphin,CGC,"Heterozygotes are Unc and segregate Unc, WT which give only dead eggs, and dead eggs. Maintain by picking Unc."
+6,2,108.0,4.0,GLS108,EU31,skn-1,T19E7.2,skn-1(zu135)IV/nT1[unc-?(n754) let-?](IV;V),3,C. elegans,,,George Sutphin,CGC,"Heterozygotes are Unc and segregate Unc, WT which give only dead eggs, and dead eggs. Maintain by picking Unc."
+6,2,109.0,4.0,GLS109,KX15,ife-2,R04A9.4,ife-2(ok306)X,10,C. elegans,,,George Sutphin,CGC,No apparent phenotype. Refrozen on 6/21/18 by Hope Dang.
+6,2,110.0,3.0,GLS110,CB1003,flu-2,C15H9.7,flu-2(e1003)X,,C. elegans,,,George Sutphin,CGC,"Reduced gut fluorescence, dull green. 10-30% WT."
+6,2,111.0,4.0,GLS111,SJ4100,hsp-6::GFP,C37H5.8,zcIs13[hsp-6::GFP]V,3,C. elegans,,,George Sutphin,CGC,"Stable transgenic line with GFP expression mainly in the tail, observed from L1 to adult. Induced by perturbations of mitochondrial folding environment."
+6,2,112.0,3.0,GLS112,OW478,kmo-1,R07B7.5,kmo-1(tm4529)V,,C. elegans,,,George Sutphin,Netherlands,
+6,2,113.0,3.0,GLS113,OW479,haao-1,K06A4.5,haao-1(tm4627)V,,C. elegans,,,George Sutphin,Netherlands,
+6,2,114.0,4.0,GLS114,N2 (Netherlands),wild type,,wild type,,C. elegans,,,George Sutphin,Netherlands,
+6,2,115.0,2.0,GLS115,MT14984,tph-1,ZK1290.2,tph-1(n4622)II,,C. elegans,,,George Sutphin,CGC,
+6,2,116.0,3.0,GLS116,VM487,nmr-1,F07F6.6,nmr-1(ak4)II,,C. elegans,,,George Sutphin,CGC,
+6,2,117.0,3.0,GLS117,VC2623,nmr-2,T01C3.10,nmr-2(ok3324)V,,C. elegans,,,George Sutphin,CGC,
+6,2,118.0,2.0,GLS118,FX04924,flu-2,C15H9.7,flu-2(tm4924)X,0,C. elegans,2015-09-15,,George Sutphin,NBRP Japan,
+6,2,119.0,3.0,GLS119,FX04627,haao-1,K06A4.5,haao-1(tm4627)V,0,C. elegans,2015-09-15,,George Sutphin,NBRP Japan,
+6,2,120.0,4.0,GLS120,FX04547,afmd-1,D2024.2,afmd-1(tm4547)IV,0,C. elegans,2015-09-15,,George Sutphin,NBRP Japan,
+7,2,121.0,3.0,GLS121,FX17082,tatn-1,F42D1.2,tatn-1(tm4545)X,0,C. elegans,2015-09-15,,George Sutphin,NBRP Japan,
+7,2,122.0,4.0,GLS122,FX04529,kmo-1,R07B7.5,kmo-1(tm4529)V,0,C. elegans,2015-09-15,,George Sutphin,NBRP Japan,
+7,2,123.0,4.0,GLS123,FX02075,nkat-3,R03A10.4,nkat-3(tm2075)X,0,C. elegans,2015-09-15,,George Sutphin,NBRP Japan,
+7,2,124.0,1.0,GLS124,FX06933,Y71D11A.3,Y71D11A.3,Y71D11A.3(tm6933)III,0,C. elegans,2015-09-15,,George Sutphin,NBRP Japan,
+7,2,125.0,4.0,GLS125,FX07129,Y71D11A.3,Y71D11A.3,Y71D11A.3(tm7129)III,0,C. elegans,2015-09-15,,George Sutphin,NBRP Japan,
+7,2,126.0,3.0,GLS126,FX17082,tatn-1,F42D1.2,tatn-1(tm4545)X,0,C. elegans,2015-09-15,,George Sutphin,NBRP Japan,
+7,2,127.0,4.0,GLS127,N2 male,wild type male,,wild type male,,C. elegans,2015-10-14,,George Sutphin,Kaeberlein Lab,Males generated from GS82 on ~10/1/2015.
+7,2,128.0,,GLS128,N2,wild type,,wild type,,C. elegans,2015-10-14,,George Sutphin,Kaeberlein Lab,"Refrozen from GS82 on 10/14/2015. Current tubes labeled 149, refreeze of GLS128. "
+7,2,129.0,4.0,GLS129,GLS129,flu-2,C15H9.7,flu-2(tm4924)X,5,C. elegans,2015-11-10,,Grant Backer,Korstanje Lab,Backcrossed strain FX04924 (GS118) 5x to N2 (Kaeberlein Lab; GS127). Refrozen June 2025
+7,2,130.0,0.0,GLS130,GLS130,haao-1,K06A4.5,haao-1(tm4627)V,5,C. elegans,,,Grant Backer,Korstanje Lab,Backcrossed strain FX04627 (GS119) 5x to N2 (Kaeberlein Lab; GS127).
+7,2,131.0,2.0,GLS131,GLS131,haao-1,K06A4.5,haao-1(tm4627)V,5,C. elegans,,,Grant Backer,Korstanje Lab,Backcrossed strain FX04627 (GS119) 5x to N2 (Kaeberlein Lab; GS127).
+7,2,132.0,4.0,GLS132,GLS132,nkat-3,R03A10.4,nkat-3(tm2075)X,5,C. elegans,,,Grant Backer,Korstanje Lab,Backcrossed strain FX02075 (GS123) 5x to N2 (Kaeberlein Lab; GS127).
+7,2,133.0,0.0,GLS133,GLS133,kmo-1,R07B7.5,kmo-1(tm4529)V,5,C. elegans,,,Grant Backer,Korstanje Lab,Backcrossed strain FX04529 (GS122) 5x to N2 (Kaeberlein Lab; GS127).
+7,2,134.0,4.0,GLS134,GLS134,kmo-1,R07B7.5,kmo-1(tm4529)V,5,C. elegans,,,Grant Backer,Korstanje Lab,Backcrossed strain FX04529 (GS122) 5x to N2 (Kaeberlein Lab; GS127).
+7,2,135.0,1.0,GLS135,GLS135,sir-2.1,R11A8.4,sir-2.1(ok434)IV,5,C. elegans,,,Grant Backer,Korstanje Lab,Backcrossed strain VC199 (GS94) 5x to N2 (Kaeberlein Lab; GS127). Superficially wild type. Acknowledge C. elegans Reverse Genetics Core Facility at UBC.
+7,2,136.0,3.0,GLS136,GLS136,afmd-1,D2024.2,afmd-1(tm4547)IV,5,C. elegans,2016-03-24,,Grant Backer,Korstanje Lab,Backcrossed strain FX04547 (GS120) 5x to N2 (Kaeberlein Lab; GS127).
+7,2,137.0,4.0,GLS137,GLS137,Y71D11A.3,Y71D11A.3,Y71D11A.3(tm6933)III,5,C. elegans,2016-03-24,,Grant Backer,Korstanje Lab,Backcrossed strain FX06933 (GS124) 5x to N2 (Kaeberlein Lab; GS127). Superficially wild type. Acknowledge C. elegans Reverse Genetics Core Facility at UBC.
+7,2,138.0,4.0,GLS138,GLS138,tph-1,ZK1290.2,tph-1(n4622)II,5,C. elegans,2016-03-24,,Grant Backer,Korstanje Lab,Backcrossed strain MT14984 (GS115) 5x to N2 (Kaeberlein Lab; GS127). Superficially wild type. Acknowledge C. elegans Reverse Genetics Core Facility at UBC.
+7,2,139.0,4.0,GLS139,GLS139,tph-1,ZK1290.2,tph-1(n4622)II,5,C. elegans,2016-03-24,,Grant Backer,Korstanje Lab,Backcrossed strain MT14984 (GS115) 5x to N2 (Kaeberlein Lab; GS127). Superficially wild type. Acknowledge C. elegans Reverse Genetics Core Facility at UBC.
+7,2,140.0,4.0,GLS140,DA698,unc-36,C50C3.9,unc-36(ad698)III,2,C. elegans,,,Grant Backer,CGC,"Unc. Eat - slippery pharynx, slow pumping."
+8,2,141.0,2.0,GLS141,RB918,acr-16,F25G6.3,acr-16(ok789)V,0,C. elegans,,,Grant Backer,CGC,Acknowledge C. elegans Gene Knockout Project at OMRF (http://www.mutantfactory.ouhsc.edu).
+8,2,142.0,4.0,GLS142,TK22,mev-1,T07C4.7,mev-1(kn1)III,5,C. elegans,,,Grant Backer,CGC,Methylviologen (paraquat) sensitive. Oxygen sensitive. Short life span.
+8,2,143.0,3.0,GLS143,VC3075,tsp-3,Y39E4B.4,tsp-3(ok3729)III,0,C. elegans,,,Grant Backer,CGC,Acknowledge C. elegans Reverse Genetics Core Facility at UBC (http://www.celeganskoconsortium.omrf.org).
+8,2,144.0,3.0,GLS144,GLS144,daf-16,R13H8.1,daf-16(mu86)I,21,C. elegans,,,Grant Backer,Korstanje Lab,Backcrossed strain CF1038 (GS93) 5x to N2 (Kaeberlein Lab; GS127). Dauer defective. Short lived. Backcrossed 5x from CF1038 (GS93).
+8,2,145.0,2.0,GLS145,GLS145,hif-1,F38A6.3,hif-1(ia4)V,19,C. elegans,,,Grant Backer,Korstanje Lab,"Backcrossed strain ZG31 (GS95) 5x to N2 (Kaeberlein Lab; GS127). Healthy and fertile in standard lab conditions, but unable to adapt to 1% oxygen. Backcrossed 5x from ZG31 (GS95)."
+8,2,146.0,3.0,GLS146,GLS146,rsks-1,Y47D3A.16,rsks-1(ok1255)III,5,C. elegans,2016-06-02,,Grant Backer,Korstanje Lab,Backcrossed strain RB1206 (GS91) 5x to N2 (Kaeberlein Lab; GS127). Acknowledge C. elegans Gene Knockout Project at OMRF (http://www.mutantfactory.ouhsc.edu).
+8,2,147.0,1.0,GLS147,GLS147,kynu-1 haao-1,,haao-1(tm4627)V kynu-1(tm4924)X,5,C. elegans,2016-06-22,,Grant Backer,Korstanje Lab,Crossed flu-2 (GS129) to haao-1 (GS130).
+8,2,148.0,4.0,GLS148,GLS148,nmr-1,F07F6.6,nmr-1(ak4)II,5,C. elegans,2016-06-27,,Grant Backer,Korstanje Lab,Backcrossed strain VM487 (GS116) 5x to N2 (Kaeberlein Lab; GS127). Acknowledge C. elegans Gene Knockout Project at OMRF (http://www.mutantfactory.ouhsc.edu).
+8,2,149.0,4.0,GLS149,N2,wild type,,wild type,,C. elegans,2016-07-21,,George Sutphin,Kaeberlein Lab,Refrozen from GS128 on 7/21/2016.
+8,2,150.0,4.0,GLS150,GLS150,nmr-2,T01C3.10,nmr-2(ok3324)V,5,C. elegans,2016-08-04,,Grant Backer,Korstanje Lab,Backcrossed strain VC2623 (GS117) 5x to N2 (Kaeberlein Lab; GS127). Backcross plate D.
+8,2,151.0,4.0,GLS151,GLS151,nmr-2,T01C3.10,nmr-2(ok3324)V,5,C. elegans,2016-08-04,,Grant Backer,Korstanje Lab,Backcrossed strain VC2623 (GS117) 5x to N2 (Kaeberlein Lab; GS127). Backcross plate O.
+8,2,152.0,4.0,GLS152,FX04807,iglr-1,F20D1.7,iglr-1(tm4807)X,0,C. elegans,,,George Sutphin,NBRP Japan,
+8,2,153.0,4.0,GLS153,FX01925,rcn-1,F54E7.7,rcn-1(tm1925)X,0,C. elegans,,,George Sutphin,NBRP Japan,
+8,2,154.0,4.0,GLS154,RB918,acr-16,F25G6.3,acr-16(ok789)V,5,C. elegans,2016-09-14,,George Sutphin,CGC,Backcrossed strain RB918 (GS141) 5x to N2 (Kaeberlein Lab; GS127). Backcross plate B. Acknowledge C. elegans Gene Knockout Project at OMRF (http://www.mutantfactory.ouhsc.edu).
+8,2,155.0,4.0,GLS155,RB918,acr-16,F25G6.3,acr-16(ok789)V,5,C. elegans,2016-09-14,,George Sutphin,CGC,Backcrossed strain RB918 (GS141) 5x to N2 (Kaeberlein Lab; GS127). Backcross plate H. Acknowledge C. elegans Gene Knockout Project at OMRF (http://www.mutantfactory.ouhsc.edu).
+8,2,156.0,4.0,GLS156,GLS156,Y42H9AR.1,Y42H9AR.1,Y42H9AR.1(ok3146)IV,0,C. elegans,,,George Sutphin,CGC,Backcrossed strain RB2314 (GS6) 5x to N2 (Kaeberlein Lab; GS127). Backcross plate C. Acknowledge C. elegans Gene Knockout Project at OMRF (http://www.mutantfactory.ouhsc.edu).
+8,2,157.0,3.0,GLS157,GLS157,Y42H9AR.1,Y42H9AR.1,Y42H9AR.1(ok3146)IV,0,C. elegans,,,George Sutphin,CGC,Backcrossed strain RB2314 (GS6) 5x to N2 (Kaeberlein Lab; GS127). Backcross plate E. Acknowledge C. elegans Gene Knockout Project at OMRF (http://www.mutantfactory.ouhsc.edu).
+8,2,158.0,4.0,GLS158,GLS158,Y42H9AR.1,Y42H9AR.1,Y42H9AR.1(ok3146)IV,0,C. elegans,,,George Sutphin,CGC,Backcrossed strain RB2314 (GS6) 5x to N2 (Kaeberlein Lab; GS127). Backcross plate P. Acknowledge C. elegans Gene Knockout Project at OMRF (http://www.mutantfactory.ouhsc.edu).
+8,2,159.0,4.0,GLS159,VC3075,tsp-3,Y39E4B.4,tsp-3(ok3729)III,5,C. elegans,,,George Sutphin,CGC,Backcrossed strain VC3075 (GS143) 5x to N2 (Kaeberlein Lab; GS127). Backcross plate C. Acknowledge C. elegans Reverse Genetics Core Facility at UBC (http://www.celeganskoconsortium.omrf.org).
+8,2,160.0,4.0,GLS160,VC3075,tsp-3,Y39E4B.4,tsp-3(ok3729)III,5,C. elegans,,,George Sutphin,CGC,Backcrossed strain VC3075 (GS143) 5x to N2 (Kaeberlein Lab; GS127). Backcross plate E. Acknowledge C. elegans Reverse Genetics Core Facility at UBC (http://www.celeganskoconsortium.omrf.org).
+9,3-A1,161.0,4.0,GLS161,DF166,RCAN-1::GFP,F54E7.7,him-5(e1490)V; NyIs1[rcn-1>rcn-1::gfp + rol-6],0,C. elegans,2016-12-15,,George Sutphin,"David Fitch, New York University",Aka RCN-1::GFP. Acknowledge Dr. David Fitch. Reference PMID: 21408209.
+9,3-A2,162.0,4.0,GLS162,EN5403,UNC-36::GFP,C50C3.9,krSi3[UNC-36::GFP]; e251,0,C. elegans,2016-12-15,,George Sutphin,"Jean-Louis Bessereau, Université Claude Bernard Lyon 1",Acknowledge Dr. Jean-Louis Bessereau. Reference PMID: 25232639.
+9,3-A3,163.0,4.0,GLS163,AM140,Q35,,rmIs132[unc-54p::Q35::YFP]I,5,C. elegans,,,George Sutphin,CGC,Q35::YFP progressive transition from soluble to aggregated as they age. Refrozen from GS103 on 1/19/2017.
+9,3-A4,164.0,2.0,GLS164,GLS130,haao-1,K06A4.5,haao-1(tm4627)V,5,C. elegans,,,Grant Backer,Korstanje Lab,"Backcrossed strain FX04627 (GS119) 5x to N2 (Kaeberlein Lab; GS127). Refrozen from GS130 on 1/19/2017. Last tube taken from back up box, refrozen on 1/17/2024"
+9,3-A5,165.0,1.0,GLS165,GLS129,flu-2,C15H9.7,flu-2(tm4924)X,5,C. elegans,2015-11-10,,Grant Backer,Korstanje Lab,"Backcrossed strain FX04924 (GS118) 5x to N2 (Kaeberlein Lab; GS127). . Refrozen from GS129 on 2/2/2017.Last tube taken from back up box, refrozen on 1/17/2024"
+9,3-A6,166.0,1.0,GLS166,GA187,sod-1,C15F1.7,sod-1(tm776)II,3,C. elegans,2017-02-15,,George Sutphin,CGC,Superficially wild-type.
+9,3-A7,167.0,2.0,GLS167,RB1072,sod-2,F10D11.1,sod-2(ok1030)I,0,C. elegans,2017-02-20,,George Sutphin,CGC,Acknowledge C. elegans Gene Knockout Project at OMRF (http://www.mutantfactory.ouhsc.edu).
+9,3-A8,168.0,3.0,GLS168,MAH23,rrf-1,F26A3.8,rrf-1(pk1417)I,4,C. elegans,,,George Sutphin,"Aric Rogers, MDIBL","Germline-specific RNAi, with caveats (see PMID:22574120). pk1417 outcrossed 4 times to N2. Reference: Kumsta C, Hansen M. PLoS One. 2012;7(5):e35428."
+9,3-A9,169.0,3.0,GLS169,NR222,rde-1 lin-26p::rde-1,,rde-1(ne219)V kzIs9 [(pKK1260) lin-26p::NLS::GFP + (pKK1253) lin-26p::rde-1 + rol-6(su1006)],3,C. elegans,,,George Sutphin,"Aric Rogers, MDIBL",Hypodermis-specific RNAi. kzIs9 [(pKK1260) lin-26p::NLS::GFP + (pKK1253) lin-26p::rde-1 + rol-6(su1006)]. Rollers.
+9,3-B1,170.0,3.0,GLS170,TU3335,lin-15B unc-119p::sid-1 mec-6p::mec-6,,lin-15B(n744)X uIs57[unc-119p::YFP + unc-119p::sid-1 + mec-6p::mec-6],8,C. elegans,,,George Sutphin,"Aric Rogers, MDIBL",Hypersensitive neuronal RNAi by feeding. uIs57 [unc-119p::YFP + unc-119p::sid-1 + mec-6p::mec-6]; appears to map to LG V. Superficially wild-type. YFP detectable in neurons. Maintain 15-20 degrees; sick at 25 C. Reference: Calixto et al. (2010) Nature Methods 7:554-9.
+9,3-B2,171.0,3.0,GLS171,VP303,rde-1 nhx-2p::rde-1,,rde-1(ne219)V kbIs7 [nhx-2p::rde-1 + rol-6(su1006)],3,C. elegans,,,George Sutphin,"Aric Rogers, MDIBL","Intestine-specific RNAi. kbIs7 [nhx-2p::rde-1 + rol-6(su1006)]. Rollers. Maintain under normal conditions. Reference: Espelt MV, et al., J Gen Physiol. 2005 Oct;126(4):379-92."
+9,3-B3,172.0,3.0,GLS172,WM118,rde-1 myo-3p::rde-1,,rde-1(ne300)V neIs9[myo-3p::HA::RDE-1 + rol-6(su1006)],,C. elegans,,,George Sutphin,"Aric Rogers, MDIBL",Muscle-specific RNAi. neIs9 [myo-3::HA::RDE-1 + rol-6(su1006)]. Rollers.
+9,3-B4,173.0,2.0,GLS173,GLS130,haao-1(tm4627),K06A4.5,haao-1(tm4627)V,5,C. elegans,2018-02-06,,Hope Dang,Korstanje Lab,Backcrossed strain FX04627 (GS119) 5x to N2 (Kaeberlein Lab; GS127). Refrozen from GS130 on 1/19/2017.
+9,3-B5,174.0,4.0,,CL2122,MTL-2::GFP,,dvIs15 [(pPD30.38) unc-54(vector) + (pCL26) mtl-2::GFP]. ,,C. elegans,2018-04-25,,Hope Dang,CGC,Control strain for CL2120. Phenotype apparently WT. No amyloid control for GMC101 and CL2120
+9,3-B6,175.0,3.0,,CL2355,smg-1(cc546) dvIs50 ,,dvIs50 [pCL45 (snb-1::Abeta 1-42::3' UTR(long) + mtl-2::GFP] I. ,,C. elegans,2018-04-26,,Hope Dang,CGC,"Maintain at 16C. Pan-neuronal expresion of human Abeta peptide. Constitutive intestinal expression of GFP from marker transgene. Strain shows deficits in chemotaxis, associative learning, and thrashing in liquid. Strain also has incomplete sterility due to germline proliferation defects and embryonic lethality. Maintain at 16 C to reduce selection against transgene, although this does not alter the partial sterility. "
+9,3-B7,176.0,4.0,,CL2120,dvIs14,,dvIs14 [(pCL12) unc-54::Abeta 1-42 + (pCL26) mtl-2::GFP],,C. elegans,2018-06-27,2018-08-07 00:00:00,Hope Dang,CGC,"amyloid beta (3-42), ts paralysis at 25C, maintain at 20C"
+9,3-B8,177.0,4.0,,FX04017,rict-1(tm4017),,rict-1(tm4017),,C. elegans,2018-07-03,2018-08-07 00:00:00,Hope Dang,Shohei Mitani,
+9,3-B9,178.0,4.0,,FX31084,rict-1(tm8580) ,,rict-1(tm8580) II,,C. elegans,2018-07-03,2018-08-07 00:00:00,Hope Dang,Shohei Mitani,
+9,3-C1,179.0,3.0,,LX959,vsIs13; lin-15B&lin-15A(n765),,vsIs13 IV; lin-15B&lin-15A(n765) X,,C. elegans,2018-06-21,2018-08-07 00:00:00,Hope Dang,CGC,"GFP expression in all 6 VC neurons, plus posterior intestine"
+9,3-C2,180.0,2.0,,BR6563,byIs161; bkIs10 ,,byIs161 [rab-3p::F3(delta)K280 + myo-2p::mCherry]. bkIs10 [aex-3p::h4R1NtauV337M + myo-2p::GFP],,C. elegans,2018-06-21,2018-08-07 00:00:00,Hope Dang,CGC,pro-aggregation tau strain
+10-1,3-C3,,4.0,,BR5486,byIs162; bkIs10,,byIs162 [rab-3p::F3(delta)K280(I277P)(I308P) + myo-2p::mCherry]. bkIs10 [aex-3p::h4R1NtauV337M + myo-2p::GFP],,C. elegans,2018-06-21,2018-08-07 00:00:00,Hope Dang,CGC,anti-aggregation tau strain
+10-5,3-C4,,4.0,,GMC101,dvIs100 ,,dvIs100 [unc-54p::A-beta-1-42::unc-54 3'-UTR + mtl-2p::GFP],,C. elegans,2018-06-21,2018-08-07 00:00:00,Hope Dang,CGC,"amyloid beta (1-42), ts paralysis at 25C, maintain at 20C"
+10-10,3-C5,,4.0,,RB754,aak-2(ok524) ,T01C8.1,aak-2(ok524) X,,C. elegans,2018-06-21,2018-08-07 00:00:00,Hope Dang,CGC,
+10-14,3-C6,,4.0,,JIN1375,hlh-30,,hlh-30(tm1978) IV,,,2025-05-01,2025-05-19 00:00:00,Hope Dang,CGC,"Superficially wild-type. Grows at standard conditions. Reference: Settembre C, et al. Nat Cell Biol. 2013 Jun;15(6):647-58. Refrozen June 2025"
+10-19,3-C7,,4.0,,BQ1,akt-1(mg306) ,,akt-1(mg306) V,,C. elegans,2018-06-21,2018-08-07 00:00:00,Hope Dang,CGC,
+10-23,3-C8,,2.0,,JPS617,ptph-1::GFP,,control strain with just GFP-labeled neurons (ptph-1::GFP),,C. elegans,2018-07-11,2018-08-07 00:00:00,Hope Dang,"Luisa Scott, Stanford University  School of Medicine",
+10-28,3-C9,,1.0,,JPS809,prab-3::hAPP695::mCherry,,single copy integrated prab-3::hAPP695::mCherry {neuron::GFP also},,C. elegans,2018-07-11,2018-08-07 00:00:00,Hope Dang,"Luisa Scott, Stanford University  School of Medicine",
+10-32,3-D1,,2.0,,CK1044,Paex-3::Tau,,,,C. elegans,2018-08-01,2018-08-07 00:00:00,Hope Dang,"Brian Kraemer, University of Washington",Low expression tau
+10-37,3-D2,,3.0,,CK10,Paex-3::Tau(V337M),,,,C. elegans,2018-08-01,2018-08-07 00:00:00,Hope Dang,"Brian Kraemer, University of Washington","Low expression tau, similar to CK1044"
+10-41,3-D3,,3.0,,CK1441,Paex-3::Tau,,,,C. elegans,2018-08-01,2018-08-07 00:00:00,Hope Dang,"Brian Kraemer, University of Washington",Low expression tau
+10-46,3-D4,,4.0,,KG1366,,,,,C. elegans,2018-08-02,2018-08-07 00:00:00,Hope Dang,,
+10-50,3-D5,,3.0,,LC33,bas-1(tm351) ,,bas-1(tm351) III,,C. elegans,2018-08-17,,Hope Dang,CGC,Serotonin-deficient by anti-serotonin straining. Likely also dopamine-deficient (but not tested).
+10-55,3-D6,,1.0,,RB795,F28H6.3(ok585),,F28H6.3(ok585) X,,C. elegans,2018-08-17,,Hope Dang,CGC,
+10-59,3-D7,,3.0,,RB834,amx-1(ok659),R13G10.2,amx-1(ok659) III,,C. elegans,2018-08-17,,Hope Dang,CGC,
+10-64,3-D8,,3.0,,RB865,C05D2.3(ok703) ,,C05D2.3(ok703) III,,C. elegans,2018-08-17,,Hope Dang,CGC,
+10-68,3-D9,,3.0,,RB993,tdc-1(ok914),K01C8.3,tdc-1(ok914) II,,C. elegans,2018-08-17,Hope Dang,Hope Dang,CGC,
+10-73,3-E1,,3.0,,RB1190,amx-2(ok1235),B0019.1,amx-2(ok1235) I,,C. elegans,2018-08-17,Hope Dang,,CGC,
+10-77,3-E2,,4.0,,GLS198,byIs161; bkIs10; smg-1(cc546) dvIs50 ,,byIs161 [rab-3p::F3(delta)K280 + myo-2p::mCherry]; bkIs10 [aex-3p::h4R1NtauV337M + myo-2p::GFP]; smg-1(cc546) dvIs50[pCL45 (snb-1::Abeta 1-42::3' UTR(long) + mtl-2::GFP] I. ,,C. elegans,,,Hope Dang,Hope Dang,
+10-18,3-E3,,4.0,,GLS199,byIs161; bkIs10;  dvIs15,,byIs161 [rab-3p::F3(delta)K280 + myo-2p::mCherry]; bkIs10 [aex-3p::h4R1NtauV337M + myo-2p::GFP]; dvIs15 [(pPD30.38) unc-54(vector) + (pCL26) mtl-2::GFP]. ,,C. elegans,,,Hope Dang,Hope Dang,
+10-54,3-E4,,2.0,,CK144,Paex-3::Tau,,                                   ,,C. elegans,,,Hope Dang,"Brian Kraemer, University of Washington","Higher expression tau, 4 times of CK10"
+11-1,3-E5,,4.0,,BR6563 males,byIs161; bkIs10   Males x Hermaphrodites,,byIs161 [rab-3p::F3(delta)K280 + myo-2p::mCherry]. bkIs10 [aex-3p::h4R1NtauV337M + myo-2p::GFP],,C. elegans,2018-06-21,2018-08-07 00:00:00,Hope Dang,CGC,pro-aggregation tau strain
+11-5,3-E6,,4.0,,CE541,sbp-1,,sbp-1(ep79) III,,,2025-05-01,2025-05-19 00:00:00,Hope Dang,CGC,"Slow growth, low fat stores. Viable at 15C, not at 25C. Slightly Dpy, reduced brood size, low penetrance. Maintain under normal conditions. Reference: Liang et al., (2010) PlosOne 5:3 e9869."
+11-10,3-E7,,4.0,,GLS203,byIs162; bkIs10;  dvIs15,,byIs162 [rab-3p::F3(delta)K280(I277P)(I308P) + myo-2p::mCherry]. bkIs10 [aex-3p::h4R1NtauV337M + myo-2p::GFP]; dvIs15 [(pPD30.38) unc-54(vector) + (pCL26) mtl-2::GFP]. ,,C. elegans,,,,,
+11-14,3-E8,,4.0,,GLS204,byIs162; bkIs10;  smg-1(cc546) dvIs50 ,,byIs162 [rab-3p::F3(delta)K280(I277P)(I308P) + myo-2p::mCherry]; bkIs10 [aex-3p::h4R1NtauV337M + myo-2p::GFP]; smg-1(cc546) dvIs50[pCL45 (snb-1::Abeta 1-42::3' UTR(long) + mtl-2::GFP] I. ,,C. elegans,,,,,
+11-19,3-E9,,4.0,,GLS205,byIs162; bkIs10; prab-3::hAPP695::mCherry,,byIs162 [rab-3p::F3(delta)K280(I277P)(I308P) + myo-2p::mCherry]. bkIs10 [aex-3p::h4R1NtauV337M + myo-2p::GFP]; single copy integrated prab-3::hAPP695::mCherry {neuron::GFP also},,C. elegans,,,,,
+11-23,3-F1,,4.0,,RB1653,ctl-3,Y54G11A.13,ctl-3(ok2042) II,0,C. elegans,,,Emily Turner,CGC,Acknowledge C. elegans Gene Knockout Project at OMRF (http://www.mutantfactory.ouhsc.edu).
+11-28,3-F2,,4.0,,MQ1766,sod-2; sod-5 sod-1; sod-4; sod-3,,sod-2(ok1030)I; sod-5(tm1146) sod-1(tm783 II; sod-4(gk101) III; sod-3(tm760) X,5,C. elegans,,,Emily Turner,CGC,"Normal lifespan. Increased sensitivity to oxidative stress, osmotic stress, cold stress, and heat stress. Slow development, slow physiological rates (thrashing, defecation), and reduced fertility. "
+11-32,3-F3,,4.0,,GA416,sod-4,,sod-4(gk101) III,6,C. elegans,,,Emily Turner,CGC,Superficially wild-type
+11-37,3-F4,,4.0,,GA480,sod-2; sod-3,,sod-2(gk257) I; sod-3(tm760) X,,C. elegans,,,Emily Turner,CGC,Slow growing. Reduced brood size. Hypersensitive to oxidative stress. 
+11-41,3-F5,,4.0,,GA503,sod-5,,sod-5(tm1146) II,7,C. elegans,,,Emily Turner,CGC,Superficially wild-type
+11-46,3-F6,,4.0,,RB1197,ctl-1,Y54G11A.6,ctl-1(ok1242) II,0,C. elegans,,,Emily Turner,CGC,Acknowledge C. elegans Gene Knockout Project at OMRF (http://www.mutantfactory.ouhsc.edu).
+11-50,3-F7,,4.0,,MD3011,bcls78; myo-3::mitoGFP,,bcls78 I,6,C. elegans,,,Emily Turner,S. Rolland,Rollers. MitoGFP positive body wall muscle cells. 
+11-55,3-F8,,2.0,,SJ4103,myo-3::GFP(mit),,zcls14 [myo-3::GFP(mit)],3,C. elegans,,,Emily Turner,CGC,Stable transgenic line expressing GFP at high levels in mitochondria of body wall muscle. Slight developmental delay and reduced brood size observed. 
+11-59,3-F9,,4.0,,VC754,ctl-2,Y54G11A.5a,ctl-2(ok1137) II,0,C. elegans,,,Emily Turner,CGC,Acknowledge C. elegans Reverse Genetics Core Facility at UBC
+11-64,3-G1,,3.0,,GH636,umps-1(zu456),,umps-1(zu456) III,6,C. elegans,,,Emily Turner,CGC,"Reference: Levitte S, et al. FEBS J 2010 Mar; 227(6): 1420-39"
+11-68,3-G2,,4.0,,SP507,umps-1(mn160),,umps-1(mn160) III,,C. elegans,,,Emily Turner,CGC,"Hypersensitive to UV and X irradiation, not to MMS. Hermaphrodites less viable than males at 25C, equally viable at 15C"
+11-73,3-G3,,2.0,,EU2917,drp-1::GFP,,drp-1(or1941[drp-1::GFP]) IV.,0,C. elegans,,,Emily Turner,CGC,"Endogenous drp-1 locus tagged with GFP using CRISPR/Cas9. Reference: Lowry J, et al. G3 (Bethesda). 2015 Aug 26;5(11):2241-55."
+11-77,3-G4,,3.0,,TH37,dpy-11 unc-23,,dpy-11(e224) unc-23(e25) V.,,C. elegans,,,Emily Turner,CGC,Dpy. Unc. 
+11-18,3-G5,,4.0,,RT4,pwIs1(alx-1p-GFP-alx-1; pRF4),,pwIs1[alx-1p-GFP-alx-1; pRF4],,C. elegans,,,Emily Turner,,
+11-54,3-G6,,4.0,,FU619,vps-29(tm1320),,vps-29(tm1320),,C. elegans,,,Emily Turner,,
+12-1,3-G7,,4.0,,GS2547,unc-42(e270) sqt-3(sc63) myo-3p::GFP,,unc-42(e270) sqt-3(sc63); arIs37[myo-3p::ssGFP + dpy-20(+)] ,,C. elegans,,,Emily Turner,,
+12-5,3-G8,,3.0,,NP1597,LMP-1::RFP elt-2p:MRP-1:GFP,,unc-119(ed3) III; cdIs194(LMP-1::TagRFP(S158T); unc-119(+)-ttx-3::GFP); cdIs212(Pelt-2::MRP-4::linkerGFP; unc-119(+)),,C. elegans,,,Emily Turner,,
+12-10,3-G9,,4.0,,VC3044,dbl-1,T25F10.2,dbl-1(ok3749) V,0,C. elegans,,,Emily Turner,CGC,Acknowledge C. elegans Reverse Genetics Core Facility at UBC. Refrozen June 2025
+12-14,3-H1,,4.0,,VC794,memo-1,C37C3.8a,memo-1(gk345) V,0,C. elegans,,,Emily Turner,CGC,Superficially wild type.  Acknowledge C. elegans Reverse Genetics Core Facility at UBC
+12-19,3-H2,,4.0,,CB767,bli-3,,bli-3(e767) I,,C. elegans,,,Emily Turner,CGC,Blistered cuticle. Bursae abnormal. Dpy. Males abnormal. M-MATING-NO SUCCESS.
+12-23,3-H3,,4.0,,RB1823,gst-4 & msp-38,"K08F4.7, K08F4.8",gst-4&msp-38(ok2358) IV,0,C. elegans,,,Emily Turner,CGC,"K08F4.7, K08F4.8. Homozygous. Acknowledge C. elegans Gene Knockout Project at OMRF."
+12-28,3-H4,,4.0,,QV225,skn-1,,skn-1(zj15) IV,4,C. elegans,,,Emily Turner,CGC,Hypomorphic allele of skn-1 that may be propagated as a homozygote. High rate of embryonic lethality and slightly lower brood size compared to N2
+12-32,3-H5,,4.0,,LD1171,ldIs3 [gcs-1p::GFP + rol-6(su1006)],,ldIs3 [gcs-1p::GFP + rol-6(su1006)],,C. elegans,,,Hope Dang,CGC,"Rollers. Reference: Wang J, et al. PLoS Genet. 2010 Aug 5;6(8). pii: e1001048."
+12-37,3-H6,,4.0,,ZG120,unc-119(ed3); iaIs7 ,,unc-119(ed3) III; iaIs7 IV.,,C. elegans,,,Hope Dang,CGC,"iaIs7 [nhr-57p::GFP + unc-119(+)] IV. GFP expression is very weak. Reference: Shen C, et al. Genetics. 2006 Nov;174(3):1205-14. Refrozen on 5/1/21 by Hope Dang."
+12-41,3-H7,,4.0,,GR2245,skn-1,T19E7.2,skn-1(mg570) IV,1,C. elegans,,,Emily Turner,CGC,"*Tubes in freezer labeled incorrectly as ""GI22245"". Superficially wild-type. "
+12-46,3-H8,,4.0,,KU25,pmk-1,B0218.3,pmk-1(km25) IV,6,C. elegans,,,Emily Turner,CGC,Sensitive to heavy metal and oxidative stress. Refrozen June 2025
+12-50,3-H9,,3.0,,JT10800,ncr-2(nr2023); ncr-1(nr2022),,ncr-2(nr2023) III; ncr-1(nr2022) X,,C. elegans,,2020-11-11 00:00:00,Emily Turner,CGC,"Daf-c (partial dauer), vulval abnormalities, broken alae, gonadal migration defects, low brood size, short lifespan. Strain is healthier when recovered from starved plates by chunking than when continuously propagated. Do not distribute this strain; other labs should request it from the CGC. This strain cannot be distributed to commercial organizations. This strain cannot be used for any commercial purpose or for work on human subjects."
+12-55,3-I1,,4.0,,RB643,msp-38,K08F4.8,msp-38(ok346) IV,,C. elegans,,,,,
+12-59,3-I2,,3.0,,NP1328,LMP-1::RFP,,unc-119(ed3)III; cdIs194[plmp-1::lmp-1::TagRFP(S158T); unc-119(+)-ttx-3::gfp],,C. elegans,,,,,
+12-64,3-I3,,4.0,,GR2183,mgls72 [rpt-3p::GFP + dpy-5(+)],,mgIs72 [rpt-3p::GFP + dpy-5(+)] II,,C. elegans,,2020-11-11 00:00:00,Emily Turner,CGC,Reporter of proteasome subunit expression can be used to assay skn-1a-dependent regulation of proteasome subunit genes. mgIs72 [rpt-3::gfp] integrated transgene was generated from sEx15003.
+12-68,3-I4,,4.0,,VP198,kbIs5 [gpdh-1p::GFP + rol-6(su1006)],,,,C. elegans,,2020-11-11 00:00:00,Emily Turner,CGC,"Rollers, though not obvious in all animals. Maintain under normal conditions. GFP expressed intestine and hypodermis only during hypertonic stress; not induced by other stressers. Reference: Lamitina T, et al. Proc Natl Acad Sci USA. 2006 Aug 8;103(32):12173-8."
+12-73,3-I5,,3.0,,WS4274,HIF-1::GFP,,unc-119(ed3) III; opIs206[hif-1p::hif-1(genomic)::GFP::hif-1 3'UTR + unc-119(+)],,C. elegans,,,,,
+12-77,3-I6,,4.0,,VK2878,nhx-2p::LGG-1::CemOrange2(intestine) myo-2p::GFP(muscle),,vkIs2878[nhx-2p::CemOrange2::lgg-1 + myo-2p::GFP],,C. elegans,,,,,Autophagosome targeted CemOrange2 in intestine -- brighter/more puncta when autophagosome formation is upregulated.
+12-18,3-I7,,4.0,,VK2697,nhx-2p::LMP-1::CemOrange2(intestine) myo-2p::GFP(muscle),,vkIs2697[nhx-2p::lmp-1::CemOrange2 + myo-2p::GFP],,C. elegans,,,,,Lysosome targeted CemOrange2 in intestine
+12-54,3-I8,,4.0,,CEB38,,,,,C. elegans,,,,,
+13-A1,3-I9,,4.0,,CP793,,,,,C. elegans,,,,,
+13-A5,4-A1,,4.0,,BR4006,pink-1 PINK-1::GFP,,pink-1(tm1779) II; byEx655[pink-1p::pink-1::GFP + myo-2p::mCherry + herring sperm DNA],,C. elegans,,,,,
+13-B1,4-A2,,4.0,,OG532,hsf-1 HSF-1::GFP,,hsf-1(sy441) I; drSi13[hsf-1p::hsf-1::GFP::unc-54 3'UTR + Cbr-unc-119(+)] II,,C. elegans,,,,,
+13-B5,4-A3,,4.0,,RW11084,unc-119(ed3) III; zuIs178 V; stIs10024; stIs10932., ,zuIs178 [his-72(1kb 5' UTR)::his-72::SRPVAT::GFP::his-72 (1KB 3' UTR) + 5.7 kb XbaI - HindIII unc-119(+)]. stIs10024 [pie-1::H2B::GFP::pie-1 3' UTR + unc-119(+)]. stIs10932 [nhr-49.c::H1-wCherry + unc-119(+)].,,C. elegans,,,,,
+13-C1,4-A4,,4.0,,OP341,skn-1::TY::GFP::3xFLAG,,unc-119(ed3) III; wgIs341[skn-1::TY1::EGFP::3xFLAG + unc-119(+)],,C. elegans,,,,,
+13-C5,4-A5,,4.0,,CF2570,daf-16 daf-2 ges-1p::GFP::DAF-16(intestine), ,daf-16(mu86) I; daf-2(e1370) III; muIs142[ges-1p::GFP::daf-16(cDNA) + odr-1p::RFP],,C. elegans,,,,,Intestine-specific expression of DAF-16 in a daf-16 daf-2 background
+13-D1,4-A6,,3.0,,VC143,elt-3,,elt-3(gk121) X.,,C. elegans,,,,,
+13-D5,4-A7,,4.0,,MT3571,osm-8,,osm-8(n1518) II. ,,C. elegans,,,,,
+13-E1,4-A8,,4.0,,KB3, ,,kgb-1(um3) IV.,,C. elegans,,,,,
+13-E5,4-A9,,4.0,,TM3294,gst-4,,gst-4(tm3294),,C. elegans,,,,,
+13-F1,4-B1,,3.0,,SUN01,tdo-2(syb2675),,tdo-2(syb2675),,C. elegans,2020-07-13,,Hope Dang,"Constructed by SunyBiotech, order ID SU01",PHX2675. Tubes labeled SU01
+13-F5,4-B2,,3.0,,SUN04,got-2.2(syb2676),,got-2.2(syb2676),,C. elegans,2020-07-13,,Hope Dang,"Constructed by SunyBiotech, order ID SU04",PHX2676. Tubes labeled SU04
+13-G1,4-B3,,1.0,,SUN09,haao-1(syb2665)[HAAO-1::mScarlet],,haao-1(syb2665)[HAAO-1::mScarlet],,C. elegans,2020-07-13,,Hope Dang,"Constructed by SunyBiotech, order ID SU09",PHX2665. Tubes labeled SU09
+13-G5,4-B4,,1.0,,SUN10,kynu-1(syb2691)[KYNU-1::mScarlet],,kynu-1(syb2691)[KYNU-1::mScarlet],,C. elegans,2020-07-13,,Hope Dang,"Constructed by SunyBiotech, order ID SU10",PHX2691. Tubes labeled SU10
+13-H1,4-B5,,4.0,,CL2070,dvIs70 [hsp-16.2p::GFP + rol-6(su1006)],,dvIs70 [hsp-16.2p::GFP + rol-6(su1006)],,C. elegans,,,Hope Dang,CGC,Roller. Integrated array containg pCL25 (hsp-16-2 promoter/GFP transcriptional fusion) and pRF4. Shows robust induction of GFP expression after heat induction. Not known where dvIs70 is integrated.
+13-H5,4-B6,,1.0,,CL2166,dvIs19 [(pAF15)gst-4p::GFP::NLS] ,,dvIs19 [(pAF15)gst-4p::GFP::NLS] III,,C. elegans,,,Hope Dang,CGC,Oxidative stress-inducible GFP.
+13-I1,4-B7,,4.0,,SJ4005,zcIs4 [hsp-4::GFP] ,,zcIs4 [hsp-4::GFP] V,,C. elegans,,,Hope Dang,CGC,"The hsp-4::GFP reporter integrated within the cluster of LG V. Animals express low levels of GFP under basal conditions. However, expression in the gut and hypodermis can increase in response to tunicamycin treatment or heat shock. Refrozen on 5/1/21 by Hope Dang."
+13-I5,4-B8,,4.0,,CF1553,muIs84 [(pAD76) sod-3p::GFP + rol-6(su1006)],,muIs84 [(pAD76) sod-3p::GFP + rol-6(su1006)],,C. elegans,,,Hope Dang,CGC,"Green expression in head, tail and around vulva. Many animals roll weakly or not at all, but still express GFP. Grows at all temperatures. Refrozen on 6/1/21 by Hope Dang. "
+13-B9,4-B9,,4.0,,VK2620,vkEx2620 [nhx-2p::aman-2::CemOrange2 + myo-2p::GFP],,vkEx2620 [nhx-2p::aman-2::CemOrange2 + myo-2p::GFP],,C. elegans,,,Hope Dang,CGC,Wild-type animals expressing AMAN-2::CemOrange2 under the intestinal-specific nhx-2 promoter. AMAN-2 is localized to the Golgi. Pick animals with GFP+ pharynx to maintain.
+13-F9,4-C1,,2.0,,DMS640,nIs470 [cysl-2p::GFP + myo-2p::mCherry],,nIs470 [cysl-2p::GFP + myo-2p::mCherry] IV,,C. elegans,,2020-11-11 00:00:00,Emily Turner,CGC,"The cysl-2::GFP reporter is activated by HIF-1 in egl-9, rhy-1 or vhl-1 loss-of-function mutants."
+14-A1,4-C2,,3.0,,SJ4058,zcIs9 [hsp-60::GFP + lin-15(+)],,zcIs9 [hsp-60::GFP + lin-15(+)],,C. elegans,,2020-11-11 00:00:00,Emily Turner,CGC,"Stable transgenic line with low basal GFP expression, mainly in the tail, observed from L1 to adult. Induced by perturbations of mitochondrial folding environment."
+14-A5,4-C3,,4.0,,COP677,ncr-1(knu4),,ncr-1(knu4) X,,C. elegans,,2020-11-11 00:00:00,Emily Turner,CGC,Cholesterol-sensitive. Smaller broods and sizes upon serial cholesterol deprivation. This strain may not be distributed to commercial or for-profit entities. Please contact ethan@perlara.com for more information.
+14-B1,4-C4,,4.0,,SU02,nkat-1(syb2779),F28H6.3.1,,,C. elegans,2020-12-14,2020-12-15 00:00:00,Emily Turner,"Constructed by SunyBiotech, order ID SU02",
+14-B5,4-C5,,3.0,,SU05,kmo-2(syb2703) ,R07B7.4a.2,,,C. elegans,2020-11-17,2020-11-19 00:00:00,Emily Turner,"Constructed by SunyBiotech, order ID SU05",PHX2703
+14-C1,4-C6,,4.0,,SU07,tdo-2(syb2698) mScarlet,C28H8.11a.1,,,C. elegans,2020-11-17,2020-11-19 00:00:00,Emily Turner,"Constructed by SunyBiotech, order ID SU07","PHX2698, tdo-2 knock in tagged with mscarlet"
+14-C5,4-C7,,4.0,,SU11,aman-2(syb2795),F58H1.1.1,,,C. elegans,2020-11-17,2020-11-19 00:00:00,Emily Turner,"Constructed by SunyBiotech, order ID SU11",
+14-D1,4-C8,,3.0,,SU06,afmd-2(syb2713),Y45F10A.3b.1,,,C. elegans,2020-11-18,2020-11-19 00:00:00,Emily Turner,"Constructed by SunyBiotech, order ID SU06",PHX2713
+14-D5,4-C9,,3.0,,RB1042,parp-1,Y71F9AL.18,parp-1(ok988) I,,C. elegans,2020-11-25,2020-12-01 00:00:00,Emily Turner,CGC,"provided by the C. elegans Gene Knockout Project at the Oklahoma Medical Research Foundation, which was part of the International C. elegans Gene Knockout Consortium, which should be acknowledged in any publications resulting from its use. Paper_evidence WBPaper00041807"
+14-E1,4-D1,,4.0,,VC130,parg-1,F20C5.1,parg-1(gk120) IV,,C. elegans,2020-11-25,2020-12-01 00:00:00,Emily Turner,CGC,"provided by the C. elegans Reverse Genetics Core Facility at the University of British Columbia, which is part of the international C. elegans Gene Knockout Consortium, which should be acknowledged in any publications resulting from its use. Paper_evidence WBPaper00041807"
+14-E5,4-D2,,4.0,,VC641,parg-2,H23L24.5,parg-2(ok980) IV,,C. elegans,2020-11-25,2020-12-01 00:00:00,Emily Turner,CGC,"Superficially wild type. Attribution: This strain was provided by the C. elegans Reverse Genetics Core Facility at the University of British Columbia, which is part of the international C. elegans Gene Knockout Consortium, which should be acknowledged in any publications resulting from its use. Paper_evidence WBPaper00041807"
+14-F1,4-D3,,3.0,,VC1171,parp-2,E02H1.4,parp-2(ok344) II,,C. elegans,2020-11-25,2020-12-01 00:00:00,Emily Turner,CGC,"provided by the C. elegans Reverse Genetics Core Facility at the University of British Columbia, which is part of the international C. elegans Gene Knockout Consortium, which should be acknowledged in any publications resulting from its use. Paper_evidence WBPaper00041807"
+14-F5,4-D4,,2.0,,VC130 male,parg-1,F20C5.1,parg-1(gk120) IV,,C. elegans,2020-12-15,,Emily Turner,CGC,spontaneous males
+14-G1,4-D5,,3.0,,SU03,got-2.1(syb2789),C44E4.3.1,,,C. elegans,2020-12-11,2020-12-14 00:00:00,Emily Turner,"Constructed by SunyBiotech, order ID SU03",PHX2789
+14-G5,4-D6,,4.0,,CE1338,epIs14 [sbp-1p::GFP],,,,C. elegans,2021-02-15,,Hope Dang,,
+14-H1,4-D7,,3.0,,GA631,lin-15B&lin-15A(n765); wuIs177.,,,,C. elegans,2021-05-01,,Hope Dang,,
+14-H5,4-D8,,4.0,,VH725,glod-4(OE),,hdEx231 [C16C10.10::GFP + pha-1(+)],,,2025-04-02,2025-04-07 00:00:00,Emily Gardea,CGC,Ubiquitous expression of glyoxalase-1::GFP. Maintain at 25 C. Reference: Morcos M et al. (2008) Aging Cell 7(2):260-9.
+14-I1,4-D9,,4.0,,VC343,glod-4,C16C10.10,glod-4(gk189) III,,,2025-04-02,2025-04-07 00:00:00,Emily Gardea,CGC,"Superficially wild type. Attribution: This strain was provided by the C. elegans Reverse Genetics Core Facility at the University of British Columbia, which is part of the international C. elegans Gene Knockout Consortium, which should be acknowledged in any publications resulting from its use"
+14-I5,4-E1,,3.0,,RW12220,pha-4(st12220[pha-4::TY1::EGFP::3xFLAG]),,pha-4(st12220[pha-4::TY1::EGFP::3xFLAG]),,C. elegans,2021-05-01,,Hope Dang,,
+14-B9,4-E2,,4.0,,NP541,arIs37[myo-3p::ssGFP + dpy-20(+)] I; cdEx102(RME-8::mDsRed; pRF4),,,,C. elegans,2021-05-01,,Hope Dang,,
+14-F9,4-E3,,1.0,,SU10,kynu-1(syb2691)[KYNU-1::mScarlet],,,,C. elegans,2021-05-27,,Hope Dang,,
+15-A1,4-E4,,3.0,,SU09,haao-1(syb2665)[HAAO-1::mScarlet],,,,C. elegans,2021-05-27,,Hope Dang,,
+15-A5,4-E5,,4.0,,DA2123,lgg-1p::GFP,,adIs2122 [lgg-1p::GFP::lgg-1 + rol-6(su1006)],,,,2025-04-07 00:00:00,Hope Dang,CGC,Rollers
+15-B1,4-E6,,4.0,,BC15643,C16C10.10::GFP,,sEx15643 [rCes C16C10.10::GFP + pCeh361],,,2025-04-03,2025-04-07 00:00:00,Emily Gardea,CGC,"Maintain by picking WT. WT animals are GFP+. Strain construction supported by Genome British Columbia and Genome Canada. Please acknowledge McKay et al, Cold Spring Harbor Symposia on Quantitative Biology 68: 159-169 2004 (WBPaper00006525)."
+15-B5,4-E7,,3.0,,JV2,unc-119(ed3); jrIs2[rpl-17p::Grx1-roGFP2 + unc-119(+)],,jrIs2 [rpl-17p::Grx1-roGFP2 + unc-119(+)],,C. elegans,2021-06-01,,Hope Dang,,
+15-C1,4-E8,,3.0,,BC11778,dpy-5(e907); sEx11778,,sEx11778 [rCes F26E4.12::GFP + pCeh361].,,C. elegans,2021-06-01,,Hope Dang,,
+15-C5,4-E9,,2.0,,BC16434,dpy-5(e907); sEx16434,,sEx16434 [rCes K11H3.1::GFP + pCeh361].,,C. elegans,2021-06-01,,Hope Dang,,
+15-D1,4-F1,,4.0,,KAE9,seaSi39; unc-119(ed3),,seaSi39 [(pCFJ448) (eft-3p::fmo-2 + H2B::GFP) + Cbr-unc-119(+)] I.,,C. elegans,2021-06-01,,Hope Dang,,
+15-D5,4-F2,,4.0,,TH188,unc-119(ed3); ddIs105,,ddIs105 [sir-2.2::TY1::EGFP::3xFLAG(92C12) + unc-119(+)],,C. elegans,2021-06-01,,Hope Dang,,
+15-E1,4-F3,,4.0,,VC1668,fmo-2(ok2147),,mo-2(ok2147) IV.,,C. elegans,2021-06-01,,Hope Dang,,
+15-E5,4-F4,,4.0,,OP562,unc-119(tm4063); wgIs562,,wgIs562 [ahr-1::TY1::EGFP::3xFLAG + unc-119(+)],,C. elegans,2021-06-02,,Hope Dang,,
+15-F1,4-F5,,4.0,,N2 Leiser,wild type ,,Leiser N2 wildtype,,C. elegans,2021-06-02,,Hope Dang,,
+15-F5,4-F6,,4.0,,LEI001,fmo-2p::mCherry,,fmo-2p::mCherry (chr II insertion),,C. elegans,2021-06-02,,Hope Dang,,
+15-G1,4-F7,,4.0,,SU12,kynu-1(syb4323),,kynu-1(syb4323),,C. elegans,,2021-07-01 00:00:00,Hope Dang,"Constructed by SunyBiotech, order ID SU12",GFP PHX4323
+15-G5,4-F8,,3.0,,SU13,rer-1(syb4302),,rer-1(syb4302),,C. elegans,,2021-07-01 00:00:00,Hope Dang,"Constructed by SunyBiotech, order ID SU13",RFP PHX4302
+15-H1,4-F9,,4.0,,SU14,T24B1.1(syb4291),,T24B1.1(syb4291),,C. elegans,,2021-07-01 00:00:00,Hope Dang,"Constructed by SunyBiotech, order ID SU14",RFP PHX4291
+15-H5,4-G1,,4.0,,OP341 males,skn-1::TY::GFP::3xFLAG males,,unc-119(ed3) III; wgIs341[skn-1::TY1::EGFP::3xFLAG + unc-119(+)],,,,,,,
+15-I1,4-G2,,4.0,,JV1,unc-119(ed3) III; jrIs1,,unc-119(ed3) III; jrIs1,,,,,,,
+15-I5,4-G3,,4.0,,UL1709,unc-119(ed3) III; leEx1709,,unc-119(ed3) III; leEx1709,,,,,,,
+15-B9,4-G4,,4.0,,GK559,rer-1::GFP,,,,C. elegans,,,Emily Turner,Sato-Ken (Japan),
+15-F9,4-G5,,4.0,,GK260,rer-1::mCherry,,,,C. elegans,,,Emily Turner,Sato-Ken (Japan),
+16-1,4-G6,,4.0,,DDP1,uonEx1 [unc-54::alpha-synuclein::CFP + unc-54::alpha-synuclein::YFP(Venus)],,,,C. elegans,,,Emily Turner,CGC,"No additional transformation marker was included in the array. uonEx1 also known as SC+SV in reference publications. Reduced lifespan (25-35% lower) and reduced pharyngeal pumping rate compared to N2. Novel transgenic strain for monitoring the influence of genetic and/or environmental factors on the extent of alpha-synuclein aggregation using FRET signals. Because the two fusion proteins are separate, FRET is only possible when synuclein aggregation brings a CFP tag very close to a YFP tag within an aggregate. We suggest using this strain in conjunction with the positive control (high FRET) strain DDP2 or with strain NL5901 which shows opposite changes in FRET. References: Nagarajan A, et al. CNS Neurol Disord Drug Targets. 2015 Aug 21. Bodhicharla R, et al. CNS Neurol Disord Drug Targets. 2012 Dec;11(8):965-75."
+16-6,4-G7,,4.0,,DDP2,uonEx2 [unc-54::CFP::YFP(Venus)],,,,C. elegans,,,Emily Turner,CGC,"No additional transformation marker was included in the array. uonEx2 also known as CV in reference publications. Lifespan and pharyngeal pumping rates are similar to N2. This is a high-FRET positive control strain for use in conjunction with DDP1. Because the CFP and YFP protein sequences are covalently fused together (and show little evidence of cleavage), FRET should be high and largely invariant since both fluorescent moieties are always in close proximity. References: Nagarajan A, et al. CNS Neurol Disord Drug Targets. 2015 Aug 21. Bodhicharla R, et al. CNS Neurol Disord Drug Targets. 2012 Dec;11(8):965-75."
+16-11,4-G8,,4.0,,NL5901,pkIs2386 [unc-54p::alphasynuclein::YFP + unc-119(+)],,,,C. elegans,,,Emily Turner,CGC,"YFP expression in the muscles. unc-119 was in the background, but it may have been crossed out."
+16-16,4-G9,,4.0,,GLS130 male,haao-1(tm4627) males,K06A4.5,haao-1(tm4627)V,,C. elegans,,,Hope Dang,,Males generated from heat shock 
+16-21,4-H1,,4.0,,ANR166,ifg-1,,ifg-1 (cxTi9279),,C. elegans,,,Hope Dang,Aric Rogers,"slow growers, reach adulthood in 5 days.  More prone to vulval bursts when compared to wild-type strain. When doing timed egg lays, use 3x more worms than the wild-type because this strain lays fewer eggs and a decent amount of unfertilized eggs."
+16-26,4-H2,,4.0,,RB2603,ftn-1,C54F6.14,ftn-1(ok3625) V,,C. elegans,, ,Hope Dang,CGC,"provided by the C. elegans Gene Knockout Project at the Oklahoma Medical Research Foundation, which was part of the International C. elegans Gene Knockout Consortium, which should be acknowledged in any publications resulting from its use. Paper_evidence WBPaper00041807"
+16-31,4-H3,,4.0,,LD1008,ldEx9,,ldEx9 [skn-1(operon)::GFP + rol-6(su1006)],,C. elegans,,,Hope Dang,CGC,"Maintain by picking Rollers. Reference: Tullet JM, et al. Cell. 2008 Mar 21;132(6):1025-38."
+16-36,4-H4,,3.0,,LD1,ldIs7 (skn-1b/c::GFP),,ldIs7 [skn-1b/c::GFP + rol-6(su1006)],,C. elegans,,,Hope Dang,CGC,Rollers. Reference: An JH and Blackwell TK. Genes Dev. 2003 Aug 1;17(15):1882-93.
+16-41,4-H5,,4.0,,NB245,aak-1; aak-2,,aak-1(tm1944) III; aak-2(gt33) X,,C. elegans,,,Hope Dang,CGC,"Hypersensitive to oxidative stress; more sensitive to the stress than either of the cognate single mutants. Parental aak-1(tm1944) strain outcrossed 8 times; parental aak-2(gt33) strain outcrossed 3 times. Reference: Lee H, et al. J Biol Chem. 2008 May 30;283(22):14988-93."
+16-46,4-H6,,4.0,,WS4274 male,unc-119(ed3) III; opIs206,,opIs206 [hif-1p::hif-1(genomic)::GFP::hif-1 3'UTR + unc-119(+)],,C. elegans,,,Hope Dang,,"Males generated from heat shock. Weak GFP signal in early embryonic stages (2-cell, 4-cell, 8-cell, etc.). Reference: Sendoel A, et al. Nature. 2010 Jun 3;465(7298):577-83."
+16-51,4-H7,,4.0,,RB668,ftn-2,D1037.3,ftn-2(ok404),,C. elegans,,,Hope Dang,CGC,"provided by the C. elegans Gene Knockout Project at the Oklahoma Medical Research Foundation, which was part of the International C. elegans Gene Knockout Consortium, which should be acknowledged in any publications resulting from its use. Paper_evidence WBPaper00041807 **Tubes originally incorrectly labeled as RP668**"
+16-56,4-H8,,4.0,,AGD397,aak-1(tm1944) III; aak-2(ok524) X; uthEx202,,uthEx202 [crtc-1p::crtc-1 cDNA::tdTomato::unc-54 3'UTR + rol-6(su1006)],,C. elegans,,,Hope Dang,CGC,"Pick Rollers to maintain. Reference: Mair W, et al. Nature. 2011 Feb 17;470(7334):404-8."
+16-61,4-H9,,4.0,,GS2482,cup-9(ar470) lon-3(su18); dpy-20(e1282); arIs37,,,,C. elegans,,,Hope Dang,Johnny Fares,
+16-66,4-I1,,4.0,,GS2481,cup-9(ar469); dpy-20(e1282); arIs37,,,,C. elegans,,,Hope Dang,Johnny Fares,
+16-71,4-I2,,2.0,,WTAI-3,gei-22/aco-1::GFP,,,,C. elegans,,,Hope Dang,Elizabeth Leibold,
+16-76,4-I3,,4.0,,LG349,gels10,,geIs10 [ges-1p(long)::skn-1c::GFP + rol-6(su1006)],,C. elegans,,,Hope Dang,CGC,Reference: Nature (2007) 447(7144):545-9.
+16-81,4-I4,,4.0,,GLS317,haao-1(tm4627); skn-1::TY::GFP::3xFLAG,,haao-1(tm4627); skn-1::TY::GFP::3xFLAG,,C. elegans,,,Raul Castro,,OP341 males  x GLS130 hermaphrodites
+16-86,4-I5,,4.0,,GLS318,haao-1(tm4627); hif-1::GFP(opIs206),,haao-1(tm4627); [hif-1p::hif-1(genomic)::GFP::hif-1 3'UTR + unc-119(+)],,C. elegans,,,Raul Castro,,WS4274 males  x GLS130 hermaphrodites
+16-91,4-I6,,4.0,,PS3551,hsf-1(sy441),,hsf-1(sy441) I.,,C. elegans,,,Hope Dang,,
+16-96,4-I7,,4.0,,MAB111,smf-1::GFP,,smf-1::GFP,,C. elegans,,,Hope Dang,Michael Aschner,
+17-1,5-1,,4.0,,MAB120,smf-2::GFP,,smf-2::GFP,,C. elegans,,,Hope Dang,Michael Aschner,
+17-5,5-2,,4.0,,KAE112,muscle expressed tau,,seaIs201 [myo-3p::human tau (0N4R;V337M)::unc-54 3'UTR + vha-6p::mCherry::unc-54 3'UTR],,C. elegans,,,Hope Dang,,"Reduced crawling speed, reduced brood size, shortened lifespan, slow development, early paralysis. Human tau transgene is expressed in body wall muscles, producing strong phenotypes suitable for screening and is sensitive to knockdown by feeding RNAi. Generated in N2 background."
+17-10,5-3,,4.0,,KAE114,tau+abeta ,,,,C. elegans,,,Hope Dang,,
+17-14,5-4,,2.0,,LD1 males,ldIs7,,ldIs7 [skn-1b/c::GFP + rol-6(su1006)],,C. elegans,,,Hope Dang,,
+17-19,5-5,,3.0,,LD1171 males,ldIs3 [gcs-1p::GFP + rol-6(su1006)],,ldIs3 [gcs-1p::GFP + rol-6(su1006)],,C. elegans,,,Hope Dang,,
+17-23,5-6,,4.0,,N2E1,N2E1,,,,C. elegans,,,Hope Dang,,This is SU09 crossed with GLS179
+17-28,5-7,,4.0,GLS327,GLS327,haao-1(syb2665)[HAAO-1::mScarlet]; vsIs13; lin-15B&lin-15A(n765),,haao-1(syb2665)[HAAO-1::mScarlet]; vsIs13; lin-15B&lin-15A(n765),,C. elegans,,,Hope Dang,,This is SU10 crossed with GLS179
+17-32,5-8,,4.0,GLS328,GLS328,kynu-1(syb2691)[KYNU-1::mScarlet]; vsIs13; lin-15B&lin-15A(n765),,kynu-1(syb2691)[KYNU-1::mScarlet]; vsIs13; lin-15B&lin-15A(n765),,C. elegans,,,Hope Dang,,
+17-37,5-9,,2.0,,SU09 males,haao-1(syb2665)[HAAO-1::mScarlet],,haao-1(syb2665)[HAAO-1::mScarlet],,C. elegans,,,Hope Dang,,
+17-41,5-10,,3.0,,SU10 males,kynu-1(syb2691)[KYNU-1::mScarlet],,kynu-1(syb2691)[KYNU-1::mScarlet],,C. elegans,,,Hope Dang,,
+17-46,5-11,,4.0,,WS3403,opIs170 [sdn-1p::sdn-1::GFP::unc-54 3'UTR + lin-15(+)],,opIs170 [sdn-1p::sdn-1::GFP::unc-54 3'UTR + lin-15(+)],,C. elegans,,,Hope Dang,,opIs170 [sdn-1p::sdn-1::GFP::unc-54 3'UTR + lin-15(+)]. lin-15B(n765) might be present in background. GFP expression in neurons and hypodermis. 
+17-50,5-12,,3.0,,OH2672,otEx1495 [sul-1::GFP + rol-6(su1006)].,,otEx1495 [sul-1::GFP + rol-6(su1006)].,,C. elegans,,,Hope Dang,,otEx1495 [sul-1::GFP + rol-6(su1006)]. Pick Rollers to maintain. GFP expression in hypodermis and AVL.
+17-55,5-13,,3.0,GLS333,GLS333,haao-1(tm4627); ldIs3 [gcs-1p::GFP + rol-6(su1006)],,,,C. elegans,,,,,
+17-59,5-14,,4.0,GLS334,GLS334,haao-1(tm4627); ldIs7(skn-1b/c::GFP),,,,C. elegans,,,,,
+17-64,5-15,,4.0,,IG1846,frSi21 II; frIs7 IV; rde-1(ne300) V,,,,C. elegans,,,,,
+17-68,5-16,,4.0,,EG7565,nc-119(ed3) III; oxTi392 V.,,,,C. elegans,,,,,
+17-73,5-17,,4.0,,OP793,wgIs793 [cep-1::TY1::EGFP::3xFLAG + unc-119(+)],,,,,2025-05-19,2025-05-21 00:00:00,Hope Dang,CGC,"TY1::EGFP::3xFLAG tag inserted in frame at C-terminus of coding sequence by recombineering. Expression of transgene confirmed by GFP. References: Sarov M, et al. Nat Methods (2006) 10:839-44. Zhong, M, et al. PLoS Genet (2010) 6(2):e1000848. Strain was constructed as part of the Regulatory Element Project, part of modENCODE (http://www.modencode.org)."
+17-77,5-18,,3.0,,JJ2286,unc-119(ed3) III; zuIs263.,,zuIs263 [myo-3p::myo-3(5' UTR)::npp-9::mCherry::BLRP::3xFLAG::npp-9(3' UTR) + unc-119(+)],,C. elegans,,,,,
+17-18,5-19,,1.0,,IG1839,frSi17 II; frIs7 IV; rde-1(ne300) V.,,,,C. elegans,,,,,
+17-54,5-20,,4.0,,RB2325,Y74C9A.5(ok3157),,,,C. elegans,,,,,
+18-1,5-21,,4.0,,CL2020,,,,,C. elegans,,,,,
+18-5,5-22,,4.0,,OH750,otEx427 [hst-6p::GFP + rol-6(su1006)]. ,,Transcriptional hst-6::GFP fusion. Maintain by picking Rollers.,,C. elegans,,,,,
+18-10,5-23,,4.0,,SA115,tjIs1[pie-1::GFP::rho-1 + unc-119(+)],,,,C. elegans,,,,,
+18-14,5-24,,4.0,,DCD13,uqIs9 [myo-2p::rho1::tagRFP + tph-1p::GFP],,,,C. elegans,,,,,
+18-19,5-25,,4.0,,DCD146,uqIs12 [myo-2p::rho-1::Venus]. ,,RHO-1::VENUS aggregates in pharyngeal muscles.,,C. elegans,,,,,
+18-23,5-26,,3.0,GLS350,GLS350,frSi21; frIs7;  rde-1(ne300); haao-1(tm4627),,frSi21 II; frIs7 IV; rde-1(ne300);haao-1(tm4627)V,,C. elegans,,,,,IG1846 crossed with GLS130
+18-28,5-27,,4.0,,VK2702,vkEx2702 [nhx-2p::mtCemOrange2 + myo-2p::GFP],,,,C. elegans,,,,,
+18-32,5-28,,3.0,,VK2738,vkEx2738 [nhx-2p::CemOrange2::lgg-1 + myo-2p::GFP],,,,C. elegans,,,,,
+18-37,5-29,,4.0,,PRJ112,mutEx70 [pmk-1::GFP + rol-6(su1006)],,,,,,,,CGC,Rollers. Pick Rollers to maintain. 
+18-41,5-30,,4.0,,VK2733,vkEx2733 [nhx-2p::NLS-SV40::CemOrange2::NLSegl-13 + myo-2p::GFP],,,,,,,,,
+18-46,5-31,,4.0,,VK2883,vkEx2883 [nhx-2p::aqp-1::CemOrange2 + myo-2p::GFP],,,,,,,,,
+18-50,5-32,,2.0,,VK2688,vkEx2688 [nhx-2p::CemOrange2::cup-5 + myo-2p::GFP],,,,,,,,,
+18-55,5-33,,4.0,,VK2734,vkIs2734 [nhx-2p::lmn-1::CemOrange2 + myo-2p::GFP],,,,,,,,,
+18-59,5-34,,4.0,,VK2674,vkEx2674 [nhx-2p::CemOrange2::pisy-1 + myo-2p::GFP],,,,,,,,,
+18-64,5-35,,4.0,,TJ1,cep-1,F52B5.5,cep-1(gk138) I,,,2025-05-19,2025-05-21 00:00:00,Hope Dang,CGC,
+18-68,5-36,,0.0,,VK2735,vkEx2735 [nhx-2p::glo-1::CemOrange2 + myo-2p::GFP],,,,,,,,,
+18-73,5-37,,4.0,,XR6,lagr-1(gk327) I; opIs219 [ced-4p::ced-4::GFP],,,,,2025-05-19,2025-05-21 00:00:00,Hope Dang,CGC,
+18-77,5-38,,4.0,,VK2671,vkEx2671 [nhx-2p::CemOrange2::rab-5 + myo-2p::GFP],,,,,,,,,
+18-18,5-39,,4.0,,VK2664,vkEx2664 [nhx-2p::CemOrange2::tram-1 + myo-2p::GFP],,,,,,,,,
+18-54,5-40,,4.0,,VK2700,vkEx2700 [nhx-2p::CemOrange2::SKL + myo-2p::GFP],,,,,,,,,
+19-1,5-41,,4.0,,MD701,bcIs39 [lim-7p::ced-1::GFP + lin-15(+)],,,,,2025-05-19,2025-05-21 00:00:00,Hope Dang,CGC,Expression of functional CED-1::GFP fusion protein in the sheath cells.
+19-5,5-42,,4.0,,DA1750,adEx1750 [pmk-3::GFP + rol-6(su1006)],,,,,,,,,
+19-10,5-43,,4.0,,VK2881,vkIs2881 [nhx-2p::glo-1::CemOrange2 + ges-1p::glo-1::GFP + myo-2p::GFP],,,,,,,,,
+19-14,5-44,,4.0,,GLS368,haao-1; hsf-1,,haao-1(tm4627)V; Y53C10A.12	hsf-1(sy441)I,,,,,,,
+19-19,5-45,,3.0,,VZ892,hlh-30(syb1452 [hlh-30::3xFLAG::eGFP]) IV,,,,,,,,,
+19-23,5-46,,3.0,GLS370,GLS370,GLS130 x IG1839 (haao-1 x  frSi17 II; frIs7 IV; rde-1(ne300) V.,,,,,,,,,
+19-28,5-47,,4.0,GLS371,GLS371,SU09 males X SU12 hermaphrodite (haao-1(syb2665)[HAAO-1::mScarlet] x kynu-1(syb4323),,,,,,,,,
+19-32,5-48,,3.0,,BZ555,egIs1 [dat-1p::GFP] ,,,,,,,,,
+19-37,5-49,,4.0,,DH1370,rme-6(b1014),,,,,,,,,
+19-41,5-50,,4.0,,FT1370,unc-119(ed3) III; xnIs484,,,,,,,,,
+19-46,5-51,,4.0,,GH383,glo-3(zu446),,,,,,,,,
+19-50,5-52,,4.0,,GH403,glo-3(kx94) ,,,,,,,,,
+19-55,5-53,,3.0,,GLW16,rab-7(utx12[mNG::rab-7,,,,,,,,,
+19-59,5-54,,3.0,,RT525,unc-119(ed3) III; pwIs206,,,,,,,,,
+19-64,5-55,,3.0,,VC2082,srab-2(gk686) V/nT1 [qIs51] ,,,,,,,,,
+19-68,5-56,,4.0,,VC4516,skat-1(gk5587[loxP + myo-2p::GFP::unc-54 3' UTR + rps-27p::neoR::unc-54 3' UTR + loxP]),,,,,,,,,
+19-73,5-57,,4.0,,VK2666,vkEx2666 [nhx-2p::CemOrange2::rab-7 + myo-2p::GFP].,,,,,,,,,
+19-77,5-58,,3.0,,VK2797,vkIs2797 [nhx-2p::CemOrange2::rab-5 + myo-2p::GFP],,,,,,,,,
+19-18,5-59,,4.0,,BOX213,erm-1(mib15[erm-1::eGFP]) I.,,,,,,,,,
+20-1,5-61,,4.0,,XE1474,wpSi6 [dat-1p::rde-1::SL2::sid-1 + Cbr-unc-119(+)] ,,,,,,,,CGC,"Maintain at 15-20C, sterile at 25C. Superficially wild-type. Dopaminergic neuron-specific RNAi strain. Sensitivity to feeding RNAi is limited to the dopaminergic neurons; all other tissues resistant. "
+20-10,5-63,,4.0,,VK2799,vkIs2799 [nhx-2p::glo-1::CemOrange2 + myo-2p::GFP],,,,,,,,CGC,Wild-type animals expressing GLO-1::CemOrange2 under the intestinal-specific nhx-2 promoter. GLO-1 is localized to the lysosome related organelle. Integrated; chromosome unkown.
+20-14,5-64,,4.0,,GR1672,mgEx340 [akt-1::GFP::unc-54 3'UTR + rol-6(su1006)],,,,,,,,CGC,Pick Rollers to maintain. AKT-1::GFP translational fusion containing 6.7 kb akt-1 genomic DNA including 3.2 kb of 5' upstream regulatory region and 3.5 kb of coding region (including exons and introns) fused in-frame to GFP with unc-54 3' UTR
+20-19,5-65,,4.0,,GR1673,mgEx341 [akt-2::GFP::unc-54 3'UTR + rol-6(su1006)],,,,,,,,CGC,Pick Rollers to maintain. AKT-2::GFP translational fusion containing 5.2 kb akt-1 genomic DNA including 2.1 kb of 5' upstream regulatory region and 3.1 kb of coding region (including exons and introns) fused in-frame to GFP with unc-54 3' UTR.
+20-23,5-66,,4.0,,MQD1543,daf-16(hq23[daf-16::GFP],,,,,,,,CGC,"GFP tag inserted at the 3' end of the endogenous daf-16 gene locus by CRISPR/Cas9 engineering. The GFP fusion tag does not interfere with the function of DAF-16 protein. DAF-16::GFP is expressed ubiquitously in most or all somatic tissues, including neurons, intestine, body wall muscles, and hypodermis, and also in the germ cells and oocytes. "
+20-28,5-67,,4.0,,VK2728,vkEx2728 [nhx-2p::sqst-1::CemOrange2 + myo-2p::GFP],,,,,,,,CGC,Wild-type animals expressing SQST-1::CemOrange2 under the intestinal-specific nhx-2 promoter. SQST-1 is localized to the autophagasome. Pick animals with GFP+ pharynx to maintain
+20-32,5-68,,4.0,,RB1482,K11H3.1(ok1733),,,,,,,,CGC,"provided by the C. elegans Gene Knockout Project at the Oklahoma Medical Research Foundation, which was part of the International C. elegans Gene Knockout Consortium, which should be acknowledged in any publications resulting from its use. Paper_evidence WBPaper00041807"
+20-37,5-69,,4.0,,RB1373,F47G4.3(ok1558),,,,,,,,CGC,"provided by the C. elegans Gene Knockout Project at the Oklahoma Medical Research Foundation, which was part of the International C. elegans Gene Knockout Consortium, which should be acknowledged in any publications resulting from its use. Paper_evidence WBPaper00041807"
+20-41,5-70,,4.0,,UM0011,pan-neuronal WTasyn,,,,,,,,,
+20-46,5-71,,4.0,,MQ1783,gpdh-1(ok1558);gpdh-2(ok1733).,,,,,,,,,
+20-50,5-72,,4.0,,MOR002,UM0011 crossed with a neuronal RNAi-sensitive strain,,,,,,,,,
+20-55,5-73,,4.0,,VS24,kat-1,,,,,,,,CGC,
+20-59,5-74,,3.0,,KWN246,rnyEx133 [opt-2p:::opt-2(aa1-412)::GFP) + pha-1(+)],,,,,,,,CGC,Maintain at 25C to select for animal carrying the array. Labels apical intestinal membrane
+20-64,5-75,,3.0,,FL378,erm-1(bab59[erm-1::mNG^3xFlag]) I,,,,,,,,,
+20-68,5-76,,3.0,,FL290,eps-8(bab140[eps-8::mNG]) IV,,,,,,,,,
+20-73,5-77,,3.0,,ML846,mcEx337 [vha-5(+)::GFP + rol-6(su1006)],,,,,,,,CGC,Animals with the array are Rollers and GFP+ in the excretory canal. Animals which have lost the array are dead L1 larvae that are translucent and often found away from the bacterial lawn (can be difficult to spot on the lawn).
+20-77,5-78,,3.0,,MCP111,pgp-1(bab111[mNG^3xFlag::pgp-1]) IV,,,,,,,,,
+20-18,5-79,,1.0,,WBM170,wbmEx57,,,,,,,,,
+21-1,5-81,,3.0,,BX153,fat-7(wa36),,,,,,,,CGC,
+21-5,6-1,,2.0,,DMS303,nIs590 [fat-7p::fat-7::GFP + lin15(+)] V.  Derived by X-ray integration of waEx15. The fat-7::fat-7::GFP translational reporter is activated by 15C or acdh-11 loss-of-function,,,,,,,,CGC," Ma et al., Cell. 2015 May 21; 161(5): 11521163."
+21-10,6-2,,2.0,,BX113,lin-15B&lin-15A(n765) X; waEx15.,,,,,,,,,
+21-14,6-3,,2.0,,BX150,lin-15B&lin-15A(n765) X; waEx18.,,,,,,,,,
+21-19,6-4,,0.0,,CS119,sma-3(wk30) III; him-5(e1490) V; qcEx24,,,,,,,,,
+21-23,6-5,,0.0,,MAH88,glp-1(e2141) III; mgEx779,,,,,,,,,
+21-28,6-6,,4.0,,DG4324,pod-2(tn1765[gfp::3xflag::pod-2]),,,,,,,,,Refrozen May 2025 by HD
+21-32,6-7,,2.0,,VS19,maoc-1(hj14) ,,,,,,,,,
+21-37,6-8,,4.0,,NR350 males,rde-1(ne219) V; kzIs20,,,,,,,,,
+21-41,6-9,,4.0,,UM0010,pan-neuronal A53Tasyn,,,,,,,,,
+21-46,6-11,,3.0,,TJ356,DAF-16::GFP(oe),,,,,,,,,
+21-50,6-12,,3.0,,N2 MALES,wildtype males,,,,,,,,,
+21-55,6-13,,3.0,,ZG31,hif-1(ia4),,,,,,,,,
+21-59,6-14,,3.0,,XE1582,wpSi11 II; eri-1(mg366) IV; rde-1(ne219) V; lin-15B(n744) X,wpSi11 II; eri-1(mg366) IV; rde-1(ne219) V; lin-15B(n744) ,,,,,,,,
+21-64,6-15,,4.0,,XE1375,wpIs36 I; wpSi1 II; eri-1(mg366) IV; rde-1(ne219) V; lin-15B(n744) X,,,,,,,,,
+21-68,6-16,,2.0,,XE1581,wpSi10 II; eri-1(mg366) IV; rde-1(ne219) V; lin-15B(n744),,,,,,,,,
+21-73,6-17,,3.0,,GLS130,haao-1,,,,,,,,,
+21-77,6-18,,3.0,,SU15,mtl-1 mNeon Green - N2,,,,,,,,,
+21-18,6-19,,3.0,,SU19,skn-1 wrmScarlet -N2,,,,,,,,,
+21-54,6-21,,2.0,,N2,wildtype ,,,,,,,,,
+22-1,6-22,,3.0,,NR350,rde-1(ne219) V; kzIs20.,,,,,,,,,
+22-6,6-23,,4.0,,GLS144,daf-16,,,,,,,,,
+22-11,6-24,,4.0,,SU28,gpdh-2p::wrmScarlet,,wrmScarlet,gpdh-2p::wrmScarlet,,,,,,
+22-16,6-25,,3.0,GLS457,A1 EMS,unknown until sequencing. All EMS strains are copnacl resistant,,,5x,,,,Brad,Brad,
+22-21,6-26,,2.0,GLS458,A2 EMS,unknown until sequencing. All EMS strains are copnacl resistant,,,5x,,,,Brad,Brad,
+22-26,6-27,,3.0,GLS459,A3 EMS,unknown until sequencing. All EMS strains are copnacl resistant,,,5x,,,,Brad,Brad,
+22-31,6-28,,2.0,GLS460,B1 EMS,unknown until sequencing. All EMS strains are copnacl resistant,,,5x,,,,Brad,Brad,
+22-36,6-29,,2.0,GLS461,B2 EMS,unknown until sequencing. All EMS strains are copnacl resistant,,,5x,,,,Brad,Brad,
+22-41,6-31,,2.0,GLS462,B3 EMS,unknown until sequencing. All EMS strains are copnacl resistant,,,5x,,,,Brad,Brad,
+22-46,6-32,,2.0,GLS463,C1 EMS,unknown until sequencing. All EMS strains are copnacl resistant,,,4x,,,,Brad,Brad,
+22-51,6-33,,2.0,GLS464,C2 EMS,unknown until sequencing. All EMS strains are copnacl resistant,,,4x,,,,Brad,Brad,
+22-56,6-34,,2.0,GLS465,C3 EMS,unknown until sequencing. All EMS strains are copnacl resistant,,,4x,,,,Brad,Brad,
+22-61,6-35,,3.0,GLS466,1.1 EMS,unknown until sequencing. All EMS strains are copnacl resistant,,,4x,,,,Brad,Brad,
+22-66,6-36,,2.0,GLS467,1.4 EMS,unknown until sequencing. All EMS strains are copnacl resistant,,,4x,,,,Brad,Brad,
+22-71,6-37,,3.0,GLS468,2.2 EMS,unknown until sequencing. All EMS strains are copnacl resistant,,,4x,,,,Brad,Brad,
+22-76,6-38,,2.0,GLS469,3.2 EMS,unknown until sequencing. All EMS strains are copnacl resistant,,,4x,,,,Brad,Brad,
+22-81,6-39,,2.0,GLS470,3.4 EMS,unknown until sequencing. All EMS strains are copnacl resistant,,,4x,,,,Brad,Brad,
+22-86,6-41,,0.0,,MAH54,adIs2122; mgEx779 ,,,,,,,,,
+22-91,6-42,,5.0,,STE68,nhr-49(nr2041) I.,,,,,,,,CGC,"Pathare PP, et al. PLoS Genet. 2012 Apr;8(4):e1002645."
+22-96,6-43,,4.0,,VL43,unc-119(ed3) III; wwIs1,,,,,,,,,
+23-1,6-44,,3.0,,CG1367,pck-2(rg551[pck-2::YFP]) I; him-5(e1490) ,,,,,,,,,
+23-6,6-45,,4.0,,SU22,T24B8.5p::wrmScarlet,,,,,,,,,
+23-11,6-46,,2.0,,LIU104,dhs-28(ldr6) X; ldrIs1; ldrIs2,,,,,,,,,
+23-16,6-47,,3.0,,PMD150,utsIs4,,,,,,,,,
+23-21,6-48,,3.0,,MAH677,sqIs71 [rgef-1p::GFP + rgef-1p::sid-1],,,,,,,,,
+23-26,6-49,,2.0,,BX115,lin-15B&lin-15A(n765),,,,,,,,,
+23-31,6-51,,2.0,,GLS319,PS3551   hsf-1(sy441),,,,,,,,,
+23-36,6-52,,1.0,,GLS120,FX04547:afmd-1,afmd-1,,,,,,,,
+23-41,6-53,,3.0,,SU24,spp-9p::mNG,,,,,,,,,
+23-46,6-54,,3.0,,SU26,SU25 & pCFJ350-PHX996,,,,,,,,,
+23-51,6-55,,1.0,,CF3556,agIs6 [dod-24p::GFP].,,,,,,,,,
+23-56,6-56,,2.0,,TU3595,sid-1(pk3321) him-5(e1490) V; lin-15B(n744) X; uIs72.,unc-119(ed3) III; jrIs1,,,,,,,,
+23-61,6-57,,3.0,,VC172,cep-1(gk138),,,,,,,,,
+23-66,6-58,,4.0,,SU16,MTL-2::Electra1 PHX9650 mtl-2(syb9650),,,,,,,,,
+23-71,6-59,,4.0,,SU17,NHR-49::Electra1::wrmScarlet  PHX9675 nhr-49(syb9675),,,,,,,,,
+23-76,6-61,,4.0,,SU18,NHR-49:Electra1; NHR-49::wrmScarlet  PHX9675 nhr-49(syb9675),,,,,,,,,
+23-81,6-62,,4.0,,SU20,AAIM-1::Gamillus::GSAGSAAGSGEF::EPEA,,,,,,,,,
+23-86,6-63,,4.0,,SU30,sod-3p::Electra1,,,,,,,,,
+23-91,6-64,,4.0,GLS471,DMS303,fat-7::GFP,,nIs590 [fat-7p::fat-7::GFP + lin15(+)] V.  ,4-6x,,,,Emily Gardea,,"DMS303 backcrossed to N2 4-6x. Originally derived by X-ray integration of waEx15. The fat-7::fat-7::GFP translational reporter is activated by 15C or acdh-11 loss-of-function.  Ma et al., Cell. 2015 May 21; 161(5): 11521163."
+23-96,6-65,,4.0,GLS472,SU28,gpdh-2p::wrmScarlet,,,6x,,,,Emily Gardea,,SU28 backcrossed to N2 6x
+24-1,6-66,,4.0,GLS473,GLS473,TJ356(daf-16::GFP oe) x EG7565 (H2B nuclear marker),,,,,,,,,
+24-5,6-67,,4.0,GLS474,VP198,kbIs5 [gpdh-1p::GFP + rol-6(su1006)],,,5x,,,,Emily Gardea,,VP198 backcrossed to N2 5x
+24-10,6-68,,4.0,GLS475,GLS472 x GLS474,VP198 (kbIs5 [gpdh-1p::GFP + rol-6(su1006)]) x SU28(gpdh-2p::wrmScarlet),,,5x,,,,Emily Gardea,,Backcrossed versions of two fluorescent strains were crossed to make double reporter strain
+24-14,6-69,,4.0,,EG7565 males,,,,,,,,,,

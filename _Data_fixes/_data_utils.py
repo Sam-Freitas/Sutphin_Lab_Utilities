@@ -209,8 +209,12 @@ class CSVEditor(QMainWindow):
     def open_and_transfer_csvs(self):
         # this function finds and transfers csvs into the temp file location for 
         # faster processing on the local drive
+
+        default_file_path = r"C:\Users\LabPC2\Documents\GitHub\Sutphin_Lab_Utilities\_Data_fixes\_Data_copy"
+        if not os.path.isdir(default_file_path):
+            default_file_path = ''
         
-        file_path, _ = QFileDialog.getOpenFileName(self, "OPEN THE GROUPNAME.CSV IN GROUPNAMES FOLDER", "", "CSV Files (*Groupname.csv)")
+        file_path, _ = QFileDialog.getOpenFileName(self, "OPEN THE GROUPNAME.CSV IN GROUPNAMES FOLDER", default_file_path, "CSV Files (*Groupname.csv)")
 
         assert os.path.isfile(file_path)
 
