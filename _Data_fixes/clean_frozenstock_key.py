@@ -16,7 +16,8 @@ from _data_utils import *
 
 if __name__ == "__main__":
     
-    log_path = 'log_find_strain_duplicates.txt'
+    file_name = os.path.splitext(os.path.basename(__file__))[0]
+    log_path = 'log_' + file_name + '.txt'
 
     try:
         os.remove(log_path)

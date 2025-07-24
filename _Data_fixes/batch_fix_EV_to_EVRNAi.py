@@ -53,6 +53,8 @@ if __name__ == "__main__":
     found_groupname_csvs = natsorted(find_files(overarching_Data_path, file_extension='.csv', filter='Groupname.csv', filter2 = None))
     write_log('',log_name=log_path)
 
+    list_of_all_RNAi = []
+
     for i,this_found_groupname_csv in enumerate(found_groupname_csvs):
 
         continue_flag = False
@@ -89,72 +91,47 @@ if __name__ == "__main__":
             previous_groupname_df = this_groupname_df.copy()
             updated_groupname_df = this_groupname_df.copy()
 
-            strain_df = this_groupname_df.loc[this_groupname_df['VariableName'] == 'Strain Names',:].iloc[:,1:]
-            genotype_df = this_groupname_df.loc[this_groupname_df['VariableName'] == 'Genotypes',:].iloc[:,1:]
-            strain_df_array = np.asarray(strain_df).squeeze()
-            genotype_df_array = np.asarray(genotype_df).squeeze()
+            RNAi_df = this_groupname_df.loc[this_groupname_df['VariableName'] == 'RNAi [gene-1(RNAi)]',:].iloc[:,1:]
+            RNAi_df_array = np.asarray(RNAi_df).squeeze()
             groups_col_name_df_array = np.asarray(list(this_groupname_df.columns)[1:]).squeeze()
 
             groups_that_changed = []
             export_this_data_if_changed = True
             # use the lookup table to make sure that everything is looking good
             # if they dont match then replace it with the look up table 
-            for j,(this_groups_strain,this_groups_genotype,this_groups_col_name) in enumerate(zip(strain_df_array,genotype_df_array,groups_col_name_df_array)):
-                if (this_groups_strain != 'NA') and (this_groups_genotype != 'NA'):
+
+            for j,(this_groups_RNAi,this_groups_col_name) in enumerate(zip(RNAi_df_array,groups_col_name_df_array)):
+                if (this_groups_RNAi != 'NA'):
                     # force them to be lower for matching
-                    temp_this_groups_strain = this_groups_strain.lower()
-                    temp_this_groups_genotype = this_groups_genotype.lower()
+                    temp_this_groups_RNAi = this_groups_RNAi.lower()
 
                     # remove any space from the strain name 
-                    temp_this_groups_strain = temp_this_groups_strain.replace(' ','')
+                    temp_this_groups_RNAi = temp_this_groups_RNAi.replace(' ','')
+
+                    list_of_all_RNAi.append(temp_this_groups_RNAi)
 
                     # find all the possible matches for the strain (assumed correct)
                     # only use the lower() array for matching 
-                    possible_matches = strain_genotype_lookup.iloc[np.where(strain_genotype_lookup_lower['Strain']==temp_this_groups_strain)[0],:]
+                    possible_matches = (temp_this_groups_RNAi == 'ev')
 
-                    # make sure that there is a match to the lookup table
-                    if not possible_matches.empty:
-
-                        # for output only
-                        # check if already done
-                        if temp_this_groups_strain not in duplicates_name:
-                            # if possible_matches.shape[0] > 1:
-                            duplicates_name.append(temp_this_groups_strain)
-                            duplicates_df.append(possible_matches)
-                            temp = pd.DataFrame(columns = possible_matches.columns)
-                            temp.loc[0] = ''
-                            duplicates_df.append(temp)
-
-                        # make sure that only a single pairing of data is reported back
-                        if possible_matches.shape[0] > 1:
-                            matched_pair = possible_matches.iloc[0,:]
-                        else:
-                            matched_pair = possible_matches.iloc[0,:]
+                    # make sure that there is a match to the ev lookup table
+                    if possible_matches:
 
                         # update the groupname DF with the new genotype values
-                        if this_groups_genotype.lower() != matched_pair['Genotype'].lower():
-                            write_log('============> ' + this_groups_strain + '(' + this_groups_genotype + ')' + ' #### TO #### ' + matched_pair['Strain'] + '(' + matched_pair['Genotype'] + ')' ,
+                        write_log('============> ' + temp_this_groups_RNAi + ' #### TO #### ' + 'EV(RNAi)' ,
                             log_name=log_path)
 
-                            # update the strain
-                            row_indexer_strain = (updated_groupname_df['VariableName'] == 'Strain Names').values
-                            updated_groupname_df.loc[row_indexer_strain,str(this_groups_col_name)] = str(matched_pair['Strain'])
-
-                            # update the genotype
-                            row_indexer_genotypes = (updated_groupname_df['VariableName'] == 'Genotypes').values
-                            updated_groupname_df.loc[row_indexer_genotypes,str(this_groups_col_name)] = str(matched_pair['Genotype'])
-                            
-                            # record that the group changed
-                            groups_that_changed.append(str(this_groups_col_name))
-                            pass
-
+                        # update the ev -> EV(RNAi)
+                        row_indexer_strain = (updated_groupname_df['VariableName'] == 'RNAi [gene-1(RNAi)]').values
+                        updated_groupname_df.loc[row_indexer_strain,str(this_groups_col_name)] = 'EV(RNAi)'
+                        
+                        # record that the group changed
+                        groups_that_changed.append(str(this_groups_col_name))
                         pass
 
                         # NOW UPDATE THE GROUPNAME AND DIVISIONS AND EXPORTED DATA
                         # yay
-                    else:
-                        write_log('!!!!SKIPPED -  ' + this_groups_strain + '(' + this_groups_genotype + ')',log_name=log_path)
-                        export_this_data_if_changed = False
+            pass
 
             # if something changed then re-export all the data 
             if groups_that_changed:
