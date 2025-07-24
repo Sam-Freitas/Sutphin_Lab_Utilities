@@ -12,7 +12,7 @@ Box,Backup Box,Tube,# of tubes in box,GLS Strain,Strain,Genotype,Sequence,Long G
 7,2,129,4,GLS129,GLS129,kynu-1,C15H9.7,kynu-1(tm4924)X,5,C. elegans,2015-11-10 00:00:00,,Grant Backer,Korstanje Lab,Backcrossed strain FX04924 (GS118) 5x to N2 (Kaeberlein Lab; GS127). Refrozen June 2025
 9,3-A5,165,1,GLS165,GLS129,kynu-1,C15H9.7,kynu-1(tm4924)X,5,C. elegans,2015-11-10 00:00:00,,Grant Backer,Korstanje Lab,"Backcrossed strain FX04924 (GS118) 5x to N2 (Kaeberlein Lab; GS127). . Refrozen from GS129 on 2/2/2017.Last tube taken from back up box, refrozen on 1/17/2024"
 ,,,,,,,,,,,,,,,
-13-F1,4-B1,,3,,SUN01,tdo-2(syb2675),,tdo-2(syb2675),,C. elegans,2020-07-13 00:00:00,,Hope Dang,"Constructed by SunyBiotech, order ID SU01",PHX2675. Tubes labeled SU01
+13-F1,4-B1,,3,,SUN01,tdo-2,,tdo-2(syb2675),,C. elegans,2020-07-13 00:00:00,,Hope Dang,"Constructed by SunyBiotech, order ID SU01",PHX2675. Tubes labeled SU01
 ,,,,,,,,,,,,,,,
 8,2,144,3,GLS144,GLS144,daf-16,R13H8.1,daf-16(mu86)I,21,C. elegans,,,Grant Backer,Korstanje Lab,Backcrossed strain CF1038 (GS93) 5x to N2 (Kaeberlein Lab; GS127). Dauer defective. Short lived. Backcrossed 5x from CF1038 (GS93).
 22-6,6-23,,4,,GLS144,daf-16,,,,,,,,,
@@ -26,25 +26,44 @@ Box,Backup Box,Tube,# of tubes in box,GLS Strain,Strain,Genotype,Sequence,Long G
 ,,,,,,,,,,,,,,,
 8,2,145,2,GLS145,GLS145,hif-1,F38A6.3,hif-1(ia4)V,19,C. elegans,,,Grant Backer,Korstanje Lab,"Backcrossed strain ZG31 (GS95) 5x to N2 (Kaeberlein Lab; GS127). Healthy and fertile in standard lab conditions, but unable to adapt to 1% oxygen. Backcrossed 5x from ZG31 (GS95)."
 ,,,,,,,,,,,,,,,
-12-50,3-H9,,3,,JT10800,ncr-2(nr2023); ncr-1(nr2022),,ncr-2(nr2023) III; ncr-1(nr2022) X,,C. elegans,,2020-11-11 00:00:00,Emily Turner,CGC,"Daf-c (partial dauer), vulval abnormalities, broken alae, gonadal migration defects, low brood size, short lifespan. Strain is healthier when recovered from starved plates by chunking than when continuously propagated. Do not distribute this strain; other labs should request it from the CGC. This strain cannot be distributed to commercial organizations. This strain cannot be used for any commercial purpose or for work on human subjects."
+5,2,99,3,GLS99,PS3551,hsf-1,Y53C10A.12,hsf-1(sy441)I,,C. elegans,,,George Sutphin,CGC,Defects in egg laying. Do not grow at 25C. Do not distribute this strain; other labs should request it from the CGC.
+16-91,4-I6,,4,,PS3551,hsf-1(sy441),,hsf-1(sy441) I.,,C. elegans,,,Hope Dang,,
+23-31,6-51,,2,,PS3551,hsf-1(sy441),,,,,,,,,Strain was mislabeled GLS319 (tube might be too).
+,,,,,,,,,,,,,,,
+12-50,3-H9,,3,,JT10800,ncr-2 & ncr-1,,ncr-2(nr2023) III; ncr-1(nr2022) X,,C. elegans,,2020-11-11 00:00:00,Emily Turner,CGC,"Daf-c (partial dauer), vulval abnormalities, broken alae, gonadal migration defects, low brood size, short lifespan. Strain is healthier when recovered from starved plates by chunking than when continuously propagated. Do not distribute this strain; other labs should request it from the CGC. This strain cannot be distributed to commercial organizations. This strain cannot be used for any commercial purpose or for work on human subjects."
 ,,,,,,,,,,,,,,,
 14-A5,4-C3,,4,,COP677,ncr-1,,ncr-1(knu4) X,,C. elegans,,2020-11-11 00:00:00,Emily Turner,CGC,Cholesterol-sensitive. Smaller broods and sizes upon serial cholesterol deprivation. This strain may not be distributed to commercial or for-profit entities. Please contact ethan@perlara.com for more information.
 ,,,,,,,,,,,,,,,
-14-I1,4-D9,,4,,VC343,glod-4,C16C10.10,glod-4(gk189) III,,,2025-04-02 00:00:00,2025-04-07 00:00:00,Emily Gardea,CGC,"Superficially wild type. Attribution: This strain was provided by the C. elegans Reverse Genetics Core Facility at the University of British Columbia, which is part of the international C. elegans Gene Knockout Consortium, which should be acknowledged in any publications resulting from its use"
-,,,,,,,,,,,,,,,
-14-H5,4-D8,,4,,VH725,glod-4(OE),,hdEx231 [C16C10.10::GFP + pha-1(+)],,,2025-04-02 00:00:00,2025-04-07 00:00:00,Emily Gardea,CGC,Ubiquitous expression of glyoxalase-1::GFP. Maintain at 25 C. Reference: Morcos M et al. (2008) Aging Cell 7(2):260-9.
+7,2,135,1,GLS135,GLS135,sir-2.1,R11A8.4,sir-2.1(ok434)IV,5,C. elegans,,,Grant Backer,Korstanje Lab,Backcrossed strain VC199 (GS94) 5x to N2 (Kaeberlein Lab; GS127). Superficially wild type. Acknowledge C. elegans Reverse Genetics Core Facility at UBC.
 ,,,,,,,,,,,,,,,
 10-14,3-C6,,4,,JIN1375,hlh-30,,hlh-30(tm1978) IV,,,2025-05-01 00:00:00,2025-05-19 00:00:00,Hope Dang,CGC,"Superficially wild-type. Grows at standard conditions. Reference: Settembre C, et al. Nat Cell Biol. 2013 Jun;15(6):647-58. Refrozen June 2025"
 ,,,,,,,,,,,,,,,
 11-5,3-E6,,4,,CE541,sbp-1,,sbp-1(ep79) III,,,2025-05-01 00:00:00,2025-05-19 00:00:00,Hope Dang,CGC,"Slow growth, low fat stores. Viable at 15C, not at 25C. Slightly Dpy, reduced brood size, low penetrance. Maintain under normal conditions. Reference: Liang et al., (2010) PlosOne 5:3 e9869."
 ,,,,,,,,,,,,,,,
-22-91,6-42,,5,,STE68,nhr-49(nr2041) I.,,,,,,,,CGC,"Pathare PP, et al. PLoS Genet. 2012 Apr;8(4):e1002645."
+22-91,6-42,,5,,STE68,nhr-49,,nhr-49(nr2041) I.,,,,,,CGC,"Pathare PP, et al. PLoS Genet. 2012 Apr;8(4):e1002645."
+,,,,,,,,,,,,,,,
+12-46,3-H8,,4,,KU25,pmk-1,B0218.3,pmk-1(km25) IV,6,C. elegans,,,Emily Turner,CGC,Sensitive to heavy metal and oxidative stress. Refrozen June 2025
+,,,,,,,,,,,,,,,
+12-10,3-G9,,4,,VC3044,dbl-1,T25F10.2,dbl-1(ok3749) V,0,C. elegans,,,Emily Turner,CGC,Acknowledge C. elegans Reverse Genetics Core Facility at UBC. Refrozen June 2025
+,,,,,,,,,,,,,,,
+24-10,6-68,,4,GLS475,GLS475,gpdh-1p::GFP & gpdh-2p::wrmScarlet,,VP198 (kbIs5 [gpdh-1p::GFP + rol-6(su1006)]) x SU28(gpdh-2p::wrmScarlet),5x,,,,Emily Gardea,,Backcrossed versions of two fluorescent strains were crossed to make double reporter strain
+,,,,,,,,,,,,,,,
+14-I1,4-D9,,4,,VC343,glod-4,C16C10.10,glod-4(gk189) III,,,2025-04-02 00:00:00,2025-04-07 00:00:00,Emily Gardea,CGC,"Superficially wild type. Attribution: This strain was provided by the C. elegans Reverse Genetics Core Facility at the University of British Columbia, which is part of the international C. elegans Gene Knockout Consortium, which should be acknowledged in any publications resulting from its use"
+,,,,,,,,,,,,,,,
+14-H5,4-D8,,4,,VH725,glod-4(OE),,hdEx231 [C16C10.10::GFP + pha-1(+)],,,2025-04-02 00:00:00,2025-04-07 00:00:00,Emily Gardea,CGC,Ubiquitous expression of glyoxalase-1::GFP. Maintain at 25 C. Reference: Morcos M et al. (2008) Aging Cell 7(2):260-9.
+,,,,,,,,,,,,,,,
+1,1,4,4,GLS4,JT24,aex-6,Y87G2A.4,aex-6(sa24)I,2,C. elegans,,,George Sutphin,CGC,aBoc and Exp defective. Constipated.
+,,,,,,,,,,,,,,,
+1,1,6,2,GLS6,RB2314,Y42H9AR.1,Y42H9AR.1,Y42H9AR.1(ok3146)IV,0,C. elegans,,,George Sutphin,CGC,Acknowledge C. elegans Gene Knockout Project at OMRF (http://www.mutantfactory.ouhsc.edu).
+,,,,,,,,,,,,,,,
+6,2,103,0,GLS103,AM140,unc-54p::Q35::YFP,,rmIs132[unc-54p::Q35::YFP]I,5,C. elegans,,,George Sutphin,CGC,Q35::YFP progressive transition from soluble to aggregated as they age.
+9,3-A3,163,4,GLS163,AM140,Q35,,rmIs132[unc-54p::Q35::YFP]I,5,C. elegans,,,George Sutphin,CGC,Q35::YFP progressive transition from soluble to aggregated as they age. Refrozen from GS103 on 1/19/2017.
 ,,,,,,,,,,,,,,,
 13-H5,4-B6,,1,,CL2166,gst-4p::GFP,,dvIs19 [(pAF15)gst-4p::GFP::NLS] III,,C. elegans,,,Hope Dang,CGC,Oxidative stress-inducible GFP.
 ,,,,,,,,,,,,,,,
 17-68,5-16,,4,,EG7565,eft-3p::tdTomato,,unc-119(ed3) III; oxTi392[eft-3p::tdTomato::H2B::unc-54 3'UTR + Cbr-unc-119(+)] V.,,C. elegans,,,,,
 ,,,,,,,,,,,,,,,
-24-1,6-66,,4,GLS473,GLS473,TJ356(daf-16::GFP oe) x EG7565 (H2B nuclear marker),,,,,,,,,TJ356(daf-16::GFP oe) x EG7565 (H2B nuclear marker)
+24-1,6-66,,4,GLS473,GLS473,daf-16::GFP(oe) & H2B nuclear marker,,TJ356(daf-16::GFP oe) x EG7565 (H2B nuclear marker),,,,,,,TJ356(daf-16::GFP oe) x EG7565 (H2B nuclear marker)
 ,,,,,,,,,,,,,,,
 5,2,88,4,GLS88,DA465,eat-2,Y48B6A.4,eat-2(ad465)II,,C. elegans,,,George Sutphin,CGC,
 ,,,,,,,,,,,,,,,

@@ -333,9 +333,12 @@ def update_groupnames():
 
     return groups_that_changed, updated_groupname_df, previous_groupname_df,previous_groupname_path ,updated_groupname_path
 
-def update_divisions(groups_that_changed,updated_groupname_df,previous_groupname_df):
+def update_divisions(groups_that_changed,updated_groupname_df,previous_groupname_df, divisions_paths = None):
 
-    divisions_paths = natsorted(find_files('temp_data',file_extension='.csv',filter='_divisions.csv'))
+    if divisions_paths is None:
+        divisions_paths = natsorted(find_files('temp_data',file_extension='.csv',filter='_divisions.csv'))
+    else:
+        pass
 
     condition_parts = updated_groupname_df['VariableName'].values
 
@@ -374,7 +377,8 @@ def update_divisions(groups_that_changed,updated_groupname_df,previous_groupname
 
     return divisions_df_list, previous_divisions, divisions_paths
 
-def fix_groupnames(updated_divisions):
+def fix_groupnames(updated_divisions,
+    use_logging = False, log_name = "log.txt"):
     # this finds and updates the groupnames from the divisions
     combined_updated_divisions = pd.concat(updated_divisions)
     # get the unique groupnames that are not worm number or date (first 3 conditions)
@@ -427,76 +431,136 @@ def fix_groupnames(updated_divisions):
         this_division['Groupname'] = new_groupname_for_this_divison
         updated_divisions[div_idx] = this_division
 
-    print('New Groupnames:')
+    if not use_logging:
+        print('New Groupnames:')
+    else:
+        write_log('New Groupnames:',log_name=log_name)
     for each_new_groupname in np.unique(running_groupnames):
-        print('---',each_new_groupname)
+        if not use_logging:
+            print('---',each_new_groupname)
+        else:
+            write_log('--- ' + each_new_groupname,log_name=log_name)
 
     return updated_divisions
 
-def update_export(updated_divisions,all_prev_csvs_paths):
-    all_csvs = natsorted(find_files('temp_data',file_extension='.csv',filter=''))
+def update_export(updated_divisions,all_prev_csvs_paths,exported_data_path = None):
+
+    # update the groupnames in the exported data files
+    # use the temp files if no export file is given
 
     combined_updated_divisions = pd.concat(updated_divisions)
 
-    for this_csv in all_csvs:
-        if this_csv not in all_prev_csvs_paths:
-            exported_data_path = this_csv 
+    if exported_data_path is None:
+        all_csvs = natsorted(find_files('temp_data',file_extension='.csv',filter=''))
+
+        for this_csv in all_csvs:
+            if this_csv not in all_prev_csvs_paths:
+                exported_data_path = this_csv 
+    else:
+        pass
 
     exported_data = pd.read_csv(exported_data_path, keep_default_na=False, na_values=[])
 
-    exported_data['Groupname'] = np.asarray(combined_updated_divisions['Groupname'])
+    try:
+        exported_data['Groupname'] = np.asarray(combined_updated_divisions['Groupname'])
+    except:
+        print('!!!!!! Assignment of the updated GROUPNAME failed')
+        
+        # this is most likely from omission of a plate (skipped one)
+        # this attempts to find which divisions (plates) are used in the experiment
+
+        divisions_paths = natsorted(find_files(os.path.split(exported_data_path)[0],file_extension='_divisions.csv'))
+        divisions_paths_names = [os.path.split(a)[-1].replace('_divisions.csv','') for a in divisions_paths]
+
+        list_of_div_to_use = []
+        for i,(temp_div_path_name,this_division) in enumerate(zip(divisions_paths_names,updated_divisions)):
+            if temp_div_path_name in np.unique(exported_data['Plate ID']):
+                print(temp_div_path_name)
+                list_of_div_to_use.append(this_division)
+
+        combined_updated_divisions = pd.concat(list_of_div_to_use)
+
+        exported_data['Groupname'] = np.asarray(combined_updated_divisions['Groupname'])
+
+        pass
 
     return exported_data, exported_data_path
 
 def export_everything(updated_export,updated_divisions,updated_groupname_df,
         previous_groupname_path,previous_divisions_paths,exported_data_path,
         export_path,
-        testing = True):
+        testing = True, temp_export = True, use_logging = False,log_name = "log.txt"):
 
     temp_export_path = os.path.join('temp_data','exported_data')
     os.makedirs(temp_export_path,exist_ok=True)
     del_dir_contents(temp_export_path,recursive=True,dont_delete_registrations=False)
     os.makedirs(temp_export_path,exist_ok=True)
 
-    print('')
-    print('Temporary export:')
+    # this exports back into the 
+    if temp_export:
+        if not use_logging:
+            print('Temporary export:')
+        else:
+            write_log('Temporary export:',log_name=log_name)
 
-    # groupname temp export
-    temp_groupname_export_path = os.path.join(temp_export_path,os.path.split(previous_groupname_path)[-1])
-    print('---', temp_groupname_export_path)
-    updated_groupname_df.to_csv(temp_groupname_export_path,index = False)
+        # groupname temp export
+        temp_groupname_export_path = os.path.join(temp_export_path,os.path.split(previous_groupname_path)[-1])
+        if not use_logging:
+            print('---', temp_groupname_export_path)
+        else:
+            write_log('--- ' + temp_groupname_export_path,log_name=log_name)
+        updated_groupname_df.to_csv(temp_groupname_export_path,index = False)
 
-    # divisions temp export
-    for div_idx, (this_division,this_previous_division_path) in enumerate(zip(updated_divisions,previous_divisions_paths)):
-        this_temp_division_export_path = os.path.join(temp_export_path,os.path.split(this_previous_division_path)[-1])
-        print('---',div_idx+1,this_temp_division_export_path)
-        this_division.to_csv(this_temp_division_export_path,index = False)
+        # divisions temp export
+        for div_idx, (this_division,this_previous_division_path) in enumerate(zip(updated_divisions,previous_divisions_paths)):
+            this_temp_division_export_path = os.path.join(temp_export_path,os.path.split(this_previous_division_path)[-1])
+            if not use_logging:
+                print('---',div_idx+1,this_temp_division_export_path)
+            else:
+                write_log('--- ' + str(div_idx+1) + ' ' + this_temp_division_export_path, log_name = log_name)
+            this_division.to_csv(this_temp_division_export_path,index = False)
 
-    # data export
-    temp_exported_data_export_path = os.path.join(temp_export_path,os.path.split(exported_data_path)[-1])
-    print('---', temp_exported_data_export_path)
-    updated_export.to_csv(temp_exported_data_export_path,index = False)
+        # data export
+        temp_exported_data_export_path = os.path.join(temp_export_path,os.path.split(exported_data_path)[-1])
+        if not use_logging:
+            print('---', temp_exported_data_export_path)
+        else:
+            write_log('--- ' + temp_exported_data_export_path, log_name = log_name)
+        updated_export.to_csv(temp_exported_data_export_path,index = False)
     
-    print('')
-    print('Re-Exporing back into the data path')
-    data_output_path = get_export_path()
+    if not use_logging:
+        print('Re-Exporing back into the data path')
+    else:
+        write_log('Re-Exporing back into the data path', log_name = log_name)
+
+    # from old code
+    data_output_path = export_path
 
     # groupname final export
     final_groupname_export_path = os.path.join(data_output_path,'Groupnames',os.path.split(previous_groupname_path)[-1])
-    print('---', final_groupname_export_path)
+    if not use_logging:            
+        print('---', final_groupname_export_path)
+    else:
+        write_log('--- ' + final_groupname_export_path, log_name = log_name)
     if not testing:
         updated_groupname_df.to_csv(final_groupname_export_path,index = False)
 
     # divisions final export
     for div_idx, (this_division,this_previous_division_path) in enumerate(zip(updated_divisions,previous_divisions_paths)):
         this_final_division_export_path = os.path.join(data_output_path,'divisions',os.path.split(this_previous_division_path)[-1])
-        print('---',div_idx+1,this_final_division_export_path)
+        if not use_logging:
+            print('---',div_idx+1,this_final_division_export_path)
+        else:
+            write_log('--- ' + str(div_idx+1) + ' ' + this_final_division_export_path, log_name = log_name)
         if not testing:
             this_division.to_csv(this_final_division_export_path,index = False)
 
     # data export
     final_exported_data_export_path = os.path.join(data_output_path,os.path.split(exported_data_path)[-1])
-    print('---', final_exported_data_export_path)
+    if not use_logging:
+        print('---', final_exported_data_export_path)
+    else:
+        write_log('--- ' + final_exported_data_export_path, log_name = log_name)
     if not testing:
         updated_export.to_csv(final_exported_data_export_path,index = False)
 
