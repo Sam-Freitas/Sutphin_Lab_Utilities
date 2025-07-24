@@ -22,7 +22,9 @@ def setup_func():
 
 if __name__ == "__main__":
 
-    log_path = 'log_transfer_data_to_local.txt'
+    file_name = os.path.splitext(os.path.basename(__file__))[0]
+    log_path = 'log_' + file_name + '.txt'
+    
     try:
         os.remove(log_path)
         write_log("restarted LOGGING",log_name=log_path)

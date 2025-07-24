@@ -188,7 +188,6 @@ if __name__ == "__main__":
         # except:
         #     write_log('--------- FAILED')
 
-
     # combined_duplicated_df = pd.concat(duplicates_df)
     # combined_duplicated_df.to_csv('_Data_fixes/dupliucated_strains.csv',index = False)
     write_log('FINSIHED with no errors',log_name=log_path)

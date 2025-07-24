@@ -12,3 +12,4 @@ log.txt
 log_transfer_data_to_local.txt
 log_find_strain_duplicates.txt
 log_batch_fix_genotype.txt
+*.zip
