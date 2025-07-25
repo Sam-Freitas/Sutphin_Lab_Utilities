@@ -15,7 +15,7 @@ from PySide6.QtGui import QColor, QBrush
 def write_log(txt_input,log_name = "log.txt"):
     print(txt_input)
     with open(os.path.join(log_name), "a") as f:
-        f.write(txt_input + '\n')
+        f.write(str(txt_input) + '\n')
 
 def get_experiment_name(this_path):
     path = os.path.normpath(this_path)
@@ -273,7 +273,7 @@ def get_export_path():
         out = f.read()
     return out
 
-def repopulate_NA_dataframe(input_df):
+def repopulate_NA_dataframe(input_df,use_index_col = False):
     # for each row make sure that something is populated across the NA
     # if anything has been entered
 
@@ -281,20 +281,36 @@ def repopulate_NA_dataframe(input_df):
     temp_values = input_df.values
     num_rows,num_cols = temp_values.shape
 
-    # this finds all the NOT NA values and finds the column with the most (minus the row header)
-    num_conditions = int(np.max(np.sum(temp_values != 'NA',axis = 1))) - 1
+    # this is the defualt
+    if not use_index_col:
+        # this finds all the NOT NA values and finds the column with the most (minus the row header)
+        num_conditions = int(np.max(np.sum(temp_values != 'NA',axis = 1))) - 1
 
-    pattern1 = ['NA']*(num_cols-2)
+        pattern1 = ['NA']*(num_cols-2)
 
-    for row_idx in range(num_rows):
-        #first check if has correct amount of NAs
-        if all(temp_values[row_idx,-1*len(pattern1):] == pattern1):
-            # then make sure that something was entered 
-            if temp_values[row_idx,1] != 'NA':
-                temp_values[row_idx,2:num_conditions+1] = temp_values[row_idx,1]
+        for row_idx in range(num_rows):
+            #first check if has correct amount of NAs
+            if all(temp_values[row_idx,-1*len(pattern1):] == pattern1):
+                # then make sure that something was entered 
+                if temp_values[row_idx,1] != 'NA':
+                    temp_values[row_idx,2:num_conditions+1] = temp_values[row_idx,1]
 
-    for col_idx,col in enumerate(temp_df.columns):
-        temp_df[col].values[:] = temp_values[:,col_idx]
+        for col_idx,col in enumerate(temp_df.columns):
+            temp_df[col].values[:] = temp_values[:,col_idx]
+    else:
+        num_conditions = int(np.max(np.sum(temp_values != 'NA',axis = 1)))
+        pattern1 = ['NA']*(num_cols-1)
+
+        for row_idx in range(num_rows):
+            #first check if has correct amount of NAs
+            if all(temp_values[row_idx,-1*len(pattern1):] == pattern1):
+                # then make sure that something was entered 
+                if temp_values[row_idx,1] != 'NA':
+                    temp_values[row_idx,2:num_conditions+1] = temp_values[row_idx,1]
+
+        for col_idx,col in enumerate(temp_df.columns):
+            temp_df[col].values[:] = temp_values[:,col_idx]
+        pass
 
     return temp_df
 

@@ -1,0 +1,13 @@
+﻿VariableName,group 1,group 2,group 3,group 4,group 5,group 6,group 7,group 8,group 9,group 10
+egg date,1/1/2021,NA,NA,NA,NA,NA,NA,NA,NA,NA
+robot date [yyyy-mm-dd],1/3/2021,NA,NA,NA,NA,NA,NA,NA,NA,NA
+temperature [C],20,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Plate Type,WorMotel,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Media,NGM agarose,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Strain Names,N2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Genotypes,wild type,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Bacterial Species,E. coli,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Bacterial Strains,HT115,NA,NA,NA,NA,NA,NA,NA,NA,NA
+RNAi [gene-1(RNAi)],NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Compound [XmM Name],NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Other,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
