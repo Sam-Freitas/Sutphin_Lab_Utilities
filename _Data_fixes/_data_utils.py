@@ -320,6 +320,12 @@ def update_groupnames():
     previous_groupname_path = os.path.join('temp_data','Groupname.csv')
     updated_groupname_path = os.path.join('temp_data','Updated_temp_Groupname.csv')
 
+    if os.path.isfile(previous_groupname_path) and os.path.isfile(updated_groupname_path):
+        print('Found both Groupname.csv and Updated_temp_Groupname.csv')
+    else:
+        print('Could not locate one or more of [Groupname.csv and Updated_temp_Groupname.csv] --- likely from a hard exit or no change, exiting')
+        sys.exit()
+
     previous_groupname_df = pd.read_csv(previous_groupname_path, keep_default_na=False, na_values=[])
     updated_groupname_df = pd.read_csv(updated_groupname_path, keep_default_na=False, na_values=[])
 
