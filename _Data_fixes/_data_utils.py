@@ -206,7 +206,6 @@ class CSVEditor(QMainWindow):
         if options:
             self.optional = options
             self.open_and_transfer_chosen_csv()
-            print('asdfasfd')
 
     def close_app(self):
         QApplication.instance().quit()
