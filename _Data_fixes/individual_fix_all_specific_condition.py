@@ -1,5 +1,6 @@
 import sys
-import os, glob, shutil, copy,time
+import os, glob, shutil, copy, time
+import webbrowser
 from natsort import natsorted
 import numpy as np
 import Levenshtein
@@ -24,6 +25,8 @@ if __name__ == "__main__":
     file_name = os.path.splitext(os.path.basename(__file__))[0]
     log_path = 'log_' + file_name + '.txt'
 
+    use_progressbar = False
+
     try:
         os.remove(log_path)
         write_log("restarted LOGGING",log_name=log_path)
@@ -46,8 +49,9 @@ if __name__ == "__main__":
     output_path = overarching_Data_path
 
     # progress bar time(!)
-    root_progressbar, progress_bar, progress_bar_label = create_progress_window()
-    update_progress_bar(progress_bar,progress_bar_label,current_iteration=1,total=2,text="Finding data")
+    if use_progressbar:
+        root_progressbar, progress_bar, progress_bar_label = create_progress_window()
+        update_progress_bar(progress_bar,progress_bar_label,current_iteration=1,total=2,text="Finding data")
 
     found_groupname_csvs = natsorted(find_files(overarching_Data_path, file_extension='.csv', filter='Groupname.csv', filter2 = None))
     found_robot_sheets_pdf = natsorted(find_files(robot_experiment_sheets_path, file_extension='.pdf', filter='', filter2 = None))
@@ -59,6 +63,8 @@ if __name__ == "__main__":
     perfect_matches = 0
     imperfect_matches = 0
 
+    start_at = 0
+
     for i,this_found_groupname_csv in enumerate(found_groupname_csvs):
 
         continue_flag = False
@@ -67,9 +73,10 @@ if __name__ == "__main__":
             # get the name of the experiment
             this_exp_name = get_experiment_name(this_found_groupname_csv)
             write_log(this_exp_name,log_name=log_path)
-            progress_bar_text = this_exp_name+'-'*(50-len(this_exp_name))+str(i+1)+'/'+str(len(found_groupname_csvs))
-            update_progress_bar(progress_bar,progress_bar_label,current_iteration=i+1,total=len(found_groupname_csvs),
-                text=progress_bar_text)
+            if use_progressbar:
+                progress_bar_text = this_exp_name+'-'*(50-len(this_exp_name))+str(i+1)+'/'+str(len(found_groupname_csvs))
+                update_progress_bar(progress_bar,progress_bar_label,current_iteration=i+1,total=len(found_groupname_csvs),
+                    text=progress_bar_text)
             
             # Groupname find
             this_groupname = find_files(os.path.join(overarching_Data_path,this_exp_name), file_extension='.csv',filter='Groupname.csv')[0]
@@ -87,7 +94,14 @@ if __name__ == "__main__":
             write_log(this_exp_name + ' ----- FAILED TO LOAD ALL DATA',log_name=log_path)
             continue_flag = False
 
+        if (i >= start_at) and (continue_flag == True):
+            continue_flag = True
+        else:
+            continue_flag = False
+
         if continue_flag:
+            imperfect_match_flag = False
+            perfect_match_flag = False
             # isolate each groups strain and genotype data
             this_groupname_df = pd.read_csv(this_groupname, keep_default_na=False, na_values=[], index_col='VariableName')
 
@@ -117,16 +131,56 @@ if __name__ == "__main__":
             if lev_distances[found_minimum_idx] > 0:
                 write_log('############################################CHECKOUT', log_name=log_path)
                 imperfect_matches += 1
+                imperfect_match_flag = True
             else:
                 perfect_matches += 1
+                perfect_match_flag = True
 
             # log that b
-            write_log('--- Sheet:   ' + robot_sheets_names[int(found_minimum_idx)] + '  ' + str(lev_distances[found_minimum_idx]), log_name=log_path)
+            write_log('--- Sheet:   ' + robot_sheets_names[int(found_minimum_idx)] , log_name=log_path)
+            write_log('--- Levdst:  ' + str(lev_distances[found_minimum_idx]), log_name=log_path)
 
             if lev_distances[found_minimum_idx] > 0:
                 pass
                 # this is probably a good alert for when the sheet doesnt match perfectly
 
+            write_log(found_robot_sheets_pdf[found_minimum_idx],log_name=log_path)
+            write_log(this_groupname, log_name=log_path)
+            write_log(str(i) + ' --- sheet NUMBER',log_name=log_path)
+
+            webbrowser.open(found_robot_sheets_pdf[found_minimum_idx])
+
+            # THIS IS THE MANUAL OPENING FOR THE GROUPNAME EDITOR
+            editor = CSVEditor(options=this_groupname)
+            editor.resize(1000, 600)
+            editor.show()
+            app.exec()
+
+            write_log('finishing and exporting changes---------------',log_name=log_path)   
+            export_path = get_export_path()
+
+            print('loading groupnames\n')
+            groups_that_changed, updated_groupname_df, previous_groupname_df, previous_groupname_path, updated_groupname_path = update_groupnames()
+
+            print('\nloading divisions\n')
+            updated_divisions, previous_divisions, previous_divisions_paths = update_divisions(
+                groups_that_changed,updated_groupname_df,previous_groupname_df)
+
+            print('fixing groupnames\n')
+            updated_divisions = fix_groupnames(updated_divisions)
+
+            print('\nloading exports\n')
+            all_prev_csvs_paths = [previous_groupname_path]+[updated_groupname_path]+previous_divisions_paths
+            updated_export,exported_data_path = update_export(updated_divisions,all_prev_csvs_paths)
+
+            print('Exporting everything')
+            export_everything(updated_export,updated_divisions,updated_groupname_df,
+                previous_groupname_path,previous_divisions_paths,exported_data_path,
+                export_path,
+                testing = False)
+
+            pass
+            
             ########################### here we do the stuff
             ########################### automatically open the csv editor and other stuff
             ########################### probably have a way to only check for specific things 

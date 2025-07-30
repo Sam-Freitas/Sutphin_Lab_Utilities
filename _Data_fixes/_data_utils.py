@@ -161,7 +161,7 @@ class DataFrameModel(QAbstractTableModel):
         return None
 
 class CSVEditor(QMainWindow):
-    def __init__(self):
+    def __init__(self, options = False):
         super().__init__()
         self.setWindowTitle("Groupname editor")
 
@@ -179,7 +179,7 @@ class CSVEditor(QMainWindow):
         self.reset_button = QPushButton("Reset Changes")
         self.close_button = QPushButton("Finished (Export changes)")
 
-        self.open_button.clicked.connect(self.open_and_transfer_csvs)
+        self.open_button.clicked.connect(self.open_and_transfer_csvs_manual)
         self.save_button.clicked.connect(self.save_csv)
         self.reset_button.clicked.connect(self.reset_changes)
         self.close_button.clicked.connect(self.close_app)
@@ -203,10 +203,15 @@ class CSVEditor(QMainWindow):
         self.status = QStatusBar()
         self.setStatusBar(self.status)
 
+        if options:
+            self.optional = options
+            self.open_and_transfer_chosen_csv()
+            print('asdfasfd')
+
     def close_app(self):
         QApplication.instance().quit()
 
-    def open_and_transfer_csvs(self):
+    def open_and_transfer_csvs_manual(self):
         # this function finds and transfers csvs into the temp file location for 
         # faster processing on the local drive
 
@@ -217,6 +222,49 @@ class CSVEditor(QMainWindow):
         file_path, _ = QFileDialog.getOpenFileName(self, "OPEN THE GROUPNAME.CSV IN GROUPNAMES FOLDER", default_file_path, "CSV Files (*Groupname.csv)")
 
         assert os.path.isfile(file_path)
+
+        # progress bar time(!)
+        root_progressbar, progress_bar, progress_bar_label = create_progress_window()
+        update_progress_bar(progress_bar,progress_bar_label,current_iteration=1,total=2,text="Loading Data")
+
+        # find the _Data paths or the associated overarching folder
+        overarching_Data_path = os.path.split(os.path.split(file_path)[0])[0]
+        associated_csvs = find_files(overarching_Data_path, file_extension='.csv', filter='', filter2 = None)
+
+        # create and delete temp files
+        os.makedirs('temp_data', exist_ok=True)
+        del_dir_contents('temp_data',recursive=True,dont_delete_registrations=False)
+        os.makedirs('temp_data', exist_ok=True)
+
+        # transfer data over to the temp folders
+        update_progress_bar(progress_bar,progress_bar_label,current_iteration=2,total=2,text="Transfering data")
+        with open(os.path.join('temp_data',"path_output.txt"), "w") as f:
+            f.write(overarching_Data_path)
+        for this_csv in associated_csvs:
+            shutil.copy2(this_csv,os.path.join('temp_data',os.path.split(this_csv)[-1]))
+
+        root_progressbar.destroy()
+
+        if file_path:
+            self.df = pd.read_csv(file_path, keep_default_na=False, na_values=[])
+            self.original_df = self.df.copy()
+            self.model = DataFrameModel(self.df, self.original_df)
+            self.view.setModel(self.model)
+            self.status.showMessage(f"Loaded: {file_path}", 4000)
+
+    def open_and_transfer_chosen_csv(self):
+        # this function finds and transfers csvs into the temp file location for 
+        # faster processing on the local drive
+
+        default_file_path = r"C:\Users\LabPC2\Documents\GitHub\Sutphin_Lab_Utilities\_Data_fixes\_Data_copy"
+        if not os.path.isdir(default_file_path):
+            default_file_path = ''
+        
+        file_path = self.optional
+
+        # make sure that the file path given exists
+        if not os.path.isfile(file_path):
+            file_path, _ = QFileDialog.getOpenFileName(self, "OPEN THE GROUPNAME.CSV IN GROUPNAMES FOLDER", default_file_path, "CSV Files (*Groupname.csv)")
 
         # progress bar time(!)
         root_progressbar, progress_bar, progress_bar_label = create_progress_window()
