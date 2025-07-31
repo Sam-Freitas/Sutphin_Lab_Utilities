@@ -63,7 +63,7 @@ if __name__ == "__main__":
     perfect_matches = 0
     imperfect_matches = 0
 
-    start_at = 0
+    start_at = 100
 
     for i,this_found_groupname_csv in enumerate(found_groupname_csvs):
 
@@ -174,10 +174,14 @@ if __name__ == "__main__":
             updated_export,exported_data_path = update_export(updated_divisions,all_prev_csvs_paths)
 
             print('Exporting everything')
-            export_everything(updated_export,updated_divisions,updated_groupname_df,
-                previous_groupname_path,previous_divisions_paths,exported_data_path,
-                export_path,
-                testing = False)
+            if (updated_export is not None) and (exported_data_path is not None):
+                export_everything(updated_export,updated_divisions,updated_groupname_df,
+                    previous_groupname_path,previous_divisions_paths,exported_data_path,
+                    export_path,
+                    testing = False)
+            else:
+                write_log('ERROR',log_name=log_path)
+                write_log('SKIPPING',log_name=log_path)
 
             pass
             

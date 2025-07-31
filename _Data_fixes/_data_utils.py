@@ -549,8 +549,12 @@ def update_export(updated_divisions,all_prev_csvs_paths,exported_data_path = Non
 
         combined_updated_divisions = pd.concat(list_of_div_to_use)
 
-        exported_data['Groupname'] = np.asarray(combined_updated_divisions['Groupname'])
-
+        try:
+            exported_data['Groupname'] = np.asarray(combined_updated_divisions['Groupname'])
+        except Exception as error:
+            print('During the export of ', exported_data_path)
+            print('FAILURE OF ', error)
+            return None,None
         pass
 
     return exported_data, exported_data_path
