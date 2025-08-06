@@ -63,7 +63,7 @@ if __name__ == "__main__":
     perfect_matches = 0
     imperfect_matches = 0
 
-    start_at = 100
+    start_at = 237
 
     for i,this_found_groupname_csv in enumerate(found_groupname_csvs):
 
@@ -120,6 +120,9 @@ if __name__ == "__main__":
                 secondary_distances = []
                 for this_match in possible_matches:
                     dist_calc = Levenshtein.jaro_winkler(this_exp_name.lower(),this_match.lower())
+                    # if the name is contained inside a match or vice versa then set the distance to 0 
+                    if (this_match.lower() in this_exp_name.lower()) or ( this_exp_name.lower() in this_match.lower()):
+                        dist_calc = 0
                     secondary_distances.append(dist_calc)
                 found_minimum_idx = found_minimum_idx[np.argmin(secondary_distances)]
             # otherwise just use that first one
