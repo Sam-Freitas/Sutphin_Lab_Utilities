@@ -31,7 +31,7 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
 
     # load in the data copy from the local drive
-    overarching_Data_path = r"C:\Users\LabPC2\Documents\GitHub\Sutphin_Lab_Utilities\_Data_fixes\_Data_copy"
+    overarching_Data_path = r"C:\Users\LabPC2\Documents\GitHub\Sutphin_Lab_Utilities\_Data_fixes\_Data_to_update"
     assert(os.path.isdir(overarching_Data_path))
     write_log("found _Data path:",log_name=log_path)
     write_log(overarching_Data_path,log_name=log_path)

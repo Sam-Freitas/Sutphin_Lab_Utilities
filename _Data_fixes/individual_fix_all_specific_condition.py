@@ -36,7 +36,7 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
 
     # load in the data copy from the local drive
-    overarching_Data_path = r"C:\Users\LabPC2\Documents\GitHub\Sutphin_Lab_Utilities\_Data_fixes\_Data_copy"
+    overarching_Data_path = r"C:\Users\LabPC2\Documents\GitHub\Sutphin_Lab_Utilities\_Data_fixes\_Data_to_update"
     robot_experiment_sheets_path = r"C:\Users\LabPC2\Documents\GitHub\Sutphin_Lab_Utilities\_Data_fixes\robot_sheets"
     assert(os.path.isdir(overarching_Data_path))
     assert(os.path.isdir(robot_experiment_sheets_path))
@@ -63,7 +63,7 @@ if __name__ == "__main__":
     perfect_matches = 0
     imperfect_matches = 0
 
-    start_at = 237
+    start_at = 0
 
     for i,this_found_groupname_csv in enumerate(found_groupname_csvs):
 

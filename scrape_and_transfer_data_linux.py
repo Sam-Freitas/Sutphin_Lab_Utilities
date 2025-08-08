@@ -86,6 +86,7 @@ skip_counter = 0
 for i in tqdm(range(len(division_csv_files))):
     # try:
         this_division_df = pd.read_csv(division_csv_files[i])
+        print(division_csv_files[i])
 
         this_path = os.path.normpath(division_csv_files[i])
         # print(this_path)
