@@ -385,6 +385,13 @@ close all
 plot_mean_activites(good_data,conditions_to_isolate,exp_nm,csv_path,csv_file,0,cmap,idx_activity)
 plot_mean_activites(good_data,conditions_to_isolate,exp_nm,csv_path,csv_file,1,cmap,idx_activity)
 
+%%%%
+% plot cumulative data over time for each condition
+% Cumulative acitivity to time 
+
+plot_cumulative_activity(good_data,conditions_to_isolate,exp_nm,csv_path,csv_file,0,cmap,idx_activity)
+plot_cumulative_activity(good_data,conditions_to_isolate,exp_nm,csv_path,csv_file,1,cmap,idx_activity)
+
 close all
 
 disp('Finished with no errors')
@@ -804,8 +811,9 @@ for i = 1:length(conditions_to_isolate)
     this_activity = table2array(this_data(:,idx_activity));
     this_activity = clean_this_activity(this_activity,this_data);
     
-    this_activity_norm_mean = mean(this_activity);
+    this_activity_norm_mean = mean(this_activity,1);
     this_activity_norm_mean_filt = medfilt1(this_activity_norm_mean,3);
+
     if smooth_bool
         this_activity_norm_mean_filt = smoothdata(this_activity_norm_mean_filt,'gaussian');
     end
@@ -837,6 +845,75 @@ if smooth_bool
     saveas(g2,fullfile(csv_path,['activity_norm_smooth_' char(exp_nm) '.png']));
 else
     saveas(g2,fullfile(csv_path,['activity_norm_' char(exp_nm) '.png']));
+end
+
+end
+
+
+function plot_cumulative_activity(good_data,conditions_to_isolate,exp_nm,csv_path,~,smooth_bool,cmap,idx_activity)
+
+g2 = figure('units','normalized','outerposition',[0 0 1 1]);
+hold on
+for i = 1:length(conditions_to_isolate)
+    
+    this_condition_idx = (good_data.Condition == conditions_to_isolate(i));
+    
+    this_data = good_data(this_condition_idx,:);
+    
+    this_activity = table2array(this_data(:,idx_activity));
+    this_activity = clean_this_activity(this_activity,this_data);
+    
+    % we are not useing the med filt for this 
+    this_activity_norm_mean_filt = cumsum(this_activity,2);
+
+    if smooth_bool
+        this_activity_norm_mean_filt = smoothdata(this_activity_norm_mean_filt,2,'gaussian');
+    end
+%     x = 1:length(this_activity_norm_mean_filt);
+%     plot(x,this_activity_norm_mean_filt,'Color',cmap(i,:),'LineWidth',5,'LineStyle',':')
+
+    this_activity_cumsum_filt = mean(this_activity_norm_mean_filt,1);
+
+    if smooth_bool
+        this_activity_cumsum_filt = this_activity_cumsum_filt/size(this_activity_norm_mean_filt,1);
+        %%%% MAKE THSI WORK
+        conditions_to_isolate(i) = conditions_to_isolate(i) + ' N: ' + string(size(this_activity_norm_mean_filt,1));
+    end
+
+    if isequal(i,1)
+        running_max = max(this_activity_cumsum_filt,[],'all');
+    else
+        if running_max < max(this_activity_cumsum_filt,[],'all')
+            running_max = max(this_activity_cumsum_filt,[],'all');
+        end
+    end
+    x = 1:length(this_activity_cumsum_filt);
+
+    plot(x,this_activity_cumsum_filt,'Color',cmap(i,:),'LineWidth',5)
+    % % this is a test for plotting all the cumulative sums of each animal
+    % with transparency set to 0.1
+%     for j = 1:size(this_activity_norm_mean_filt,1)
+%         plot(x,this_activity_norm_mean_filt(j,:),'Color',[cmap(i,:) (0.1)],'LineWidth',5)
+%     end
+end
+pause(0.1)
+if smooth_bool
+    title('Cumulative activities over time per condition Norm by populations size')
+else
+    title('Cumulative activities over time per condition')
+end
+axis square 
+ylabel('Total Activity')
+xlabel('Days on robot')
+ylim([0,running_max])
+yticks([1, round(running_max/2),running_max]); 
+yticklabels({num2str(0),num2str(0.5),num2str(1)})
+legend(conditions_to_isolate,'Location','southoutside');
+
+if smooth_bool
+    saveas(g2,fullfile(csv_path,['cumulative_activity_norm_to_populations_smooth_' char(exp_nm) '.png']));
+else
+    saveas(g2,fullfile(csv_path,['cumulative_activity_' char(exp_nm) '.png']));
 end
 
 end
