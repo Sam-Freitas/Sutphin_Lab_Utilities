@@ -83,6 +83,8 @@ if __name__ == '__main__':
             print('-------------------------------> TO SAVE : \t\t', folder_size, 'GB')
             running_space_saving += folder_size
             print('-------------------------------> RUNNING SAVINGS : \t\t', round(running_space_saving,2), 'GB')
+            num_days = len(day_names)
+            print('-------------------------------> NUMBER OF DAYS : \t\t', num_days)
 
             df_running = [os.path.split(this_folder)[-1],this_folder,day_names[0],first_timestamp,folder_size,round(folder_size/1024,decimals=5),0]
             df.loc[i] = df_running
@@ -90,7 +92,7 @@ if __name__ == '__main__':
         except:
             print("----FAILED")
 
-        if i > 50:
+        if i > 5:
             break
         pass
 
