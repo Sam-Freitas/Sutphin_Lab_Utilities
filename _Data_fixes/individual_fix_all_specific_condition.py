@@ -16,7 +16,7 @@ from PySide6.QtGui import QColor, QBrush
 
 from _data_utils import *
 
-## this code is for a person to go through each experiment that is specified (eg RNAi)
+## this code is for a person to go through each experiment 
 ## and change the Groupname.csv using the interactive editor
 ## a helper function also tries to find the closest robot sheet name and opens that along side (beta)
 

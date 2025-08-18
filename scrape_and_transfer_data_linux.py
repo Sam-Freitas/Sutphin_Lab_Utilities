@@ -86,7 +86,7 @@ skip_counter = 0
 for i in tqdm(range(len(division_csv_files))):
     # try:
         this_division_df = pd.read_csv(division_csv_files[i])
-        print(division_csv_files[i])
+        print(' ' + division_csv_files[i])
 
         this_path = os.path.normpath(division_csv_files[i])
         # print(this_path)
@@ -178,10 +178,11 @@ for i in tqdm(range(len(division_csv_files))):
                 large_division_dataframe = pd.concat([large_division_dataframe,this_division_df])
 
             if this_division_df.empty:# or this_division_df.isnull().all():
-                print(this_path_processed_data[0], '-----------', this_experiment_plate_name.upper())
+                pass
+                # print(this_path_processed_data[0], '-----------', this_experiment_plate_name.upper())
         else:
             skip_counter = skip_counter + 1
-            # print('skipping',division_csv_files[i])
+            print(' skipping',division_csv_files[i])
 
 print('Skipped', skip_counter, 'of', len(division_csv_files), 'possible plates')
 
