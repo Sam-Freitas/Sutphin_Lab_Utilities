@@ -1,0 +1,11 @@
+restarted LOGGING
+found _Data path:
+C:\Users\LabPC2\Documents\GitHub\Sutphin_Lab_Utilities\_Data_fixes\_Data_to_update
+
+Gatorade_001
+
+Lipid_screen_dose_response_018
+
+Rad_004
+
+FINSIHED with no errors
