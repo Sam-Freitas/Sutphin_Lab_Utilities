@@ -1,4 +1,4 @@
-import os, sys
+import os, sys, shutil, tqdm, time
 import glob
 from natsort import natsorted
 
@@ -40,5 +40,31 @@ def find_files(folder_path, file_extension='.png', filter='', filter2 = None, ex
     return found_files
 
 if __name__ == "__main__":
+
+    path_to_Data = "/volume2/Sutphin server/Projects/Worm Paparazzi/Data"
+
+    if not os.path.isdir(path_to_Data):
+        path_to_Data = r"Y:\Projects\Worm Paparazzi\Data"
+
+    print(path_to_Data)
+    assert(os.path.isdir(path_to_Data))
+
+    print('finding all the files')
+    all_possible_files_to_delete = natsorted(find_files(path_to_Data,file_extension='.png',filter='processed_img_data'))
+
+    print('found N files:')
+    print(len(all_possible_files_to_delete))
+
+    file_path = "log_find_unecessary_DATA.txt"
+    with open(file_path, "w") as file:
+        file.write("\n".join(all_possible_files_to_delete))
+
+    for i, this_path in enumerate(tqdm.tqdm(all_possible_files_to_delete)):
+        print(this_path)
+        if ('.png' in this_path) and ("processed_img_data" in this_path):
+            print('WOULD HAVE REMOVED:', this_path)
+            # os.remove(this_path)
+        time.sleep(0.00001)
+
 
     print("EOF")
