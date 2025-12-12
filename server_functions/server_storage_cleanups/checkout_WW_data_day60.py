@@ -69,6 +69,8 @@ def get_all_names_of_subfolders(given_folder):
 
 if __name__ == '__main__':
 
+    output_path = os.path.dirname(os.path.abspath(__file__))
+
     ## what would be smart is to find where the processed data csv for each experiment 
     ## then find the last day an animal was alive 
     ## then have a variable days_maximum 
@@ -163,7 +165,7 @@ if __name__ == '__main__':
 
     df = df.sort_values("first datetime",ascending=True)
     df["Cumulative (TB)"] = round(cumsum(df["space (TB)"].values),decimals=2)
-    df.to_csv('/volume1/WormWatcher/python_dir/output_Ndays_removal_csv.csv', index=False)
+    df.to_csv(os.path.join(output_path,'output_Ndays_removal_csv.csv'), index=False)
 
     print('FINAL SPACE SAVINGS')
     print(round(running_space_saving,2), 'GB')

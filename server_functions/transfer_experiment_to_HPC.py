@@ -3,7 +3,7 @@ from natsort import natsorted
 import paramiko
 
 # this is the data to transfer over to the HPC
-to_transfer = 'Fluorescent_markers_001/'
+to_transfer = 'Longevity_drug_dose_response_052/'
 
 # this is the path to the txt file containing all the information
 ssh_details_path = os.path.normpath(r'server_functions\server_details.txt')
@@ -59,7 +59,7 @@ with open(ssh_details_path) as f:
        (key, val) = line.split(maxsplit=1)
        ssh_details[key] = val.rstrip()
 del key, val
-5
+
 print(ssh_details_path)
 print(ssh_details)
 
