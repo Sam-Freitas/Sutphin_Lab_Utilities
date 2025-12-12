@@ -80,7 +80,7 @@ if __name__ == '__main__':
 
     output_path = os.path.dirname(os.path.abspath(__file__))
 
-    df_column_names = ['matched','found _Data csv','max lifespan','max allowed days','extra days','space savings GB','last allowed date','total TB']
+    df_column_names = ['matched','found _Data csv','max lifespan','max allowed days','extra days','space savings GB','last allowed date','total TB','continue3']
 
     df = pd.read_csv(os.path.join(output_path,'cleanup_server1.csv'),index_col=False)
     print('FOUND COLUMNS:\n', list(df.columns))
@@ -142,13 +142,16 @@ if __name__ == '__main__':
             extra_days = max([0,extra_days])
             df.iat[i,df.columns.get_loc('extra days')] = extra_days
 
-
             date_to_keep_up_to = datetime.datetime.strptime(df.iat[i,df.columns.get_loc('first date')],format_string) + datetime.timedelta(days=num_days_to_keep)
             df.iat[i,df.columns.get_loc('last allowed date')] = date_to_keep_up_to.strftime(format_string)
             
             df.iat[i,df.columns.get_loc('space savings GB')] = round(extra_days*num_plates_in_experiment*avg_GB_per_day,2)
 
+            df.iat[i,df.columns.get_loc('continue3')] = True
+
             pass
+        else:
+            df.iat[i,df.columns.get_loc('continue3')] = False
 
     temp = np.asarray(df['space savings GB'])
     indices_to_delete = np.where(temp == '')
