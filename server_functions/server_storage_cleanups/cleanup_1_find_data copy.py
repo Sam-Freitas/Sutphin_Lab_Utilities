@@ -100,7 +100,7 @@ if __name__ == '__main__':
             continue_column.append(True)
     df["continue1"] = continue_column
 
-    df.to_csv(os.path.join(output_path,'cleanup_server.csv'), index=False)
+    df.to_csv(os.path.join(output_path,'cleanup_server0.csv'), index=False)
 
     for i,(this_folder,this_exp_name) in enumerate(tqdm.tqdm(zip(WW_experiments_paths,WW_experiment_name),total=len(WW_experiments_paths))):
         

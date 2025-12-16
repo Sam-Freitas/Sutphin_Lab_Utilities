@@ -130,7 +130,7 @@ if __name__ == '__main__':
                         break
 
             array_of_subfolders = np.asarray(all_data_folders_flattened)[temp]
-            list_of_subfolders = list(array_of_subfolders)
+            list_of_subfolders = list(flatten_list(list(array_of_subfolders)))
 
             df.iat[i,df.columns.get_loc('paths to remove')] = list_of_subfolders
 
