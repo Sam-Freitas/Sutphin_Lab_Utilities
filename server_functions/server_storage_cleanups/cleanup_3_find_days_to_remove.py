@@ -130,8 +130,10 @@ if __name__ == '__main__':
                         break
 
             array_of_subfolders = np.asarray(all_data_folders_flattened)[temp]
-            list_of_subfolders = list(flatten_list(list(array_of_subfolders)))
-
+            try:
+                list_of_subfolders = list(array_of_subfolders)
+            except:
+                list_of_subfolders = ['ERROR']
             df.iat[i,df.columns.get_loc('paths to remove')] = list_of_subfolders
 
             total_size = round(sum([get_size_of_folder(this_folder) for this_folder in list_of_subfolders]),2)
@@ -139,5 +141,11 @@ if __name__ == '__main__':
             df.iat[i,df.columns.get_loc('space savings')] = total_size
 
             pass
+        else:
+            df.iat[i,df.columns.get_loc('space savings')] = 0
+            df.to_csv(os.path.join(output_path,'cleanup_server3.csv'), index=False)
+
 
     df.to_csv(os.path.join(output_path,'cleanup_server3.csv'), index=False)
+
+    # a = np.nonzero(df['space savings'].values)
