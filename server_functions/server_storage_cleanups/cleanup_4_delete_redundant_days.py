@@ -20,9 +20,9 @@ max_number_days_fallback = 60
 lifespan_additional_delta = 2
 avg_GB_per_day = 0.5
 
-WW_path = r"Z:\WormWatcher"
+WW_path = r"Z:\WormWatcher_cleanup_test"
 if not os.path.isdir(WW_path):
-    WW_path = '/volume1/WormWatcher/WormWatcher'
+    WW_path = '/volume1/WormWatcher/WormWatcher_cleanup_test'
 
 processed_data_path = r"Z:\_Data"
 if not os.path.isdir(processed_data_path):
@@ -109,19 +109,44 @@ if __name__ == '__main__':
 
     for i,(this_WW_exp_name,this_WW_exp_path) in enumerate(tqdm.tqdm(zip(WW_experiment_name,WW_experiments_paths),total=len(WW_experiment_name))):
 
-        print('--------------------')
+        print('\n--------------------\n')
+        print(this_WW_exp_name)
         # print(this_WW_exp_name,this_WW_exp_path)
 
         if df["continue3"][i]:
 
             # get the paths from the csv as a string and transform them back into a list of paths
             paths_to_delete = df.iat[i,df.columns.get_loc('paths to remove')]
-            paths_to_delete = paths_to_delete.replace("'",'').replace("[",'').replace("]",'')
-            paths_to_delete = paths_to_delete.split(', ')
+            if paths_to_delete == '[]':
+                paths_to_delete = None
+            else:
+                paths_to_delete = paths_to_delete.replace("'",'').replace("[",'').replace("]",'')
+                paths_to_delete = paths_to_delete.split(', ')
+                paths_to_delete = natsorted(paths_to_delete)
+
+            days_to_remove = df.iat[i,df.columns.get_loc('days to remove')]
+            if days_to_remove == '[]':
+                days_to_remove = None
+            else:
+                days_to_remove = days_to_remove.replace("'",'').replace("[",'').replace("]",'')
+                days_to_remove = days_to_remove.split(', ')
+                days_to_remove = natsorted(days_to_remove)
 
             print(os.path.commonprefix(paths_to_delete))
+            print(days_to_remove)
 
-            ## this is to only be run when 
+            continue_to_delete_flag = paths_to_delete and days_to_remove
+            if continue_to_delete_flag:
+                print('--- deleting')
+                for j,this_folder_to_delete in enumerate(paths_to_delete):
+                    print(j,this_folder_to_delete)
+                    files_to_delete = glob.glob(os.path.join(this_folder_to_delete,'*'))
+
+                    if files_to_delete:
+                        for this_file_to_delete in files_to_delete:
+                            os.remove(this_file_to_delete)
+            ## this is to only be run when absolutely sure that we want to delete data
+
             pass
-
+        pass
     pass

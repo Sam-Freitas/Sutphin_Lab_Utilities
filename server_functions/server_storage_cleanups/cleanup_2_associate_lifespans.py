@@ -17,12 +17,12 @@ cutoff_date = "2024-01-01"
 format_string = "%Y-%m-%d"  # Y: year, m: month, d: day
 cutoff_date = datetime.datetime.strptime(cutoff_date,format_string)
 max_number_days_fallback = 60
-lifespan_additional_delta = 2
+lifespan_additional_delta = 1
 avg_GB_per_day = 0.5
 
-WW_path = r"Z:\WormWatcher"
+WW_path = r"Z:\WormWatcher_cleanup_test"
 if not os.path.isdir(WW_path):
-    WW_path = '/volume1/WormWatcher/WormWatcher'
+    WW_path = '/volume1/WormWatcher/WormWatcher_cleanup_test'
 
 processed_data_path = r"Z:\_Data"
 if not os.path.isdir(processed_data_path):

@@ -20,9 +20,9 @@ max_number_days_fallback = 60
 lifespan_additional_delta = 2
 avg_GB_per_day = 0.5
 
-WW_path = r"Z:\WormWatcher"
+WW_path = r"Z:\WormWatcher_cleanup_test"
 if not os.path.isdir(WW_path):
-    WW_path = '/volume1/WormWatcher/WormWatcher'
+    WW_path = '/volume1/WormWatcher/WormWatcher_cleanup_test'
 
 processed_data_path = r"Z:\_Data"
 if not os.path.isdir(processed_data_path):
