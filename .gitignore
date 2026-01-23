@@ -20,3 +20,6 @@ temp.csv
 /_Data_fixes/robot_sheets
 /_Data_fixes/_Data_to_update
 server_functions/server_details.txt
+server_functions/server_storage_cleanups/cleanup_server0.csv
+server_functions/server_storage_cleanups/cleanup_server1.csv
+server_functions/server_storage_cleanups/cleanup_server2.csv

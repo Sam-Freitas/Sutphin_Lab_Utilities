@@ -15,9 +15,9 @@ cutoff_date = "2024-01-01"
 format_string = "%Y-%m-%d"  # Y: year, m: month, d: day
 cutoff_date = datetime.datetime.strptime(cutoff_date,format_string)
 
-WW_path = r"Z:\WormWatcher_cleanup_test"
+WW_path = r"Z:\WormWatcher"
 if not os.path.isdir(WW_path):
-    WW_path = '/volume1/WormWatcher/WormWatcher_cleanup_test'
+    WW_path = '/volume1/WormWatcher/WormWatcher'
 
 processed_data_path = r"Z:\_Data"
 if not os.path.isdir(processed_data_path):

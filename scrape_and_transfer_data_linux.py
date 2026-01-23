@@ -23,8 +23,8 @@ print(platform)
 # if Set to True then the program will check if there is a newer version and update, or if file doesnt exist then will transfer it
 # if false then it will overwrite everything 
 update_files = True
-# 50MB -> 50000000
-max_file_size = 50000000
+# 1000MB -> 1000000000
+max_file_size = 1000000000
 
 # get all the paths and directories of the 
 # PATH_TO_WW = os.getcwd()
@@ -86,7 +86,7 @@ skip_counter = 0
 for i in tqdm(range(len(division_csv_files))):
     # try:
         this_division_df = pd.read_csv(division_csv_files[i])
-        print(' ' + division_csv_files[i])
+        # print(' ' + division_csv_files[i])
 
         this_path = os.path.normpath(division_csv_files[i])
         # print(this_path)
@@ -182,7 +182,7 @@ for i in tqdm(range(len(division_csv_files))):
                 # print(this_path_processed_data[0], '-----------', this_experiment_plate_name.upper())
         else:
             skip_counter = skip_counter + 1
-            print(' skipping',division_csv_files[i])
+            # print(' skipping',division_csv_files[i])
 
 print('Skipped', skip_counter, 'of', len(division_csv_files), 'possible plates')
 
@@ -199,6 +199,8 @@ large_division_dataframe.to_csv(os.path.join(os.path.split(PATH_TO_SUTPHIN)[0],'
 # get rid of unnecessary csvs
 cleaned_csv_files = [ x for x in all_csv_files if "division" not in x ]
 cleaned_csv_files = [ x for x in cleaned_csv_files if "Groupname.csv" not in x ]
+
+cleaned_csv_files = natsort.natsorted(cleaned_csv_files)
  
 for i in tqdm(range(len(cleaned_csv_files))):
 
@@ -218,13 +220,18 @@ for i in tqdm(range(len(cleaned_csv_files))):
     file_list = os.listdir(this_dir)
   
     for this_file in os.listdir(this_dir):
-        this_file_path = os.path.join(this_dir,this_file)
-        this_file_size = os.path.getsize(this_file_path)
-        if this_file_size < max_file_size:
-            new_file_path = os.path.join(new_dir_path,this_file)
-            if os.path.isdir(this_file_path):
-                copy_tree(this_file_path, new_file_path, update=update_files)
-            else:
-                mkpath(new_dir_path)
-                copy_file(this_file_path, new_file_path, update=update_files)
+
+        if 'processed_img_data' not in this_file:
+
+            this_file_path = os.path.join(this_dir,this_file)
+            this_file_size = os.path.getsize(this_file_path)
+            if this_file_size < max_file_size:
+                new_file_path = os.path.join(new_dir_path,this_file)
+                if os.path.isdir(this_file_path):
+                    copy_tree(this_file_path, new_file_path, update=update_files)
+                else:
+                    mkpath(new_dir_path)
+                    copy_file(this_file_path, new_file_path, update=update_files)
+        else:
+            pass
 
