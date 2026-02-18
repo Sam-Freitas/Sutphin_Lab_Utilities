@@ -3,7 +3,7 @@ from natsort import natsorted
 import paramiko
 
 # this is the data to transfer over to the HPC
-to_transfer = 'Longevity_drug_dose_response_052/'
+to_transfer =  '5mM_Fe3_Wash_001/'
 
 # this is the path to the txt file containing all the information
 ssh_details_path = os.path.normpath(r'server_functions\server_details.txt')
@@ -98,7 +98,9 @@ if to_transfer.strip('/') not in found_folders:
 
 time.sleep(1)
 
-response = run_command('scp -r ' + '"' + to_transfer + '" ' + ssh_details['scp_path'])
+# rsync -a -R --info=progress2 --exclude="*/fluorescent_data*" --exclude="*.txt*" --exclude="*.jpg*" Fluorescent_markers_006/ samfreitas@filexfer.hpc.arizona.edu:/xdisk/sutphin/samfreitas/
+
+response = run_command('rsync -ah -R --info=progress2 --exclude="*/fluorescent_data*" --exclude="*.txt*" --exclude="*.jpg*" "' + to_transfer + '" ' + ssh_details['scp_path'])
 time.sleep(1)
 response = run_command(ssh_details['HPC_password'],timeout=-1, timeout2=15)
 time.sleep(1)
