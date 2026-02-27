@@ -146,6 +146,8 @@ if __name__ == '__main__':
             df.to_csv(os.path.join(output_path,'cleanup_server3.csv'), index=False)
 
 
+    df['total space savings'] = np.round(np.nansum(df['space savings']),2)
+
     df.to_csv(os.path.join(output_path,'cleanup_server3.csv'), index=False)
 
     # a = np.nonzero(df['space savings'].values)

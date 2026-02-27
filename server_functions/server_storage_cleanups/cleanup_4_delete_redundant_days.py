@@ -16,9 +16,6 @@ import datetime
 cutoff_date = "2024-01-01"
 format_string = "%Y-%m-%d"  # Y: year, m: month, d: day
 cutoff_date = datetime.datetime.strptime(cutoff_date,format_string)
-max_number_days_fallback = 60
-lifespan_additional_delta = 2
-avg_GB_per_day = 0.5
 
 WW_path = r"Z:\WormWatcher"
 if not os.path.isdir(WW_path):
@@ -109,11 +106,19 @@ if __name__ == '__main__':
 
     for i,(this_WW_exp_name,this_WW_exp_path) in enumerate(tqdm.tqdm(zip(WW_experiment_name,WW_experiments_paths),total=len(WW_experiment_name))):
 
+        this_exp_timestamps = [df.iat[i,df.columns.get_loc('first date')],df.iat[i,df.columns.get_loc('last date')]]
+        this_exp_num_days = int(df.iat[i,df.columns.get_loc('delta days')])
+        
         print('\n--------------------\n')
-        print(this_WW_exp_name)
-        # print(this_WW_exp_name,this_WW_exp_path)
+        print('Experiment:', this_WW_exp_name)
+        print('Location:  ', this_WW_exp_path)
+        print('N days:    ', this_exp_num_days)
+        print('Days :     ',this_exp_timestamps[0], '---', this_exp_timestamps[1])
+        print('')
 
         if df["continue3"][i]:
+
+            print('Continuing to deletion\n')
 
             # get the paths from the csv as a string and transform them back into a list of paths
             paths_to_delete = df.iat[i,df.columns.get_loc('paths to remove')]
@@ -132,11 +137,16 @@ if __name__ == '__main__':
                 days_to_remove = days_to_remove.split(', ')
                 days_to_remove = natsorted(days_to_remove)
 
-            print(os.path.commonprefix(paths_to_delete))
+            print('Last N removal:', len(days_to_remove))
+            print('N days remaining:', this_exp_num_days - len(days_to_remove))
             print(days_to_remove)
 
             continue_to_delete_flag = paths_to_delete and days_to_remove
-            if continue_to_delete_flag:
+
+            clean_this_exp_choice = input('\nClean this experiment?\nCONFRIM ---- yes(Y) - no(N)')
+            clean_this_exp_flag = (clean_this_exp_choice=='Y')
+
+            if continue_to_delete_flag and clean_this_exp_flag:
                 print('--- deleting')
                 for j,this_folder_to_delete in enumerate(paths_to_delete):
                     print(j,this_folder_to_delete)
@@ -144,7 +154,8 @@ if __name__ == '__main__':
 
                     if files_to_delete:
                         for this_file_to_delete in files_to_delete:
-                            os.remove(this_file_to_delete)
+                            pass
+                            # os.remove(this_file_to_delete)
             ## this is to only be run when absolutely sure that we want to delete data
 
             pass

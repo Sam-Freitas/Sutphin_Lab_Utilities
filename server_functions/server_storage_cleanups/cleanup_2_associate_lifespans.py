@@ -1,4 +1,4 @@
-import os, shutil
+import os, shutil, difflib
 import glob
 import tqdm
 import pandas as pd
@@ -17,6 +17,7 @@ cutoff_date = "2024-01-01"
 format_string = "%Y-%m-%d"  # Y: year, m: month, d: day
 cutoff_date = datetime.datetime.strptime(cutoff_date,format_string)
 max_number_days_fallback = 60
+min_number_days_fallback = 29
 lifespan_additional_delta = 1
 avg_GB_per_day = 0.5
 
@@ -88,6 +89,7 @@ if __name__ == '__main__':
     df[df_column_names] = ''
 
     Data_folders = natsorted([ f.path for f in os.scandir(processed_data_path) if f.is_dir() ])
+    Data_folders_names = [os.path.split(temp_this_Data)[-1].lower() for temp_this_Data in Data_folders]
 
     WW_experiments_paths = list(df["path"])
     WW_experiment_name = list(df["Experiment name"])
@@ -104,7 +106,7 @@ if __name__ == '__main__':
             plates_in_experiment = get_subfolders(this_WW_exp_path)
             num_plates_in_experiment = len(plates_in_experiment)
 
-            boolean_list_matcher = [this_WW_exp_name.lower() == os.path.split(temp_this_Data)[-1].lower() for temp_this_Data in Data_folders]
+            boolean_list_matcher = [this_WW_exp_name.lower() == temp_this_Data for temp_this_Data in Data_folders_names]
 
             if any(boolean_list_matcher):
 
@@ -120,6 +122,7 @@ if __name__ == '__main__':
 
                     temp_data_csv = pd.read_csv(chosen_data_csv_path)
                     max_lifespan = int(temp_data_csv['Last day of observation'].max())
+                    max_lifespan = max([min_number_days_fallback,max_lifespan]) # make sure its not too small
                     df.iat[i,df.columns.get_loc('max lifespan')] = max_lifespan
 
                     days_maximum = max_lifespan + lifespan_additional_delta
@@ -131,13 +134,84 @@ if __name__ == '__main__':
                     extra_days = int(df.iat[i,df.columns.get_loc('delta days')]) - days_maximum
 
                     num_days_to_keep = days_maximum
-
                     pass
             else:
-                # if nothing could be found then defaults
-                df.iat[i,df.columns.get_loc('max allowed days')] = max_number_days_fallback
-                extra_days = int(df.iat[i,df.columns.get_loc('delta days')]) - max_number_days_fallback
-                num_days_to_keep = max_number_days_fallback
+                # this will attempt to find the closest match to whatever is going on
+                # 1 finds easy matches 
+                # 2 determines if the processed data is correct
+                # 2.i or if there are multiple parts spread out
+
+                matches = difflib.get_close_matches(this_WW_exp_name.lower(), Data_folders_names, 5, 0.95)
+                print(matches)
+                piecewise_matches = [this_WW_exp_name.lower() in temp for temp in Data_folders_names]
+
+                if any(piecewise_matches):
+                    # this is for the pt1 pt2 pt3
+
+                    potential_matches = np.asarray(Data_folders)[np.asarray(piecewise_matches)]
+                    potential_matches = potential_matches.tolist()
+
+                    potential_matches_csv = flatten_list([glob.glob(os.path.join(temp,'*.csv')) for temp in potential_matches])
+
+                    df.iat[i,df.columns.get_loc('found _Data csv')] = potential_matches_csv
+
+                    temp_data_list = [pd.read_csv(temp) for temp in potential_matches_csv]
+                    temp_data_csv = pd.concat(temp_data_list,ignore_index=True)
+                    max_lifespan = int(temp_data_csv['Last day of observation'].max())
+                    max_lifespan = max([min_number_days_fallback,max_lifespan]) # make sure its not too small
+
+                    df.iat[i,df.columns.get_loc('max lifespan')] = max_lifespan
+                    days_maximum = max_lifespan + lifespan_additional_delta
+                    df.iat[i,df.columns.get_loc('max allowed days')] = days_maximum
+                    first_day_datetime = datetime.datetime.strptime(df["first date"][i],format_string)
+                    calculated_last_datetime = first_day_datetime + datetime.timedelta(days = days_maximum)
+                    extra_days = int(df.iat[i,df.columns.get_loc('delta days')]) - days_maximum
+                    num_days_to_keep = days_maximum
+
+                    pass
+
+                elif matches:
+
+                    closest_match = matches[0]
+
+                    if closest_match[-2:] == this_WW_exp_name[-2:]:
+                        print('Matched!')
+                        # this is for when there is a slight misspelling or something else small
+
+                        boolean_list_matcher = [temp == closest_match for temp in Data_folders_names]
+                        potential_matches = np.asarray(Data_folders)[np.asarray(boolean_list_matcher)]
+                        potential_matches = potential_matches.tolist()
+
+                        potential_matches_csv = flatten_list([glob.glob(os.path.join(temp,'*.csv')) for temp in potential_matches])
+
+                        df.iat[i,df.columns.get_loc('found _Data csv')] = potential_matches_csv
+
+                        temp_data_list = [pd.read_csv(temp) for temp in potential_matches_csv]
+                        temp_data_csv = pd.concat(temp_data_list,ignore_index=True)
+                        max_lifespan = int(temp_data_csv['Last day of observation'].max())
+                        max_lifespan = max([min_number_days_fallback,max_lifespan]) # make sure its not too small
+                        
+                        df.iat[i,df.columns.get_loc('max lifespan')] = max_lifespan
+                        days_maximum = max_lifespan + lifespan_additional_delta
+                        df.iat[i,df.columns.get_loc('max allowed days')] = days_maximum
+                        first_day_datetime = datetime.datetime.strptime(df["first date"][i],format_string)
+                        calculated_last_datetime = first_day_datetime + datetime.timedelta(days = days_maximum)
+                        extra_days = int(df.iat[i,df.columns.get_loc('delta days')]) - days_maximum
+                        num_days_to_keep = days_maximum
+
+                        pass
+                    else:
+                        # fallback
+                        # if nothing could be found then defaults
+                        df.iat[i,df.columns.get_loc('max allowed days')] = max_number_days_fallback
+                        extra_days = int(df.iat[i,df.columns.get_loc('delta days')]) - max_number_days_fallback
+                        num_days_to_keep = max_number_days_fallback
+                else:
+                    # fallback
+                    # if nothing could be found then defaults
+                    df.iat[i,df.columns.get_loc('max allowed days')] = max_number_days_fallback
+                    extra_days = int(df.iat[i,df.columns.get_loc('delta days')]) - max_number_days_fallback
+                    num_days_to_keep = max_number_days_fallback
             
             extra_days = max([0,extra_days])
             df.iat[i,df.columns.get_loc('extra days')] = extra_days
