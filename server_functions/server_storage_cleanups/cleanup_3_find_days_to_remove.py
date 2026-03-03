@@ -10,15 +10,8 @@ from natsort import natsorted
 from functools import reduce
 import datetime
 
-## this is the second step in cleaning up the server 
-## associated the found folders with a processed lifspan
-
-cutoff_date = "2024-01-01"
-format_string = "%Y-%m-%d"  # Y: year, m: month, d: day
-cutoff_date = datetime.datetime.strptime(cutoff_date,format_string)
-max_number_days_fallback = 60
-lifespan_additional_delta = 2
-avg_GB_per_day = 0.5
+## this is the third step in cleaning up the server 
+## find the folders that are to be removed (cleaned)
 
 WW_path = r"Z:\WormWatcher"
 if not os.path.isdir(WW_path):
@@ -149,5 +142,8 @@ if __name__ == '__main__':
     df['total space savings'] = np.round(np.nansum(df['space savings']),2)
 
     df.to_csv(os.path.join(output_path,'cleanup_server3.csv'), index=False)
+
+    df = df.sort_values(by=["last date", "first date"],ascending=False)
+    df.to_csv(os.path.join(output_path,'cleanup_server3_sorted.csv'), index=False)
 
     # a = np.nonzero(df['space savings'].values)

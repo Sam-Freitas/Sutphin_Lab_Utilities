@@ -199,8 +199,16 @@ large_division_dataframe.to_csv(os.path.join(os.path.split(PATH_TO_SUTPHIN)[0],'
 # get rid of unnecessary csvs
 cleaned_csv_files = [ x for x in all_csv_files if "division" not in x ]
 cleaned_csv_files = [ x for x in cleaned_csv_files if "Groupname.csv" not in x ]
+cleaned_csv_files = [ x for x in cleaned_csv_files if "_F.csv" not in x ]
+cleaned_csv_files = [ x for x in cleaned_csv_files if "_F_cleaned.csv" not in x ]
+cleaned_csv_files = [ x for x in cleaned_csv_files if "_UVex.csv" not in x ]
+cleaned_csv_files = [ x for x in cleaned_csv_files if "_BLUEex.csv" not in x ]
+cleaned_csv_files = [ x for x in cleaned_csv_files if "_GREENex.csv" not in x ]
+cleaned_csv_files = [ x for x in cleaned_csv_files if "_REDex.csv" not in x ]
 
 cleaned_csv_files = natsort.natsorted(cleaned_csv_files)
+
+print(cleaned_csv_files)
  
 for i in tqdm(range(len(cleaned_csv_files))):
 

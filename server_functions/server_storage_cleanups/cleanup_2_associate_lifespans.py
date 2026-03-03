@@ -17,8 +17,8 @@ cutoff_date = "2024-01-01"
 format_string = "%Y-%m-%d"  # Y: year, m: month, d: day
 cutoff_date = datetime.datetime.strptime(cutoff_date,format_string)
 max_number_days_fallback = 60
-min_number_days_fallback = 29
-lifespan_additional_delta = 1
+lifespan_additional_delta = 3
+min_number_days_fallback = 30-lifespan_additional_delta
 avg_GB_per_day = 0.5
 
 WW_path = r"Z:\WormWatcher"
