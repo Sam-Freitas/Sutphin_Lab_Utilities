@@ -12,6 +12,7 @@ import datetime
 
 ## this is the third step in cleaning up the server 
 ## find the folders that are to be removed (cleaned)
+format_string = "%Y-%m-%d"  # Y: year, m: month, d: day
 
 WW_path = r"Z:\WormWatcher"
 if not os.path.isdir(WW_path):

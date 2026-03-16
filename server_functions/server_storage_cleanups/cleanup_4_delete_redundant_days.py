@@ -143,7 +143,8 @@ if __name__ == '__main__':
 
             continue_to_delete_flag = paths_to_delete and days_to_remove
 
-            clean_this_exp_choice = input('\nClean this experiment?\nCONFRIM ---- yes(Y) - no(N)')
+            # clean_this_exp_choice = input('\nClean this experiment?\nCONFRIM ---- yes(Y) - no(N)')
+            clean_this_exp_choice = 'Y'
             clean_this_exp_flag = (clean_this_exp_choice=='Y')
 
             if continue_to_delete_flag and clean_this_exp_flag:
@@ -154,8 +155,12 @@ if __name__ == '__main__':
 
                     if files_to_delete:
                         for this_file_to_delete in files_to_delete:
-                            pass
-                            # os.remove(this_file_to_delete)
+                            if os.path.isdir(this_file_to_delete):
+                                shutil.rmtree(this_file_to_delete)
+                            elif os.path.isfile(this_file_to_delete):
+                                os.remove(this_file_to_delete)
+                            else:
+                                raise ValueError("Unexpected file/folder attempted to delete")
             ## this is to only be run when absolutely sure that we want to delete data
 
             pass

@@ -10,6 +10,7 @@ from functools import reduce
 import datetime
 
 ## this is the first step in cleaning up the server 
+# this finds all the possible experiments that have been previously done
 
 cutoff_date = "2024-01-01"
 format_string = "%Y-%m-%d"  # Y: year, m: month, d: day
