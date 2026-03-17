@@ -21,7 +21,7 @@ cutoff_date = datetime.datetime.strptime(cutoff_date,format_string)
 # and falls behind the cutoff date
 max_number_days_fallback = 60
 lifespan_additional_delta = 3
-min_number_days_fallback = 20-lifespan_additional_delta
+min_number_days_fallback = 30-lifespan_additional_delta
 avg_GB_per_day = 0.5
 
 WW_path = r"Z:\WormWatcher"

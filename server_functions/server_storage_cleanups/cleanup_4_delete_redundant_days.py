@@ -106,63 +106,71 @@ if __name__ == '__main__':
 
     for i,(this_WW_exp_name,this_WW_exp_path) in enumerate(tqdm.tqdm(zip(WW_experiment_name,WW_experiments_paths),total=len(WW_experiment_name))):
 
-        this_exp_timestamps = [df.iat[i,df.columns.get_loc('first date')],df.iat[i,df.columns.get_loc('last date')]]
-        this_exp_num_days = int(df.iat[i,df.columns.get_loc('delta days')])
-        
-        print('\n--------------------\n')
-        print('Experiment:', this_WW_exp_name)
-        print('Location:  ', this_WW_exp_path)
-        print('N days:    ', this_exp_num_days)
-        print('Days :     ',this_exp_timestamps[0], '---', this_exp_timestamps[1])
-        print('')
+        if df["continue2"][i]:
+            this_exp_timestamps = [df.iat[i,df.columns.get_loc('first date')],df.iat[i,df.columns.get_loc('last date')]]
+            this_exp_num_days = int(df.iat[i,df.columns.get_loc('delta days')])
+            
+            print('\n--------------------\n')
+            print('Experiment:', this_WW_exp_name)
+            print('Location:  ', this_WW_exp_path)
+            print('N days:    ', this_exp_num_days)
+            print('Days :     ',this_exp_timestamps[0], '---', this_exp_timestamps[1])
+            print('')
 
-        if df["continue3"][i]:
+            if df["continue3"][i]:
 
-            print('Continuing to deletion\n')
+                print('Continuing to deletion\n')
 
-            # get the paths from the csv as a string and transform them back into a list of paths
-            paths_to_delete = df.iat[i,df.columns.get_loc('paths to remove')]
-            if paths_to_delete == '[]':
-                paths_to_delete = None
-            else:
-                paths_to_delete = paths_to_delete.replace("'",'').replace("[",'').replace("]",'')
-                paths_to_delete = paths_to_delete.split(', ')
-                paths_to_delete = natsorted(paths_to_delete)
+                # get the paths from the csv as a string and transform them back into a list of paths
+                paths_to_delete = df.iat[i,df.columns.get_loc('paths to remove')]
+                if paths_to_delete == '[]':
+                    paths_to_delete = None
+                else:
+                    paths_to_delete = paths_to_delete.replace("'",'').replace("[",'').replace("]",'')
+                    paths_to_delete = paths_to_delete.split(', ')
+                    paths_to_delete = natsorted(paths_to_delete)
 
-            days_to_remove = df.iat[i,df.columns.get_loc('days to remove')]
-            if days_to_remove == '[]':
-                days_to_remove = None
-            else:
-                days_to_remove = days_to_remove.replace("'",'').replace("[",'').replace("]",'')
-                days_to_remove = days_to_remove.split(', ')
-                days_to_remove = natsorted(days_to_remove)
+                days_to_remove = df.iat[i,df.columns.get_loc('days to remove')]
+                if days_to_remove == '[]':
+                    days_to_remove = []
+                    days_to_remove_flag = False
+                else:
+                    days_to_remove = days_to_remove.replace("'",'').replace("[",'').replace("]",'')
+                    days_to_remove = days_to_remove.split(', ')
+                    days_to_remove = natsorted(days_to_remove)
+                    days_to_remove_flag = True
 
-            print('Last N removal:', len(days_to_remove))
-            print('N days remaining:', this_exp_num_days - len(days_to_remove))
-            print(days_to_remove)
+                print('Last N removal:', len(days_to_remove))
+                print('N days remaining:', this_exp_num_days - len(days_to_remove))
+                print(days_to_remove)
 
-            continue_to_delete_flag = paths_to_delete and days_to_remove
+                continue_to_delete_flag = paths_to_delete and days_to_remove_flag
 
-            # clean_this_exp_choice = input('\nClean this experiment?\nCONFRIM ---- yes(Y) - no(N)')
-            clean_this_exp_choice = 'Y'
-            clean_this_exp_flag = (clean_this_exp_choice=='Y')
+                # if i>23:
+                #     clean_this_exp_choice = input('\nClean this experiment?\nCONFRIM ---- yes(Y) - no(N)')
+                #     clean_this_exp_choice = 'Y'
+                #     clean_this_exp_flag = (clean_this_exp_choice=='Y') or (clean_this_exp_choice=='y')
+                # else:
+                #     clean_this_exp_flag = True
 
-            if continue_to_delete_flag and clean_this_exp_flag:
-                print('--- deleting')
-                for j,this_folder_to_delete in enumerate(paths_to_delete):
-                    print(j,this_folder_to_delete)
-                    files_to_delete = glob.glob(os.path.join(this_folder_to_delete,'*'))
+                clean_this_exp_flag = True
 
-                    if files_to_delete:
-                        for this_file_to_delete in files_to_delete:
-                            if os.path.isdir(this_file_to_delete):
-                                shutil.rmtree(this_file_to_delete)
-                            elif os.path.isfile(this_file_to_delete):
-                                os.remove(this_file_to_delete)
-                            else:
-                                raise ValueError("Unexpected file/folder attempted to delete")
-            ## this is to only be run when absolutely sure that we want to delete data
+                if continue_to_delete_flag and clean_this_exp_flag:
+                    print('--- deleting')
+                    for j,this_folder_to_delete in enumerate(paths_to_delete):
+                        print(j,this_folder_to_delete)
+                        files_to_delete = glob.glob(os.path.join(this_folder_to_delete,'*'))
 
+                        if files_to_delete:
+                            for this_file_to_delete in files_to_delete:
+                                if os.path.isdir(this_file_to_delete):
+                                    shutil.rmtree(this_file_to_delete)
+                                elif os.path.isfile(this_file_to_delete):
+                                    os.remove(this_file_to_delete)
+                                else:
+                                    raise ValueError("Unexpected file/folder attempted to delete")
+                ## this is to only be run when absolutely sure that we want to delete data
+
+                pass
             pass
         pass
-    pass
