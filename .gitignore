@@ -25,3 +25,4 @@ server_functions/server_storage_cleanups/cleanup_server1.csv
 server_functions/server_storage_cleanups/cleanup_server2.csv
 server_functions/server_storage_cleanups/cleanup_server3_sorted.csv
 server_functions/server_storage_cleanups/cleanup_server3.csv
+system_metrics.csv
