@@ -372,6 +372,7 @@ for i = 1:length(condition_unique)
     g.WindowState = 'maximized';
     
     this_condition_unique = replace(condition_unique(i),{'/','\'},'-per-');
+    this_condition_unique = replace(this_condition_unique,{',',':'},'');
     
     if save_plots
         saveas(g,fullfile(pwd,'output_figures',[exp_nm 'activity_' char(this_condition_unique) '.png']))

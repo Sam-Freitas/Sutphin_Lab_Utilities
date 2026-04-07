@@ -3,7 +3,7 @@ from natsort import natsorted
 import paramiko
 
 # this is the data to transfer over to the HPC
-to_transfer =  '5mM_Fe3_Wash_001/'
+to_transfer = ['New_mold_test_001/','New_mold_test_003/','Bodipy_vs_cholesterol_001/','Lipid_screen_dose_response_024/'] # 'Ferritin_RNAi_001/' # fpn_ftn_RNAi_001 # smf_1_2_3_RNAi_002
 
 # this is the path to the txt file containing all the information
 ssh_details_path = os.path.normpath(r'server_functions\server_details.txt')
@@ -90,22 +90,42 @@ for this_file in found_files:
             found_folders.append(this_file)
 found_folders = natsorted(found_folders)
 
-if to_transfer.strip('/') not in found_folders:
-    print('Specified folder not found--->',to_transfer)
-    print('EXITING')
-    ssh_client.close()
-    sys.exit()
 
-time.sleep(1)
+if isinstance(to_transfer,str):
 
-# rsync -a -R --info=progress2 --exclude="*/fluorescent_data*" --exclude="*.txt*" --exclude="*.jpg*" Fluorescent_markers_006/ samfreitas@filexfer.hpc.arizona.edu:/xdisk/sutphin/samfreitas/
+    if to_transfer.strip('/') not in found_folders:
+        print('Specified folder not found--->',to_transfer)
+        print('EXITING')
+        ssh_client.close()
+        sys.exit()
 
-response = run_command('rsync -ah -R --info=progress2 --exclude="*/fluorescent_data*" --exclude="*.txt*" --exclude="*.jpg*" "' + to_transfer + '" ' + ssh_details['scp_path'])
-time.sleep(1)
-response = run_command(ssh_details['HPC_password'],timeout=-1, timeout2=15)
-time.sleep(1)
-response = run_command('1',timeout=-1, timeout2=60)
-time.sleep(1)
+    time.sleep(1)
+
+    response = run_command('rsync -ah -R --info=progress2 --exclude="*/fluorescent_data*" --exclude="*.txt*" --exclude="*.jpg*" "' + to_transfer + '" ' + ssh_details['scp_path'])
+    time.sleep(1)
+    response = run_command(ssh_details['HPC_password'],timeout=-1, timeout2=15)
+    time.sleep(1)
+    response = run_command('1',timeout=-1, timeout2=60)
+    time.sleep(1)
+
+if isinstance(to_transfer,list):
+
+    for i, this_experiment in enumerate(to_transfer):
+
+        print(this_experiment)
+
+        if this_experiment.strip('/') not in found_folders:
+            print('Specified folder not found--->',this_experiment)
+        else:
+
+            time.sleep(1)
+
+            response = run_command('rsync -ah -R --info=progress2 --exclude="*/fluorescent_data*" --exclude="*.txt*" --exclude="*.jpg*" "' + this_experiment + '" ' + ssh_details['scp_path'])
+            time.sleep(1)
+            response = run_command(ssh_details['HPC_password'],timeout=-1, timeout2=15)
+            time.sleep(1)
+            response = run_command('1',timeout=-1, timeout2=60)
+            time.sleep(1)
 
 
 ssh_client.close()
