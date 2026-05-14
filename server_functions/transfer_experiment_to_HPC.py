@@ -1,9 +1,9 @@
-import os,sys,glob,time,re
+import os,sys,glob,time,re, tempfile
 from natsort import natsorted
 import paramiko
 
 # this is the data to transfer over to the HPC
-to_transfer = ['New_mold_test_001/','New_mold_test_003/','Bodipy_vs_cholesterol_001/','Lipid_screen_dose_response_024/'] # 'Ferritin_RNAi_001/' # fpn_ftn_RNAi_001 # smf_1_2_3_RNAi_002
+to_transfer = ['100mm_test_1/'] # 'Ferritin_RNAi_001/' # fpn_ftn_RNAi_001 # smf_1_2_3_RNAi_002
 
 # this is the path to the txt file containing all the information
 ssh_details_path = os.path.normpath(r'server_functions\server_details.txt')
@@ -60,7 +60,7 @@ with open(ssh_details_path) as f:
        ssh_details[key] = val.rstrip()
 del key, val
 
-print(ssh_details_path)
+print(ssh_details_path) 
 print(ssh_details)
 
 ssh_client = paramiko.SSHClient()
@@ -101,32 +101,32 @@ if isinstance(to_transfer,str):
 
     time.sleep(1)
 
-    response = run_command('rsync -ah -R --info=progress2 --exclude="*/fluorescent_data*" --exclude="*.txt*" --exclude="*.jpg*" "' + to_transfer + '" ' + ssh_details['scp_path'])
+    response = run_command('rsync -rh -R --info=progress2 --exclude="*/fluorescent_data*" --exclude="*.txt*" --exclude="*.jpg*" "' + to_transfer + '" ' + ssh_details['scp_path'])
     time.sleep(1)
     response = run_command(ssh_details['HPC_password'],timeout=-1, timeout2=15)
     time.sleep(1)
     response = run_command('1',timeout=-1, timeout2=60)
     time.sleep(1)
 
-if isinstance(to_transfer,list):
+if isinstance(to_transfer, list):
+    valid_experiments = [e for e in to_transfer if e.strip('/') in found_folders]
+    invalid_experiments = [e for e in to_transfer if e.strip('/') not in found_folders]
 
-    for i, this_experiment in enumerate(to_transfer):
+    for e in invalid_experiments:
+        print('Specified folder not found --->', e)
 
-        print(this_experiment)
-
-        if this_experiment.strip('/') not in found_folders:
-            print('Specified folder not found--->',this_experiment)
-        else:
-
-            time.sleep(1)
-
-            response = run_command('rsync -ah -R --info=progress2 --exclude="*/fluorescent_data*" --exclude="*.txt*" --exclude="*.jpg*" "' + this_experiment + '" ' + ssh_details['scp_path'])
-            time.sleep(1)
-            response = run_command(ssh_details['HPC_password'],timeout=-1, timeout2=15)
-            time.sleep(1)
-            response = run_command('1',timeout=-1, timeout2=60)
-            time.sleep(1)
-
+    if valid_experiments:
+        sources = ' '.join(f'"{e}"' for e in valid_experiments)
+        response = run_command(
+            f'rsync -ah -R --info=progress2 '
+            f'--exclude="*/fluorescent_data*" --exclude="*.txt*" --exclude="*.jpg*" '
+            f'{sources} {ssh_details["scp_path"]}'
+        )
+        time.sleep(1)
+        response = run_command(ssh_details['HPC_password'], timeout=-1, timeout2=15)
+        time.sleep(1)
+        response = run_command('1', timeout=-1, timeout2=60)
+        time.sleep(1)
 
 ssh_client.close()
 
