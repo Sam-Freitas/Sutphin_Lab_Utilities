@@ -38,6 +38,8 @@ if os.path.isdir(PATH_TO_SUTPHIN) is not True:
     PATH_TO_SUTPHIN = r"Y:\Projects\Worm Paparazzi\Data"
     if os.path.isdir(PATH_TO_SUTPHIN) is not True:
         PATH_TO_SUTPHIN = "/volume2/Sutphin server/Projects/Worm Paparazzi/Data"
+PATH_TO_SUTPHIN_LITE = PATH_TO_SUTPHIN + '_lite'
+os.makedirs(PATH_TO_SUTPHIN_LITE,exist_ok=True)
 
 PATH_TO_DIVISION_BASE = r"Z:\Worm_Paparazzi\Data_setup\Groupname_divisions.csv"
 if os.path.isfile(PATH_TO_DIVISION_BASE) is not True:
@@ -54,19 +56,12 @@ print("Path to division template", PATH_TO_DIVISION_BASE)
 base_division = pd.read_csv(PATH_TO_DIVISION_BASE)
 base_columns = base_division.columns
 
-# print(base_division)
-
 print('All paths have been verified')
 print('Recursively looking up all .CSV files in', str(PATH_TO_WW))
 
 #recursively get all the csv files from the _Data folder
 # the csvs are used to locate the folder that contains all the processed data
 EXT = "*.csv"
-# t_old = time.time()
-# all_csv_files = [file
-#                  for path, subdir, files in os.walk(PATH_TO_WW)
-#                  for file in glob.glob(os.path.join(path, EXT))]
-# t_old = time.time() - t_old
 
 t_new = time.time()
 all_csv_files = []
@@ -74,12 +69,14 @@ for i, this_path in enumerate(tqdm(Path(PATH_TO_WW).rglob(EXT))):
     all_csv_files.append(str(this_path))
 t_new = time.time() - t_new
 
+
 # get all the division paths for the data lookup table
 division_csv_files = [ x for x in all_csv_files if "division" in x ]
 division_csv_files = natsort.natsorted(division_csv_files)
 # read in the base and columns for checking
 base_division = pd.read_csv(PATH_TO_DIVISION_BASE)
 base_columns = base_division.columns
+
 
 print('Creating lookup table')
 skip_counter = 0
@@ -208,8 +205,18 @@ cleaned_csv_files = [ x for x in cleaned_csv_files if "_REDex.csv" not in x ]
 
 cleaned_csv_files = natsort.natsorted(cleaned_csv_files)
 
-print(cleaned_csv_files)
- 
+print('Dumping CSVs to Data_lite')
+for i in tqdm(range(len(all_csv_files))):
+
+    this_filepath = all_csv_files[i]
+    new_filepath = this_filepath.replace(PATH_TO_WW,PATH_TO_SUTPHIN_LITE)
+    new_filepath_parent = Path(new_filepath).parent
+    file_name = Path(this_filepath).stem
+
+    os.makedirs(new_filepath_parent,exist_ok=True)
+    copy_file(this_filepath, new_filepath, update=update_files)
+
+print('Copying and updating _Data -> Data folders')
 for i in tqdm(range(len(cleaned_csv_files))):
 
     this_filepath = cleaned_csv_files[i]
@@ -220,7 +227,7 @@ for i in tqdm(range(len(cleaned_csv_files))):
     this_dir = os.path.dirname(this_filepath)
     this_dir_name = Path(this_dir).stem
     # print('')
-    print(this_dir_name)
+    # print(this_dir_name)
     # make a new path 
     new_dir_path = os.path.join(PATH_TO_SUTPHIN,this_dir_name)
     # print(new_dir_path)
