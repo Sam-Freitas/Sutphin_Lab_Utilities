@@ -3,7 +3,7 @@ from natsort import natsorted
 import paramiko
 
 # this is the data to transfer over to the HPC
-to_transfer = ['100mm_test_1/'] # 'Ferritin_RNAi_001/' # fpn_ftn_RNAi_001 # smf_1_2_3_RNAi_002
+to_transfer = ['60mm_2x_test_001/','100mm_test_1/'] # 'Ferritin_RNAi_001/' # fpn_ftn_RNAi_001 # smf_1_2_3_RNAi_002
 
 # this is the path to the txt file containing all the information
 ssh_details_path = os.path.normpath(r'server_functions\server_details.txt')
