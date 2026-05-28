@@ -81,7 +81,11 @@ response = run_command("rsync -rlvzh --update --exclude='*processed_img_data*' -
 time.sleep(1)
 response = run_command(ssh_details['HPC_password'],timeout=-1, timeout2=15)
 time.sleep(1)
-response = run_command('1',timeout=-1, timeout2=60)
+response = run_command('1',timeout=-1, timeout2=15)
+time.sleep(1)
+
+response = run_command('cd /')
+response = run_command('./volume1/WormWatcher/python_dir/sync_across_servers.sh',timeout=-1, timeout2=15)
 time.sleep(1)
 
 ssh_client.close()
