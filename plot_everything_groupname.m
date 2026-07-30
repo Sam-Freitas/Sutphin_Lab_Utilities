@@ -86,11 +86,11 @@ if ~combine_everything_into_one
         'SelectionMode','single','ListString',all_cond(choice_idx),...
         'ListSize',[500 500], ...
         'InitialValue',1);
-    
+
     temp_choice = choice_idx(control_indx);
-    
+
     choice_idx(control_indx) = [];
-    
+
     choice_idx = [temp_choice, choice_idx];
 end
 
@@ -388,12 +388,80 @@ if plate_type == 0 || plate_type == 1
         end
         
     end
-else
+elseif plate_type == 2 || plate_type == 3
     % shortcut for petri data
     good_data = sorted_data;
+    close all
+
+    if plate_type == 3
+        num_rois = 2;
+    else
+        num_rois = 1;
+    end
+
+    petri_csvs_dir = dir(fullfile(csv_path,'petri','*.csv'));
+    petri_sess_nums_dir = dir(fullfile(csv_path,'petri','*.png'));
+    petri_tables_paths = {};
+    petri_filt_tables_paths = {};
+    plate_names = {};
+    % isolat the petri and the filtered daily data
+    for i = 1:length(petri_csvs_dir)
+        temp = fullfile(petri_csvs_dir(i).folder,petri_csvs_dir(i).name);
+        if contains(temp,'filtered.csv')
+            petri_filt_tables_paths = [petri_filt_tables_paths; temp];
+        else
+            petri_tables_paths = [petri_tables_paths; temp];
+            plate_names = [plate_names;petri_csvs_dir(i).name];
+        end
+    end
+    plate_names = natsort(plate_names);
+    petri_tables_paths = natsort(petri_tables_paths);
+    petri_filt_tables_paths = natsort(petri_filt_tables_paths);
+    % isolate and sort the paths for the sess_nums
+    petri_sess_nums_paths = {};
+    for i = 1:length(petri_sess_nums_dir)
+        temp = fullfile(petri_sess_nums_dir(i).folder,petri_sess_nums_dir(i).name);
+        petri_sess_nums_paths = [petri_sess_nums_paths; temp];
+    end
+    petri_sess_nums_paths = natsort(petri_sess_nums_paths);
+
+    for i = 1:length(petri_filt_tables_paths)
+            
+        this_plate = plate_names{i};
+        this_plate = this_plate(1:end-4);
+        this_filt_table =   readtable(petri_filt_tables_paths{i},'VariableNamingRule','preserve');
+        this_table =        readtable(petri_tables_paths{i},'VariableNamingRule','preserve');
+        sess_nums = double(imread(petri_sess_nums_paths{i}));
+
+        temp = this_table.imaging_session;
+        ROIs = ceil(temp/max(sess_nums(:)));
+        this_table.ROIs = ROIs;
+
+        num_days = size(sess_nums,1);
+        temp =[];
+        for j = 1:num_rois
+            temp = [temp,(1:num_days)+((j-1)*num_days)];
+        end
+        ROIs_filt = ceil(temp/num_days)';
+        this_filt_table.ROIs = ROIs_filt;
+
+        for j = 1:num_rois
+
+            this_well_loc = j;
+
+            this_num_detections = this_filt_table.avg_num_detections(ROIs_filt==j);
+            
+            this_data_index = prod([ismember(good_data.("Plate ID"),this_plate),ismember(good_data.("Well Location"),this_well_loc)],2);
+            this_data_index = logical(this_data_index);
+            good_data(this_data_index,idx_activity) = good_data(this_data_index,idx_activity)./this_num_detections';
+
+        end
+
+    end
+
 end
 
-close all
+
 
 plot_mean_activites(good_data,conditions_to_isolate,exp_nm,csv_path,csv_file,0,cmap,idx_activity)
 plot_mean_activites(good_data,conditions_to_isolate,exp_nm,csv_path,csv_file,1,cmap,idx_activity)
