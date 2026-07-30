@@ -84,7 +84,8 @@ if ~combine_everything_into_one
     [control_indx,tf] = listdlg('PromptString',{'Select the Control.',...
         'Only one Control can be selected.',''},...
         'SelectionMode','single','ListString',all_cond(choice_idx),...
-        'ListSize',[500 500]);
+        'ListSize',[500 500], ...
+        'InitialValue',1);
     
     temp_choice = choice_idx(control_indx);
     
@@ -98,6 +99,11 @@ conditions_to_isolate = all_cond(choice_idx);
 
 % set the colormap from the number of isolated conditions
 cmap = cmap_custom(conditions_to_isolate);
+
+if isfile(fullfile(csv_path,'Groupnames','Groupname.csv'))
+    groupname_csv_path = fullfile(csv_path,'Groupnames','Groupname.csv');
+    [plate_type_str, plate_type] = get_plate_type(groupname_csv_path);
+end
 
 % regular not combinatorial
 if ~combine_everything_into_one
@@ -337,48 +343,54 @@ sorting_array = [data_lifespan,data_healthspan,data_total_activity,data_death_de
 
 [sorted_data,idx_sort] = sortrows(data,[col_death_detected,col_lifespan,col_combined_metric]);
 
-good_data = sorted_data((sorted_data.("Death Detected") == 1),:);
-good_data = good_data((good_data.("Last day of observation") > 1),:);
-
-overall_max_activity = max(max(table2array(good_data(:,idx_activity))));
-
-max_activity_per_animal = max(table2array(good_data(:,idx_activity)),[],2);
-good_enough_max_activity = mean(max_activity_per_animal)+3*std(max_activity_per_animal);
-
-mkdir(fullfile(csv_path,'activity_groupings'));
-for i = 1:length(condition_unique)
+if plate_type == 0 || plate_type == 1
+    % this is for individual animal models (not petri)
+    good_data = sorted_data((sorted_data.("Death Detected") == 1),:);
+    good_data = good_data((good_data.("Last day of observation") > 1),:);
     
-    this_condition_idx = (good_data.Condition == condition_unique(i));
+    overall_max_activity = max(max(table2array(good_data(:,idx_activity))));
     
-    this_data = good_data(this_condition_idx,:);
+    max_activity_per_animal = max(table2array(good_data(:,idx_activity)),[],2);
+    good_enough_max_activity = mean(max_activity_per_animal)+3*std(max_activity_per_animal);
     
-    this_activity = table2array(this_data(:,idx_activity));
-    this_activity = clean_this_activity(this_activity,this_data);
-    this_activity = resize_and_reshape_activity(this_activity,size_of_graph);
+    mkdir(fullfile(csv_path,'activity_groupings'));
+    for i = 1:length(condition_unique)
         
-    g = figure('units','normalized','outerposition',[0 0 1 1]);
-    imshow(this_activity,[0 good_enough_max_activity]);
-    colormap(g,'parula')
-    pause(.1)
-    colorbar('FontSize',12);
-    pause(.1)
-    
-    plot_this_healthspan_lifespan_on_activity(table2array(this_data(:,idx_lifepsan))...
-        ,table2array(this_data(:,idx_healthspan)),...
-        num_days_experiment_ran,size_of_graph)
-    
-    title(condition_unique(i),'Interpreter','None')
-    
-    g.WindowState = 'maximized';
-    
-    this_condition_unique = replace(condition_unique(i),{'/','\'},'-per-');
-    this_condition_unique = replace(this_condition_unique,{',',':'},'');
-    
-    if save_plots
-        saveas(g,fullfile(pwd,'output_figures',[exp_nm 'activity_' char(this_condition_unique) '.png']))
-        saveas(g,fullfile(csv_path,'activity_groupings',[exp_nm 'activity_' char(this_condition_unique) '.png']));
+        this_condition_idx = (good_data.Condition == condition_unique(i));
+        
+        this_data = good_data(this_condition_idx,:);
+        
+        this_activity = table2array(this_data(:,idx_activity));
+        this_activity = clean_this_activity(this_activity,this_data);
+        this_activity = resize_and_reshape_activity(this_activity,size_of_graph);
+            
+        g = figure('units','normalized','outerposition',[0 0 1 1]);
+        imshow(this_activity,[0 good_enough_max_activity]);
+        colormap(g,'parula')
+        pause(.1)
+        colorbar('FontSize',12);
+        pause(.1)
+        
+        plot_this_healthspan_lifespan_on_activity(table2array(this_data(:,idx_lifepsan))...
+            ,table2array(this_data(:,idx_healthspan)),...
+            num_days_experiment_ran,size_of_graph)
+        
+        title(condition_unique(i),'Interpreter','None')
+        
+        g.WindowState = 'maximized';
+        
+        this_condition_unique = replace(condition_unique(i),{'/','\'},'-per-');
+        this_condition_unique = replace(this_condition_unique,{',',':'},'');
+        
+        if save_plots
+            saveas(g,fullfile(pwd,'output_figures',[exp_nm 'activity_' char(this_condition_unique) '.png']))
+            saveas(g,fullfile(csv_path,'activity_groupings',[exp_nm 'activity_' char(this_condition_unique) '.png']));
+        end
+        
     end
-    
+else
+    % shortcut for petri data
+    good_data = sorted_data;
 end
 
 close all
@@ -915,6 +927,29 @@ if smooth_bool
     saveas(g2,fullfile(csv_path,['cumulative_activity_norm_to_populations_smooth_' char(exp_nm) '.png']));
 else
     saveas(g2,fullfile(csv_path,['cumulative_activity_' char(exp_nm) '.png']));
+end
+
+end
+
+function [plate_type_string,plate_type] = get_plate_type(groupname_csv_path)
+
+groupname_table = readtable(groupname_csv_path,'VariableNamingRule','preserve');
+p_type_inx = ismember(groupname_table.VariableName,'Plate Type');
+temp = groupname_table{:,'group 1'}(p_type_inx);
+plate_type_string = temp{1};
+
+if isequal(lower(plate_type_string),'wormotel')
+    num_wells = 240; 
+    plate_type = 0;
+elseif isequal(lower(plate_type_string),'terasaki')
+    num_wells = 96; 
+    plate_type = 1;
+elseif isequal(lower(plate_type_string),'100mm petri')
+    num_wells = 1;
+    plate_type = 2;
+elseif isequal(lower(plate_type_string),'60mm petri')
+    num_wells = 2; 
+    plate_type = 3;
 end
 
 end
